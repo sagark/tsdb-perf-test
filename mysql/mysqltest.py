@@ -23,10 +23,25 @@ test2 = Test(2, "Database query")
 jarLoad = classPathHacker()
 a = jarLoad.addFile("/usr/share/java/mysql-connector-java-5.1.16.jar")
 
-#random numbergen
-r = Random()
+def initialize_driver():
+    driver = "com.mysql.jdbc.Driver"
+    Class.forName(driver)
 
-TEST_URL = "jdbc:mysql://localhost/grindertest?user=root&password=toor"
+def experiment_clean():
+    conn = DriverManager.getConnection(TEST_URL)
+    s = conn.createStatement()
+    try:
+        s.executeUpdate("drop table grindertest")
+    except:
+        pass
+    s.executeUpdate("create table grindertest (time INT, value DOUBLE)")
+    ensureClosed(s)
+    ensureClosed(conn)
+
+def start_conn_statement():
+    conn = DriverManager.getConnection(TEST_URL)
+    s = conn.createStatement()
+    return conn, s
 
 def ensureClosed(object):
     try:
@@ -35,14 +50,22 @@ def ensureClosed(object):
         pass
 
 
+
+#random numbergen
+r = Random()
+
+TEST_URL = "jdbc:mysql://localhost/grindertest?user=root&password=toor"
+
+#initialize db driver
+initialize_driver()
+experiment_clean()
+
+
 class TestRunner:
     def __call__(self):
         r = Random()
-        driver = "com.mysql.jdbc.Driver"
-        Class.forName(driver)
 
-        conn = DriverManager.getConnection(TEST_URL)
-        s = conn.createStatement()
+        conn, s = start_conn_statement()
 
         testInsert = test1.wrap(s)
         testInsert.executeUpdate("insert into grindertest values (" + 
