@@ -8,7 +8,7 @@ from java.lang import *
 from java.sql import *
 from java.util import Random
 from classpathhacker import classPathHacker
-#import com.mysql.jdbc.Driver
+import com.mysql.jdbc.Driver
 
 #Grinder stuff
 from net.grinder.script.Grinder import grinder
@@ -26,8 +26,8 @@ test1 = Test(1, "Database insert")
 test2 = Test(2, "Database query")
 
 #import java sql driver 
-jarLoad = classPathHacker()
-a = jarLoad.addFile("../bin/mysql-connector-java-5.1.21-bin.jar")
+#jarLoad = classPathHacker()
+#a = jarLoad.addFile("/home/test/dev/tsdb-perf-test/bin/mysql-connector-java-5.1.21-bin.jar")
 
 def initialize_driver():
     driver = "com.mysql.jdbc.Driver"
