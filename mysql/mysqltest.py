@@ -16,6 +16,9 @@ import time
 import sys
 #from random import random
 
+#project specific
+from datagenerator import TSdata
+
 test1 = Test(1, "Database insert")
 test2 = Test(2, "Database query")
 
