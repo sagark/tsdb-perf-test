@@ -2,7 +2,7 @@
 from java.lang import *
 from java.sql import *
 from java.util import Random
-from classpathhacker import classPathHacker
+#from classpathhacker import classPathHacker
 import com.mysql.jdbc.Driver
 
 #Grinder stuff
@@ -58,21 +58,24 @@ experiment_clean()
 datagen = TSdata(10000, 100, range(80, 120, 1))
 
 class TestRunner:
+    def __init__(self):
+        grinder.logger.info("Started Logging")
+
     def __call__(self):
-	#start this round
+        #start this round
         conn, s = start_conn_statement()
-	roundvals = datagen.next()
-	testInsert = test1.wrap(s)
+        roundvals = datagen.next()
+        testInsert = test1.wrap(s)
         testQuery = test2.wrap(s)
 
-	query_end = ''
-	for tup in roundvals:
-		query_end += str(tup) + ','
-	query_end = query_end[:-1]
+        query_end = ''
+        for tup in roundvals:
+                query_end += str(tup) + ','
+        query_end = query_end[:-1]
         testInsert.executeUpdate("insert into grindertest values " + query_end)
         
 
-
+        grinder.logger.info(str(time.time()))
         a = testQuery.executeQuery("select * from grindertest")
         while(a.next()):
             print("[" + a.getString("streamid") + " " + a.getString("time") + " " + a.getString("value") + "]")
