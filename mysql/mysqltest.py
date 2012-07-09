@@ -1,8 +1,3 @@
-# a jython script for use by grinder
-#import warnings
-#warnings.filterwarnings("ignore", category=PendingDeprecationWarning)
-
-
 #Java/SQL stuff
 from java.lang import *
 from java.sql import *
@@ -40,7 +35,7 @@ def experiment_clean():
         s.executeUpdate("drop table grindertest")
     except:
         pass
-    s.executeUpdate("create table grindertest (time INT, value DOUBLE)")
+    s.executeUpdate("create table grindertest (streamid INT, time INT, value DOUBLE)")
     ensureClosed(s)
     ensureClosed(conn)
 
@@ -55,32 +50,32 @@ def ensureClosed(object):
     except:
         pass
 
-
-
-#random numbergen
-r = Random()
-
 TEST_URL = "jdbc:mysql://localhost/grindertest?user=root&password=toor"
 
 #initialize db driver
 initialize_driver()
 experiment_clean()
-
+datagen = TSdata(10000, 100, range(80, 120, 1))
 
 class TestRunner:
     def __call__(self):
-        r = Random()
-
+	#start this round
         conn, s = start_conn_statement()
-
-        testInsert = test1.wrap(s)
-        testInsert.executeUpdate("insert into grindertest values (" + 
-                      str(int(time.time())) + "," + str(r.nextInt(100)) + ")")
-        
+	roundvals = datagen.next()
+	testInsert = test1.wrap(s)
         testQuery = test2.wrap(s)
+
+	query_end = ''
+	for tup in roundvals:
+		query_end += str(tup) + ','
+	query_end = query_end[:-1]
+        testInsert.executeUpdate("insert into grindertest values " + query_end)
+        
+
+
         a = testQuery.executeQuery("select * from grindertest")
         while(a.next()):
-            print("[" + a.getString("time") + " " + a.getString("value") + "]")
+            print("[" + a.getString("streamid") + " " + a.getString("time") + " " + a.getString("value") + "]")
 
         ensureClosed(conn)
         ensureClosed(s)
