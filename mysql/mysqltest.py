@@ -1,4 +1,7 @@
 # a jython script for use by grinder
+#import warnings
+#warnings.filterwarnings("ignore", category=PendingDeprecationWarning)
+
 
 #Java/SQL stuff
 from java.lang import *
@@ -24,7 +27,7 @@ test2 = Test(2, "Database query")
 
 #import java sql driver 
 jarLoad = classPathHacker()
-a = jarLoad.addFile("/usr/share/java/mysql-connector-java-5.1.16.jar")
+a = jarLoad.addFile("../bin/mysql-connector-java-5.1.21-bin.jar")
 
 def initialize_driver():
     driver = "com.mysql.jdbc.Driver"
