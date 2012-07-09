@@ -39,8 +39,8 @@ def experiment_clean():
     ensureClosed(s)
     ensureClosed(conn)
 
-def start_conn_statement():
-    conn = DriverManager.getConnection(TEST_URL)
+def start_conn_statement(turl):
+    conn = DriverManager.getConnection(turl)
     s = conn.createStatement()
     return conn, s
 
@@ -51,6 +51,7 @@ def ensureClosed(object):
         pass
 
 TEST_URL = "jdbc:mysql://localhost/grindertest?user=root&password=toor"
+DB_STATS_URL = "jdbc:mysql://localhost/information_schema?user=root&password=toor"
 
 #initialize db driver
 initialize_driver()
@@ -66,7 +67,9 @@ class TestRunner:
 
     def __call__(self):
         #start this round
-        conn, s = start_conn_statement()
+        conn, s = start_conn_statement(TEST_URL)
+	logconn, logstate = start_conn_statement(DB_STATS_URL)
+
         roundvals = datagen.next()
         testInsert = test1.wrap(s)
         testQuery = test2.wrap(s)
@@ -83,6 +86,16 @@ class TestRunner:
         while(a.next()):
             temp = ("[" + a.getString("streamid") + " " + a.getString("time") + " " + a.getString("value") + "]") #no need to waste time actually printing
         grinder.logger.info("Fetched all points at " + str(time.time()))
+
+
+	#log db size
+	size = logstate.executeQuery("select DATA_LENGTH from tables where TABLE_NAME='grindertest'")
+	size.next()
+	size = size.getString("DATA_LENGTH")
+	grinder.logger.info("The database size is now " + size + " bytes.")
+
+	ensureClosed(logconn)
+	ensureClosed(logstate)
 
         ensureClosed(conn)
         ensureClosed(s)
