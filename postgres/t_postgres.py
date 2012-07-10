@@ -7,7 +7,7 @@ import time
 import sys
 
 #project specific
-from outline import DBTest
+from framework import DBTest
 
 
 class PostgresAccess(DBTest):
@@ -20,8 +20,8 @@ class PostgresAccess(DBTest):
         self.passw = "postgres"
         self.dbconn = None
         self.dbstate = None
-        self.dbaboutconn = None
-        self.dbaboutstate = None
+        self.dbaboutconn = None #not needed for postgres
+        self.dbaboutstate = None #not needed for postgres
 
         #setup driver
         self.driver = "org.postgresql.Driver"
@@ -45,21 +45,10 @@ class PostgresAccess(DBTest):
                                                     "?user=" + self.user + 
                                                     "&password=" + self.passw)
         self.dbstate = self.dbconn.createStatement()
-    
-        #start connection to information_schema db
-        self.dbaboutconn = DriverManager.getConnection(self.urlroot +
-                                                       self.dbabout + "?user=" +
-                                                       self.user + 
-                                                       "&password=" +
-                                                       self.passw)
-        self.dbaboutstate = self.dbaboutconn.createStatement()
-
         
     def close_all(self):
         self.check_close(self.dbstate)
         self.check_close(self.dbconn)
-        self.check_close(self.dbaboutstate)
-        self.check_close(self.dbaboutconn)
 
     def check_close(self, ob):
         try:
@@ -69,10 +58,10 @@ class PostgresAccess(DBTest):
 
 
     def get_db_size(self):
-        size = self.dbaboutstate.executeQuery("select DATA_LENGTH from tables"
-                                              " where TABLE_NAME='grindertest'")
+        size = self.dbstate.executeQuery("SELECT pg_database_size"
+                                              "('grindertest')")
         size.next()
-        size = size.getString("DATA_LENGTH")
+        size = size.getString("pg_database_size")
         return size
 
     def prepare(self):
@@ -82,14 +71,15 @@ class PostgresAccess(DBTest):
         except:
             pass
         self.dbstate.executeUpdate("create table grindertest (streamid INT,"
-                                   " time INT, value DOUBLE, CONSTRAINT pk_ts"
-                                   " PRIMARY KEY (streamid, time) )")
+                                   " time INT, value DOUBLE PRECISION, "
+                                   "CONSTRAINT pk_ts PRIMARY KEY (streamid, "
+                                    "time) )")
         #the end of this query creates the primary key and automatically creates 
         #an index in mysql
 
         #################Other things go here like clearing cache
-        #clear MySQL Query Cache
-        self.dbstate.executeUpdate("RESET QUERY CACHE")
+        #To clear Postgres Cache, you have to restart the database, there is no
+        #command to do it automatically
 
         #finally, reset the connection/statement
         self.reset_conn_state()

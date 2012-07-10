@@ -4,7 +4,7 @@
 3) copy grinder-3.10 to /opt/
 4) Modify .bashrc to 
 
-export CLASSPATH=/opt/grinder-3.10/lib/grinder.jar:/opt/grinder-3.10/lib:/home/test/jython2.5.2:/home/test/jython2.5.2/jython.jar:/home/test/tsdb-perf-test/bin/mysql-connector-java-5.1.21-bin.jar:/usr/share/java/mysql.jar:/usr/share/java/mysql-connector-java.jar
+export CLASSPATH=/opt/grinder-3.10/lib/grinder.jar:/opt/grinder-3.10/lib:/home/test/jython2.5.2:/home/test/jython2.5.2/jython.jar:/home/test/tsdb-perf-test/bin/mysql-connector-java-5.1.21-bin.jar:/usr/share/java/mysql.jar:/usr/share/java/mysql-connector-java.jar:/home/test/dev/tsdb-perf-test/bin/postgresql-9.1-902.jdbc4.jar
 
 5) All grinder.properties files need to have:
 	grinder.jvm.arguments = -Dpython.home=/home/test/jython2.5.2
