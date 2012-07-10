@@ -1,7 +1,5 @@
 #Java/SQL stuff
 from java.lang import *
-from java.sql import *
-import com.mysql.jdbc.Driver
 
 #Grinder stuff
 from net.grinder.script.Grinder import grinder
@@ -12,15 +10,20 @@ import time
 import sys
 
 #project specific
-from datagenerator import TSdata
-from t_mysql import MySQLAccess
+from framework import TSdata, importstrs
+
+#import relevant t_DATABASENAME depending on settings in grinder.properties
+inp = grinder.getProperties()["grinder.inp"]
+print(inp)
+inp = importstrs(inp)
+exec(inp)
 
 test1 = Test(1, "Database insert")
 test2 = Test(2, "Database query")
 
 class TestRunner:
     def __init__(self):
-        self.testdb = MySQLAccess()
+        self.testdb = DBAccess()
         self.points = 10000
         self.streams = 100
         self.valid_range = range(80, 120, 1)
@@ -63,4 +66,5 @@ class TestRunner:
         grinder.logger.info("The database size is now " + size + " bytes.")
 
         self.testdb.reset_conn_state()
+
 

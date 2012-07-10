@@ -8,7 +8,7 @@ import time
 import sys
 
 #project specific
-from framework import DBTest
+from outline import DBTest
 
 
 class MySQLAccess(DBTest):
