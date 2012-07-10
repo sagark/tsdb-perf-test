@@ -14,7 +14,6 @@ from framework import TSdata, importstrs
 
 #import relevant t_DATABASENAME depending on settings in grinder.properties
 inp = grinder.getProperties()["grinder.inp"]
-print(inp)
 inp = importstrs(inp)
 exec(inp)
 
