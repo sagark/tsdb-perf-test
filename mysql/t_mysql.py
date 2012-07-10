@@ -82,6 +82,8 @@ class MySQLAccess(DBTest):
         #an index in mysql
 
         #################Other things go here like clearing cache
+        #clear MySQL Query Cache
+        self.dbstate.executeUpdate("RESET QUERY CACHE")
 
         #finally, reset the connection/statement
         self.reset_conn_state()
