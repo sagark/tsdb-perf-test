@@ -17,7 +17,9 @@ path system, I instead resorted to symlinks. Here's a breakdown of where things
 are, starting from project root:
 
 Folders
-/<DBNAME>/
+-------
+### /DatabaseName/
+
     These are folders specific to each database being tested. Each contains a
     t_databasename.py file that extends outline.py in root. This abstracts away
     the database queries, setup, etc. for the tests.
@@ -29,10 +31,12 @@ Folders
     Finally, each folder contains a first_run file that describes first-time db
     setup instructions.
 
-/bin/
+### /bin/
+
     Contains db drivers
 
-/tests/
+### /tests/
+
     Contains the various tests
 
 Running Tests
