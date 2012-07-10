@@ -1,0 +1,13 @@
+sudo apt-get install postgres
+
+sudo su
+su postgres
+
+createdb grindertest
+psql grindertest
+
+fix postgres password:
+sudo -u postgres psql postgres
+then in the psql prompt:
+\password postgres
+>>>and you'll be prompted for a new password

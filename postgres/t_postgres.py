@@ -1,7 +1,6 @@
 #Java/SQL Stuff
 from java.lang import *
 from java.sql import *
-import com.mysql.jdbc.Driver
 
 #misc
 import time
@@ -11,21 +10,21 @@ import sys
 from outline import DBTest
 
 
-class MySQLAccess(DBTest):
+class PostgresAccess(DBTest):
     def __init__(self):
         #general properties
         self.db = "grindertest"
-        self.urlroot = "jdbc:mysql://localhost/"
+        self.urlroot = "jdbc:postgresql://localhost/"
         self.dbabout = "information_schema"
-        self.user = "root"
-        self.passw = "toor"
+        self.user = "postgres"
+        self.passw = "postgres"
         self.dbconn = None
         self.dbstate = None
         self.dbaboutconn = None
         self.dbaboutstate = None
 
         #setup driver
-        self.driver = "com.mysql.jdbc.Driver"
+        self.driver = "org.postgresql.Driver"
         Class.forName(self.driver)
     
 
