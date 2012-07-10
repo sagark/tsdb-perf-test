@@ -1,3 +1,0 @@
-Test	Description	Successful Tests	Errors	Mean Time	Mean Time Standard Deviation	TPS	Peak TPS	
-Test 1	Database insert	3068	16	272	784	2.22	220	
-Test 2	Database query	3064	4	295	1150	2.22	290	
