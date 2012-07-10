@@ -27,7 +27,6 @@ class TestRunner:
     def __init__(self):
         grinder.logger.info("Started Logging: " + str(points) + " points each for " + str(streams) + " streams at " + str(time.time()) + " seconds since the epoch.")
         self.testdb = MySQLAccess()
-        self.testdb.clean_for_experiment()
 
     def __call__(self):
         #start this round

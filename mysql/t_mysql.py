@@ -28,8 +28,12 @@ class MySQLAccess(DBTest):
         self.driver = "com.mysql.jdbc.Driver"
         Class.forName(self.driver)
     
-        #start connection/create statement
-        self.reset_conn_state()
+
+        #start connection/statement
+        self.reset_conn_state() #THIS IS REQUIRED BEFORE self.prepare()
+
+        #prepare the database for an experiment and create conn/state
+        self.prepare()
 
     def reset_conn_state(self):
         if self.dbconn != None:
@@ -65,11 +69,19 @@ class MySQLAccess(DBTest):
             pass
 
 
-    def clean_for_experiment(self):
+    def prepare(self):
+        # reset the table, create if it doesn't exist
         try:
             self.dbstate.executeUpdate("drop table grindertest")
         except:
             pass
         self.dbstate.executeUpdate("create table grindertest (streamid INT,"
-                                   " time INT, value DOUBLE)")
+                                   " time INT, value DOUBLE, CONSTRAINT pk_ts"
+                                   " PRIMARY KEY (streamid, time) )")
+        #the end of this query creates the primary key and automatically creates 
+        #an index in mysql
+
+        #################Other things go here like clearing cache
+
+        #finally, reset the connection/statement
         self.reset_conn_state()
