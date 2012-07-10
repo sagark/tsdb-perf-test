@@ -13,45 +13,11 @@ import sys
 
 #project specific
 from datagenerator import TSdata
-#from outline import DBTest
 from t_mysql import MySQLAccess
 
 test1 = Test(1, "Database insert")
 test2 = Test(2, "Database query")
 
-
-#def initialize_driver():
-#    driver = "com.mysql.jdbc.Driver"
-#    Class.forName(driver)
-#
-#def experiment_clean():
-#   conn = DriverManager.getConnection(TEST_URL)
-#    s = conn.createStatement()
-#    try:
-#        s.executeUpdate("drop table grindertest")
-#    except:
-#        pass
-#    s.executeUpdate("create table grindertest (streamid INT, time INT, value DOUBLE)")
-#    ensureClosed(s)
-#    ensureClosed(conn)
-#
-#def start_conn_statement(turl):
-#    conn = DriverManager.getConnection(turl)
-#    s = conn.createStatement()
-#    return conn, s
-#
-#def ensureClosed(object):
-#    try:
-#        object.close()
-#    except:
-#        pass
-
-#TEST_URL = "jdbc:mysql://localhost/grindertest?user=root&password=toor"
-#DB_STATS_URL = "jdbc:mysql://localhost/information_schema?user=root&password=toor"
-
-#initialize db driver
-#initialize_driver()
-#experiment_clean()
 points = 10000
 streams = 100
 valid_range = range(80, 120, 1)
@@ -62,8 +28,6 @@ class TestRunner:
         grinder.logger.info("Started Logging: " + str(points) + " points each for " + str(streams) + " streams at " + str(time.time()) + " seconds since the epoch.")
         self.testdb = MySQLAccess()
         self.testdb.clean_for_experiment()
-
-
 
     def __call__(self):
         #start this round
