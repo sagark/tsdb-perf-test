@@ -21,12 +21,11 @@ Folders
 ### /DatabaseName/
 
     These are folders specific to each database being tested. Each contains a
-    t_databasename.py file that extends outline.py in root. This abstracts away
-    the database queries, setup, etc. for the tests.
+    t_databasename.py file that extends DBtest from framework.py in root. 
+    This abstracts away the database queries, setup, etc. for the tests.
     
     Each folder also contains a symlink to each type of test from /tests/, a
-    grinder.properties file for configuring/selecting tests and a symlink to
-    datagenerator.py (in root).
+    grinder.properties file for configuring/selecting tests.
 
     Finally, each folder contains a first_run file that describes first-time db
     setup instructions.
@@ -41,14 +40,12 @@ Folders
 
 Files
 -----
-### datagenerator.py
+### framework.py
     
-    This generates timeseries data.
-
-### outline.py
-    
-    This is a pseudo-interface (zope.interface doesn't work in jython) for the
-    database abstractions
+    This contains code for generating timeseries data, a pseudo-interface 
+    (zope.interface doesn't work in jython) for the database abstractions, and
+    an importer function that handles arguments passed at commandline (see
+    grinder.properties file).
 
 ### setupguide
     
