@@ -20,22 +20,22 @@ test2 = Test(2, "Database query")
 
 class TestRunner:
     def __init__(self):
-        grinder.logger.info("Started Logging: " + str(points) + 
-                            " points each for " + str(streams) + 
-                            " streams at " + str(time.time()) + 
-                            " seconds since the epoch.")
         self.testdb = MySQLAccess()
         self.points = 10000
         self.streams = 100
         self.valid_range = range(80, 120, 1)
-        self.datagen = TSData(self.points, self.streams, self.valid_range)
+        self.datagen = TSdata(self.points, self.streams, self.valid_range)
+        grinder.logger.info("Started Logging: " + str(self.points) + 
+                            " points each for " + str(self.streams) + 
+                            " streams at " + str(time.time()) + 
+                            " seconds since the epoch.")
 
     def __call__(self):
         #start this round
         conn, s = self.testdb.dbconn, self.testdb.dbstate
         logconn, logstate = self.testdb.dbaboutconn, self.testdb.dbaboutstate
 
-        roundvals = datagen.next()
+        roundvals = self.datagen.next()
         testInsert = test1.wrap(s)
         testQuery = test2.wrap(s)
 
@@ -44,7 +44,7 @@ class TestRunner:
                 query_end += str(tup) + ','
         query_end = query_end[:-1]
         testInsert.executeUpdate("insert into grindertest values " + query_end)
-        grinder.logger.info("Added " + str(streams) + " points at " + 
+        grinder.logger.info("Added " + str(self.streams) + " points at " + 
                                                                str(time.time()))
         
 
