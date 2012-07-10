@@ -39,6 +39,21 @@ Folders
 
     Contains the various tests
 
+Files
+-----
+### datagenerator.py
+    
+    This generates timeseries data.
+
+### outline.py
+    
+    This is a pseudo-interface (zope.interface doesn't work in jython) for the
+    database abstractions
+
+### setupguide
+    
+    This documents jython + grinder setup in linux.
+
 Running Tests
 =============
 
