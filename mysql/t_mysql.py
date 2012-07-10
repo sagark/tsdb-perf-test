@@ -69,6 +69,13 @@ class MySQLAccess(DBTest):
             pass
 
 
+    def get_db_size(self):
+        size = self.dbaboutstate.executeQuery("select DATA_LENGTH from tables"
+                                              " where TABLE_NAME='grindertest'")
+        size.next()
+        size = size.getString("DATA_LENGTH")
+        return size
+
     def prepare(self):
         # reset the table, create if it doesn't exist
         try:
@@ -87,3 +94,4 @@ class MySQLAccess(DBTest):
 
         #finally, reset the connection/statement
         self.reset_conn_state()
+

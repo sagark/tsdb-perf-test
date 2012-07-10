@@ -52,9 +52,7 @@ class TestRunner:
 
 
 	    #log db size
-        size = logstate.executeQuery("select DATA_LENGTH from tables where TABLE_NAME='grindertest'")
-        size.next()
-        size = size.getString("DATA_LENGTH")
+        size = self.testdb.get_db_size()
         grinder.logger.info("The database size is now " + size + " bytes.")
 
         self.testdb.reset_conn_state()
