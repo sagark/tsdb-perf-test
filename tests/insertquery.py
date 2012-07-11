@@ -17,8 +17,8 @@ inp = grinder.getProperties()["grinder.inp"]
 inp = importstrs(inp)
 exec(inp)
 
-test1 = Test(1, "Database insert")
-test2 = Test(2, "Database query")
+#test1 = Test(1, "Database insert")
+#test2 = Test(2, "Database query")
 
 class TestRunner:
     def __init__(self):
