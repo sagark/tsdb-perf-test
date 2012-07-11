@@ -30,7 +30,8 @@ class TestRunner:
         #start this round
         try:
             res = self.testdb.run_insert()
-            grinder.logger.info("Results as (start time, end time, completion" + 
+            grinder.logger.info("Insertion Results as (start time, end time, "
+                            "completion" + 
                             " time): (" + str(res[0]) + ", " + str(res[1]) + 
                             ", " + str(res[2]) + ")")
         except StopIteration:
@@ -41,7 +42,8 @@ class TestRunner:
         
 
         res = self.testdb.run_query_all()
-        grinder.logger.info("Results as (start time, end time, completion" + 
+        grinder.logger.info("Query     Results as (start time, end time, "
+                            "completion" + 
                             " time): (" + str(res[0]) + ", " + str(res[1]) + 
                             ", " + str(res[2]) + ")")
 
