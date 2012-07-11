@@ -95,3 +95,26 @@ class MySQLAccess(DBTest):
         #finally, reset the connection/statement
         self.reset_conn_state()
 
+    def run_insert(self):
+        conn, s = self.dbconn, self.dbstate
+
+        roundvals = self.insertGenerator.next() #potential StopIteration()
+        queryend = ''
+        for tup in roundvals:
+            queryend += str(tup) + ','
+        queryend = queryend[:-1]
+        starttime = time.time()
+        s.executeUpdate("insert into grindertest values " + queryend)
+        endtime = time.time()
+        completiontime = endtime - starttime
+        return [starttime, endtime, completiontime]
+
+
+    def run_query_all(self):
+        conn, s = self.dbconn, self.dbstate
+        starttime = time.time()
+        temp = s.executeQuery("select * from grindertest")
+        endtime = time.time()
+        completiontime = endtime - starttime
+        return [starttime, endtime, completiontime]
+        

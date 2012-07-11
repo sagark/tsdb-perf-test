@@ -1,4 +1,5 @@
 from random import choice
+import time
 
 class TSdata(object):
     """A generator for timeseries data."""
@@ -38,15 +39,31 @@ class DBTest(object):
 
     def __init__(self):
         """Here, we need to start connections, etc"""
+        pass
 
     ### These are abstractions for SQL/other queries
-    def insert(self, records, streams):
-        """Insert "records" records into "streams" streams"""
-        self.prepare()
+    ### When a test is complete, these should raise a StopIteration from the
+    ### TSdata generator.
+    
+    def init_insert(self, records, streams):
+        """Initialize an insertion test, return string describing the test."""
+        self.insertGenerator = TSdata(records, streams, range(80, 120, 1))
+        returnstr = ("Started Logging: " + str(records) + " records each for " + 
+                        str(streams) + " streams at " + str(time.time()) + 
+                            "seconds since the epoch.")
+        return returnstr
+
+    def run_insert(self):
+        """Run one round of an insertion test. This will be implemented by a
+        subclass."""
         pass
 
     def append(self, val, streams):
         """Append a single value (val) to "streams" streams"""
+        pass
+
+    def run_query_all(self):
+        """Query all records in the table"""
         pass
 
     def query(self, records, streams):
@@ -61,8 +78,6 @@ class DBTest(object):
         """Here, include any actions that prepare the database, including:
         -clearing database cache
         -clearing filesystem cache
-
-
         This will be called by __init__.
         """
         pass

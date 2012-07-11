@@ -23,42 +23,44 @@ test2 = Test(2, "Database query")
 class TestRunner:
     def __init__(self):
         self.testdb = DBAccess()
-        self.points = 10000
-        self.streams = 100
-        self.valid_range = range(80, 120, 1)
-        self.datagen = TSdata(self.points, self.streams, self.valid_range)
-        grinder.logger.info("Started Logging: " + str(self.points) + 
-                            " points each for " + str(self.streams) + 
-                            " streams at " + str(time.time()) + 
-                            " seconds since the epoch.")
+        logstr = self.testdb.init_insert(100, 100)
+        grinder.logger.info(logstr)
 
     def __call__(self):
         #start this round
-        conn, s = self.testdb.dbconn, self.testdb.dbstate
-        logconn, logstate = self.testdb.dbaboutconn, self.testdb.dbaboutstate
+        #conn, s = self.testdb.dbconn, self.testdb.dbstate
 
-        roundvals = self.datagen.next()
-        testInsert = test1.wrap(s)
-        testQuery = test2.wrap(s)
+        #roundvals = self.datagen.next()
+        #testInsert = test1.wrap(s)
+        #testQuery = test2.wrap(s)
 
-        query_end = ''
-        for tup in roundvals:
-                query_end += str(tup) + ','
-        query_end = query_end[:-1]
-        testInsert.executeUpdate("insert into grindertest values " + query_end)
-        grinder.logger.info("Added " + str(self.streams) + " points at " + 
-                                                               str(time.time()))
+        #query_end = ''
+        #for tup in roundvals:
+        #        query_end += str(tup) + ','
+        #query_end = query_end[:-1]
+        #testInsert.executeUpdate("insert into grindertest values " + query_end)
+        try:
+            res = self.testdb.run_insert()
+            grinder.logger.info("Results as (start time, end time, completion" + 
+                            " time): (" + str(res[0]) + ", " + str(res[1]) + 
+                            ", " + str(res[2]) + ")")
+        except StopIteration:
+            # the test is complete
+            grinder.logger.info("Insertion finished at: " + str(time.time()))
+            self.testdb.close_all()
+            grinder.stopThisWorkerThread()
         
 
-        a = testQuery.executeQuery("select * from grindertest")
-        while(a.next()):
-            temp = ("[" + a.getString("streamid") + " " + a.getString("time") + 
-                    " " + a.getString("value") + "]") 
+        #a = testQuery.executeQuery("select * from grindertest")
+        #while(a.next()):
+        #    temp = ("[" + a.getString("streamid") + " " + a.getString("time") + 
+        #            " " + a.getString("value") + "]") 
         #no need to waste time actually printing
 
-
-        grinder.logger.info("Fetched all points at " + str(time.time()))
-
+        res = self.testdb.run_query_all()
+        grinder.logger.info("Results as (start time, end time, completion" + 
+                            " time): (" + str(res[0]) + ", " + str(res[1]) + 
+                            ", " + str(res[2]) + ")")
 
 	    #log db size
         size = self.testdb.get_db_size()
