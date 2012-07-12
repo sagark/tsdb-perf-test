@@ -7,8 +7,8 @@ import numpy as np
 
 DB_NAMES = ["mysql", "opentsdb", "postgres", "readingdb", "scidb"]
 itervals = ['r-', 'g-', 'b-', 'k-', 'r:', 'g:', 'b:', 'k:']
-graph_1_iter = iter(intervals)
-graph_2_iter = iter(intervals)
+graph_1_iter = iter(itervals)
+graph_2_iter = iter(itervals)
 
 
 
