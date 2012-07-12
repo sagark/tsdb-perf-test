@@ -60,6 +60,7 @@ class ReadingDBAccess(DBTest):
         a = f.read()
         f.close()
         a = a.split('\t/')[0]
+        a = int(a)*1000
         return str(a)
 
     def prepare(self):
