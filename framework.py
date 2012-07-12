@@ -84,7 +84,8 @@ class DBTest(object):
 
 def importstrs(dbname):
     d2imp = {'mysql': 'from t_mysql import MySQLAccess', 'postgres': 
-                'from t_postgres import PostgresAccess'}
+                'from t_postgres import PostgresAccess', 'readingdb': 
+                'from t_readingdb import ReadingDBAccess'}
 
     out = d2imp[dbname]
     out += ' as DBAccess'

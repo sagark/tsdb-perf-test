@@ -2,16 +2,30 @@
 
 import readingdb as rdb
 import sys
+from threading import Thread
+import time
 
 rdb.db_setup('localhost', 4242)
 a = rdb.db_open('localhost')
 
-for x in sys.argv[1:]:
-    exec(x)
+getd = file('tempdata')
+data = getd.read()
+roundvals = eval(data)
+getd.close()
 
+getc = file('tempcode')
+code = getc.read()
+getc.close()
 
-"""call this with:
-python reading.py "rdb.db_add(a, 1, [(x, 0, x) for x in xrange(0, 100)])
-" "print rdb.db_query(1, 0, 100, conn=a)"
-"""
+starttime = time.time()
+exec(code)
+endtime = time.time()
+completiontime = endtime-starttime
 
+rdb.db_close(a)
+
+wtime = file('timetaken', 'w')
+wtime.write(str([starttime, endtime, completiontime]))
+wtime.close()
+
+sys.exit()

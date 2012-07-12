@@ -6,8 +6,9 @@ import numpy as np
 #filename = sys.argv[1]
 
 DB_NAMES = ["mysql", "opentsdb", "postgres", "readingdb", "scidb"]
-formatiter = iter(['r-', 'g-', 'r-', 'b-', 
-                            'k-', 'b-'])
+itervals = ['r-', 'g-', 'b-', 'k-', 'r:', 'g:', 'b:', 'k:']
+graph_1_iter = iter(intervals)
+graph_2_iter = iter(intervals)
 
 
 
@@ -77,8 +78,8 @@ for a in db_arrays:
     y1 = a[:,1]
     y2 = a[:,2]
     y3 = a[:,3]
-    ax1.plot(x, y1, formatiter.next(), x, y2, formatiter.next())
-    ax2.plot(x, y3, formatiter.next())
+    ax1.plot(x, y1, graph_1_iter.next(), x, y2, graph_1_iter.next())
+    ax2.plot(x, y3, graph_2_iter.next())
     legend1 += ('Insertion (' + name + ')', 'Query (' + name + ')')
     legend2 += (name,)
 
