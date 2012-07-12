@@ -51,11 +51,20 @@ class ReadingDBAccess(DBTest):
 
     def get_db_size(self):
         #######################Need to figure out what goes here.
-        size = 0
-        return str(size)
+        f = file('dbsize', 'w')
+        subprocess.call(['du', '-s', '/var/lib/readingdb/'],
+                                                        stdout=f)
+        f.close()
+        f = file('dbsize')
+        #f = file('dbsize')
+        a = f.read()
+        f.close()
+        a = a.split('\t/')[0]
+        return str(a)
 
     def prepare(self):
-        #does nothing for readingdb
+        #prepare by deleting all data files
+        #subprocess.call(['gksudo', 'rm', '/var/lib/readingdb/*'])
         pass
 
     def run_insert(self):
@@ -88,7 +97,7 @@ for val in roundvals:
     def run_query_all(self):
         codefile = file('tempcode', 'w')
         execcode = """
-rdb.db_query(list(range(0, 1000)), 0, 10000000000)
+rdb.db_query(list(range(1, 10001)), 0, 1000000000000)
         """
         codefile.write(execcode)
         codefile.close()

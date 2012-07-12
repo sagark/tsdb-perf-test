@@ -12,7 +12,7 @@ class TSdata(object):
         """
         self.num_pts = num_pts
         self.pt_time = 946684800 #start on Jan 1, 2000 @ 00:00:00
-        self.streams = range(num_streams)
+        self.streams = range(1, num_streams+1)
         self.valid_values = values_range
 
     def __iter__(self):
