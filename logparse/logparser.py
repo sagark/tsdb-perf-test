@@ -59,7 +59,7 @@ db_arrays = []
 for x in sys.argv[1:]:
     db_arrays.append(parsedata(x))
 
-fig = plt.figure()
+fig = plt.figure(figsize=(20, 20), dpi=300)
 ax1 = fig.add_subplot(211)
 ax2 = fig.add_subplot(212)
 ax1.set_xlabel('# of Records in DB')
