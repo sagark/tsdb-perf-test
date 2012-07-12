@@ -51,8 +51,6 @@ def parsedata(filearg):
     for name in DB_NAMES:
         if name in filearg:
             a = (name, a)
-
-
     return a
 
 db_arrays = []
@@ -62,8 +60,10 @@ for x in sys.argv[1:]:
 fig = plt.figure(figsize=(20, 20), dpi=300)
 ax1 = fig.add_subplot(211)
 ax2 = fig.add_subplot(212)
+ax1.set_title('Add 1 Record to 10000 Streams, 100 times')
 ax1.set_xlabel('# of Records in DB')
 ax1.set_ylabel('Time for operation completion (s)')
+ax2.set_title('Add 1 Record to 10000 Streams, 100 times')
 ax2.set_xlabel('# of Records in DB')
 ax2.set_ylabel('DB size (MB)')
 
