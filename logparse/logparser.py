@@ -5,7 +5,8 @@ import numpy as np
 
 #filename = sys.argv[1]
 
-DB_NAMES = ["mysql", "opentsdb", "postgres", "readingdb", "scidb"]
+DB_NAMES = ["mysql-myisam", "mysql-innodb", "opentsdb", "postgres", "readingdb", 
+                                                            "scidb"]
 itervals = ['r-', 'g-', 'b-', 'k-', 'r:', 'g:', 'b:', 'k:']
 graph_1_iter = iter(itervals)
 graph_2_iter = iter(itervals)
