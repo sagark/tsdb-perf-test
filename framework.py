@@ -1,8 +1,12 @@
 from random import choice
 import time
 
-class TSdata(object):
-    """A generator for timeseries data."""
+class TSdata_w(object):
+    """A 'width-wise' generator for timeseries data.
+    Each call to next produces a list of 3 tuples with one record for the entire
+    stream range. Effectively iterates over points.
+
+    """
     def __init__(self, num_pts, num_streams, values_range):
         """ Initialize the tsdata generator
         Args:
@@ -14,6 +18,7 @@ class TSdata(object):
         self.pt_time = 946684800 #start on Jan 1, 2000 @ 00:00:00
         self.streams = range(1, num_streams+1)
         self.valid_values = values_range
+        self.currentstream = 1
 
     def __iter__(self):
         return self
@@ -31,6 +36,27 @@ class TSdata(object):
         else:
             raise StopIteration()
 
+class TSdata_h(TSdata_w):
+    """A 'height-wise' generator for timeseries data.
+    Each call to next produces a list of 3 tuples with num_pts number of records
+    for one stream in the stream range. Effectively iterates over streams."""
+    
+    def next(self):
+        """ Returns a list of 3-tuples of (streamid, time, point) of length
+        num_points."""
+        out = []
+        ptime = self.pt_time
+        if self.currentstream in self.streams:
+            for pt in range(self.num_pts):
+                out.append((self.currentstream, self.pt_time, 
+                                                    choice(self.valid_values)))
+                self.pt_time += 1
+            self.currentstream += 1
+            return out
+        else:
+            raise StopIteration()
+
+
 class DBTest(object):
     """ A pseudo-interface for DB tests (zope.interface is incompatible 
     with jython). Essentially we want to implement the most optimized 
@@ -45,9 +71,12 @@ class DBTest(object):
     ### When a test is complete, these should raise a StopIteration from the
     ### TSdata generator.
     
-    def init_insert(self, records, streams):
+    def init_insert(self, records, streams, width=True):
         """Initialize an insertion test, return string describing the test."""
-        self.insertGenerator = TSdata(records, streams, range(80, 120, 1))
+        if width:
+            self.insertGenerator = TSdata_w(records, streams, range(80, 120, 1))
+        else:
+            self.insertGenerator = TSdata_h(records, streams, range(80, 120, 1))
         returnstr = ("Started Logging: " + str(records) + " records each for " + 
                         str(streams) + " streams at " + str(time.time()) + 
                             "seconds since the epoch.")

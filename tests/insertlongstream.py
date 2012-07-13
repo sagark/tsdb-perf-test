@@ -23,24 +23,36 @@ exec(inp)
 class TestRunner:
     def __init__(self):
         self.testdb = DBAccess()
-        logstr = self.testdb.init_insert(100, 10000)
+        self.numstreams = 5
+        logstr = self.testdb.init_insert(10000, self.numstreams, False)
         grinder.logger.info(logstr)
-
-    def __call__(self):
-        #start this round
-        try:
-            res = self.testdb.run_insert()
-            grinder.logger.info("Insertion Results as (start time, end time, "
+        #setup by inserting 1,000,000 streams into self.numstreams streams
+        while True:
+            try:
+                
+                res = self.testdb.run_insert()
+                grinder.logger.info("Insertion Results as (start time, end time, "
                             "completion" + 
                             " time): (" + str(res[0]) + ", " + str(res[1]) + 
                             ", " + str(res[2]) + ")")
-        except StopIteration:
-            # the test is complete
-            grinder.logger.info("Insertion finished at: " + str(time.time()))       
-            self.testdb.close_all()
-            grinder.stopThisWorkerThread()
-        
 
+                size = self.testdb.get_db_size()
+                grinder.logger.info("The database size is now " + size + 
+                                                                      " bytes.")
+
+                print("done insert")
+            except StopIteration:
+                # the test setup is complete
+                grinder.logger.info("Insertion finished at: " + str(time.time()))
+                break      
+                #self.testdb.close_all()
+                #grinder.stopThisWorkerThread()
+        self.counter = 0
+
+    def __call__(self):
+        #start Query test
+                
+        self.counter += 1
         res = self.testdb.run_query_all()
         grinder.logger.info("Query     Results as (start time, end time, "
                             "completion" + 
@@ -53,4 +65,7 @@ class TestRunner:
 
         self.testdb.reset_conn_state()
 
+        if self.counter > 9:
+            self.testdb.close_all()
+            grinder.stopThisWorkerThread()
 
