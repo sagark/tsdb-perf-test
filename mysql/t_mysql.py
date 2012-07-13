@@ -88,6 +88,11 @@ class MySQLAccess(DBTest):
         #the end of this query creates the primary key and automatically creates 
         #an index in mysql
 
+        ########UNCOMMENT THIS LINE TO USE InnoDB Instead of MyISAM!!!!!!!!!!!!!
+        self.dbstate.executeUpdate("ALTER TABLE grindertest ENGINE = innodb")
+
+
+
         #################Other things go here like clearing cache
         #clear MySQL Query Cache
         self.dbstate.executeUpdate("RESET QUERY CACHE")
