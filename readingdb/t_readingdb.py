@@ -52,8 +52,8 @@ class ReadingDBAccess(DBTest):
     def get_db_size(self):
         #######################Need to figure out what goes here.
         f = file('dbsize', 'w')
-        subprocess.call(['du', '-s', '/var/lib/readingdb/'],
-                                                        stdout=f)
+        subprocess.call(['du', '-s', "--exclude='/var/lib/readingdb/log*'", 
+                                            '/var/lib/readingdb/'], stdout=f)
         f.close()
         f = file('dbsize')
         #f = file('dbsize')
