@@ -24,9 +24,11 @@ class TestRunner:
     def __init__(self):
         self.testdb = DBAccess()
         self.numstreams = 5
-        logstr = self.testdb.init_insert(10000, self.numstreams, False)
+        logstr = self.testdb.init_insert(100000, self.numstreams, False)
         grinder.logger.info(logstr)
-        #setup by inserting 1,000,000 streams into self.numstreams streams
+        #setup by inserting 100,000 streams into self.numstreams streams
+        #this has a crazy amount of overhead in python, need to figure out 
+        #what's up
         while True:
             try:
                 
