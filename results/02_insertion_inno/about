@@ -1,7 +1,7 @@
 About this test:
 
 1) Run on a VM
-2) MySQL, Postgres, Readingdb
+2) MySQL (MyISAM and InnoDB), Postgres, Readingdb
 3) Using /tests/insertquery.py
 
 See graph.png
