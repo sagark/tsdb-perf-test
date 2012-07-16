@@ -1,2 +1,0 @@
-here i'll need to write a python script to interface with readingdb and then I/O
-it with os.subprocess or whatever works in jython

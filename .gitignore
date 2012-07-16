@@ -1,0 +1,10 @@
+# Compiled Source #
+###################
+*.class
+*.pyc
+
+
+# Non-first logs #
+##################
+*.log1
+*test-0-data.log
