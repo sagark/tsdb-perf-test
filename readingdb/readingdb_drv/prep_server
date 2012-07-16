@@ -1,3 +1,4 @@
+sudo pkill reading-server
 sudo rm -r /var/lib/readingdb
 sudo mkdir /var/lib/readingdb
 sudo chown -R readingdb /var/lib/readingdb
