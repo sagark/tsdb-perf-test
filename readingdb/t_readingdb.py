@@ -53,7 +53,7 @@ class ReadingDBAccess(DBTest):
 
     def get_db_size(self):
         #######################Need to figure out what goes here.
-        f = file('dbsize', 'w')
+        f = file('tempfiles/dbsize', 'w')
         
         # for some reason glob and regex don't work in grinder, though they do
         # in jython, just hardcode it
@@ -72,7 +72,7 @@ class ReadingDBAccess(DBTest):
 
         a = subprocess.call(command, stdout=f)
         f.close()
-        f = file('dbsize')
+        f = file('tempfiles/dbsize')
         #f = file('dbsize')
         a = f.readlines()
         a = a[-1]
@@ -84,19 +84,26 @@ class ReadingDBAccess(DBTest):
 
     def prepare(self):
         #prepare by deleting all data files
-        #subprocess.call(['gksudo', 'rm', '/var/lib/readingdb/*'])
-        pass
+        #subprocess.call(['gksudo', 'rm', '-r', '/var/lib/readingdb'])
+        #subprocess.call(['gksudo', 'mkdir', '/var/lib/readingdb'])
+        #subprocess.call(['gksudo', 'chown', '-R', 'readingdb',
+        #                                                  '/var/lib/readingdb'])
+        #make sure readingdb_drv/prep_server has been chmod +x'd
+        subprocess.call(['gksudo', 'readingdb_drv/prep_server'])
+        subprocess.Popen(['gksudo', 'reading-server'], stdin = None,
+                                            stdout = None, stderr = None)
+        time.sleep(5) #give reading-server 5 seconds to startup
 
     def run_insert(self):
         #generate and store values to file
         roundvals = self.insertGenerator.next() #potential StopIteration()
-        tempfile = file('tempdata', 'w')
+        tempfile = file('tempfiles/tempdata', 'w')
         tempfile.write(str(roundvals))
         tempfile.close()
 
         #generate and store code to file, ANY CODE HERE WILL BE INCLUDED IN THE
         #TIME MEASUREMENT!
-        codefile = file('tempcode', 'w')
+        codefile = file('tempfiles/tempcode', 'w')
         execcode = """
 for val in roundvals:
     rdb.db_add(a, val[0], [(val[1], 0, val[2])])
@@ -108,14 +115,14 @@ for val in roundvals:
         a = subprocess.call([self.driver])
 
         #get the time taken list from file
-        timetaken = file('timetaken')
+        timetaken = file('tempfiles/timetaken')
         returnlist = eval(timetaken.read())
         timetaken.close()
         return returnlist
 
 
     def run_query_all(self):
-        codefile = file('tempcode', 'w')
+        codefile = file('tempfiles/tempcode', 'w')
         execcode = """
 rdb.db_query(list(range(1, 10001)), 0, 1000000000000)
         """
@@ -124,7 +131,7 @@ rdb.db_query(list(range(1, 10001)), 0, 1000000000000)
 
         a = subprocess.call([self.driver])
         
-        timetaken = file('timetaken')
+        timetaken = file('tempfiles/timetaken')
         returnlist = eval(timetaken.read())
         timetaken.close()
 

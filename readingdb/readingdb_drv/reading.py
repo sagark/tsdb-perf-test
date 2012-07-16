@@ -8,12 +8,12 @@ import time
 rdb.db_setup('localhost', 4242)
 a = rdb.db_open('localhost')
 
-getd = file('tempdata')
+getd = file('tempfiles/tempdata')
 data = getd.read()
 roundvals = eval(data)
 getd.close()
 
-getc = file('tempcode')
+getc = file('tempfiles/tempcode')
 code = getc.read()
 getc.close()
 
@@ -24,7 +24,7 @@ completiontime = endtime-starttime
 
 rdb.db_close(a)
 
-wtime = file('timetaken', 'w')
+wtime = file('tempfiles/timetaken', 'w')
 wtime.write(str([starttime, endtime, completiontime]))
 wtime.close()
 
