@@ -29,7 +29,7 @@ class TestRunner:
     def __call__(self):
         #start this round
         try:
-            res = self.testdb.run_insert()
+            res = self.testdb.run_insert_w()
             grinder.logger.info("Insertion Results as (start time, end time, "
                             "completion" + 
                             " time): (" + str(res[0]) + ", " + str(res[1]) + 

@@ -82,10 +82,16 @@ class DBTest(object):
                             "seconds since the epoch.")
         return returnstr
 
-    def run_insert(self):
+    def run_insert_w(self):
         """Run one round of an insertion test. This will be implemented by a
-        subclass."""
+        subclass. This is width-wise, but the distinction is only relevant for
+        readingdb"""
         pass
+
+    def run_insert_h(self):
+        """Same as run_insert_w() except for in readingdb. So it's overridden
+        only in readingdb ATM."""
+        self.run_insert_w()
 
     def append(self, val, streams):
         """Append a single value (val) to "streams" streams"""
