@@ -53,7 +53,6 @@ class TestRunner:
 
     def __call__(self):
         #start Query test
-                
         self.counter += 1
         res = self.testdb.run_query_all()
         grinder.logger.info("Query     Results as (start time, end time, "
@@ -70,4 +69,3 @@ class TestRunner:
         if self.counter > 9:
             self.testdb.close_all()
             grinder.stopThisWorkerThread()
-
