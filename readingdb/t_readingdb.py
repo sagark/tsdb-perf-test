@@ -132,11 +132,6 @@ for val in roundvals:
                 newvals += [list(map(lambda x: (x[1], 0, x[2]),
                                                         roundvals[x:x+100]))] 
         roundvals = [roundvals[0][0]] + newvals
-
-
-
-
-
         tempfile = file('tempfiles/tempdata', 'w')
         tempfile.write(str(roundvals))
         tempfile.close()
