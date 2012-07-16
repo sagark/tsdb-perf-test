@@ -24,8 +24,8 @@ def parsedata(filearg):
     #get title
     title = lines.pop(0).split("Started Logging: ")[1].split(' at')[0]
 
-    while "[ run-0 ]" not in lines[0]:
-        lines.pop(0)
+    #while "[ run-0 ]" not in lines[0]:
+    #    lines.pop(0)
 
     #print(lines[0])
 
@@ -45,7 +45,7 @@ def parsedata(filearg):
         addtog.append(x[0]) #number of points in db already
         addtog.append(x[1][2]) #time to insert
         #addtog.append(x[2][2]) #time to query all
-        addtog.append(x[3]/1000000) #db size after completion, convert to MB
+        addtog.append(x[2]/1000000) #db size after completion, convert to MB
         graphthis.append(addtog)
 
     a = np.array(graphthis)
@@ -81,7 +81,7 @@ for a in db_arrays:
     #
     ax1.plot(x, y1, graph_1_iter.next())
     ax2.plot(x, y2, graph_2_iter.next())
-    legend1 += ('Insertion (' + name + ')')
+    legend1 += ('Insertion (' + name + ')',)
     legend2 += (name,)
 
 leg = ax1.legend(legend1, 'upper left', shadow=True)
