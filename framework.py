@@ -79,7 +79,7 @@ class DBTest(object):
             self.insertGenerator = TSdata_h(records, streams, range(80, 120, 1))
         returnstr = ("Started Logging: " + str(records) + " records each for " + 
                         str(streams) + " streams at " + str(time.time()) + 
-                            "seconds since the epoch.")
+                            " seconds since the epoch.")
         return returnstr
 
     def run_insert_w(self):
@@ -91,7 +91,7 @@ class DBTest(object):
     def run_insert_h(self):
         """Same as run_insert_w() except for in readingdb. So it's overridden
         only in readingdb ATM."""
-        self.run_insert_w()
+        return self.run_insert_w()
 
     def append(self, val, streams):
         """Append a single value (val) to "streams" streams"""

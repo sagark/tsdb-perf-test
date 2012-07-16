@@ -84,7 +84,7 @@ class PostgresAccess(DBTest):
         #finally, reset the connection/statement
         self.reset_conn_state()
 
-    def run_insert(self):
+    def run_insert_w(self):
         conn, s = self.dbconn, self.dbstate
 
         roundvals = self.insertGenerator.next() #potential StopIteration()

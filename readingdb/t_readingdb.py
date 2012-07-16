@@ -94,7 +94,7 @@ class ReadingDBAccess(DBTest):
                                             stdout = None, stderr = None)
         time.sleep(5) #give reading-server 5 seconds to startup
 
-    def run_insert(self):
+    def run_insert_w(self):
         #generate and store values to file
         roundvals = self.insertGenerator.next() #potential StopIteration()
         tempfile = file('tempfiles/tempdata', 'w')
@@ -120,6 +120,9 @@ for val in roundvals:
         timetaken.close()
         return returnlist
 
+    def run_insert_h(self):
+        #special height-wise insert for readingdb
+        assert False, "NEED TO IMPLEMENT THIS" 
 
     def run_query_all(self):
         codefile = file('tempfiles/tempcode', 'w')

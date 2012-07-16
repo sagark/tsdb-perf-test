@@ -8,3 +8,8 @@
 ##################
 *.log1
 *test-0-data.log
+
+
+# Swap/temp files #
+###################
+*.swp
