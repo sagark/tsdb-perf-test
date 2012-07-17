@@ -1,6 +1,46 @@
 from random import choice
 import time
 
+
+class SubGenerator_w(object):
+    def __init__(self, streams, pt_time, valid_values):
+        self.streams = streams
+        self.pt_time = pt_time
+        self.valid_values = valid_values
+        self.cur_stream = 1
+
+    def next(self):
+        """Return values 100 at a time"""
+        out = []
+        if self.cur_stream > self.streams:
+            raise StopIteration()
+        while len(out) < 100 and self.cur_stream <= self.streams:
+            out.append((self.cur_stream, self.pt_time, choice(self.valid_values)))
+            self.cur_stream += 1
+        return out
+        
+
+class SubGenerator_h(object):
+    def __init__(self, num_pts, st_id, valid_values, starttime):
+        self.stream = st_id #fixed
+        self.points = num_pts #fixed
+        self.valid_values = valid_values
+        self.cur_pointtime = starttime
+        
+    
+    def next(self):
+        """Return values 100 at a time"""
+        out = []
+        if self.points <= 0:
+            raise StopIteration()
+        while len(out) < 100 and self.points > 0:
+            out.append((self.stream, self.cur_pointtime,
+                                                      choice(self.valid_values)))
+            self.cur_pointtime += 1
+            self.points -= 1
+        return out
+
+
 class TSdata_w(object):
     """A 'width-wise' generator for timeseries data.
     Each call to next produces a list of 3 tuples with one record for the entire
@@ -16,7 +56,7 @@ class TSdata_w(object):
         """
         self.num_pts = num_pts
         self.pt_time = 946684800 #start on Jan 1, 2000 @ 00:00:00
-        self.streams = range(1, num_streams+1)
+        self.streams = num_streams
         self.valid_values = values_range
         self.currentstream = 1
 
@@ -26,10 +66,8 @@ class TSdata_w(object):
     def next(self):
         """ Returns a list of 3-tuples of (streamid, time, point) of length
         num_streams."""
-        out = []
         if self.num_pts > 0:
-            for st_id in self.streams:
-                out.append((st_id, self.pt_time, choice(self.valid_values)))
+            out = SubGenerator_w(self.streams, self.pt_time, self.valid_values)
             self.num_pts -= 1
             self.pt_time += 1
             return out
@@ -46,11 +84,9 @@ class TSdata_h(TSdata_w):
         num_points."""
         out = []
         ptime = self.pt_time
-        if self.currentstream in self.streams:
-            for pt in range(self.num_pts):
-                out.append((self.currentstream, self.pt_time, 
-                                                    choice(self.valid_values)))
-                self.pt_time += 1
+        if self.currentstream <= self.streams:
+            out = SubGenerator_h(self.num_pts, self.currentstream,
+                                                      self.valid_values, ptime)
             self.currentstream += 1
             return out
         else:
