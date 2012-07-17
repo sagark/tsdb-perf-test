@@ -96,68 +96,78 @@ class ReadingDBAccess(DBTest):
 
     def run_insert_w(self):
         #generate and store values to file
-        roundvals = self.insertGenerator.next() #potential StopIteration()
-        tempfile = file('tempfiles/tempdata', 'w')
-        tempfile.write(str(roundvals))
-        tempfile.close()
+        roundgen = self.insertGenerator.next() #potential StopIteration()
+        overallstart = time.time()
+        completiontime = 0
+    
+        for roundvals in roundgen:
+            tempfile = file('tempfiles/tempdata', 'w')
+            tempfile.write(str(roundvals))
+            tempfile.close()
 
-        #generate and store code to file, ANY CODE HERE WILL BE INCLUDED IN THE
-        #TIME MEASUREMENT!
-        codefile = file('tempfiles/tempcode', 'w')
-        execcode = """
+            #generate and store code to file, ANY CODE HERE WILL BE INCLUDED IN THE
+            #TIME MEASUREMENT!
+            codefile = file('tempfiles/tempcode', 'w')
+            execcode = """
 for val in roundvals:
     rdb.db_add(a, val[0], [(val[1], 0, val[2])])
-        """
-        codefile.write(execcode)
-        codefile.close()
+            """
+            codefile.write(execcode)
+            codefile.close()
 
-        #call the "driver"
-        a = subprocess.call([self.driver])
+            #call the "driver"
+            a = subprocess.call([self.driver])
 
-        #get the time taken list from file
-        timetaken = file('tempfiles/timetaken')
-        returnlist = eval(timetaken.read())
-        timetaken.close()
-        return returnlist
+            #get the time taken list from file
+            timetaken = file('tempfiles/timetaken')
+            returnlist = eval(timetaken.read())
+            completiontime += returnlist[2]
+            timetaken.close()
+        finishtime = time.time()
+        return [overalltime, finishtime, completiontime]
 
     def run_insert_h(self):
+        #hackily implemented for now, but shouldn't affect results
         #special height-wise insert for readingdb
-        roundvals = self.insertGenerator.next() #potential StopIteration()
+        roundgen = self.insertGenerator.next() #potential StopIteration()
+        overallstart = time.time()
+        completiontime = 0
         #now process roundvals into groups of 100 for readingdb add
-        newvals = []
-        for x in range(0, len(roundvals), 100):
-            if (x+100)>(len(roundvals)-1):
-                newvals += [list(map(lambda x: (x[1], 0, x[2]), roundvals[x:]))]
-            else:
-                newvals += [list(map(lambda x: (x[1], 0, x[2]),
+        for roundvals in roundgen:
+            newvals = []
+            for x in range(0, len(roundvals), 100):
+                if (x+100)>(len(roundvals)-1):
+                    newvals += [list(map(lambda x: (x[1], 0, x[2]), roundvals[x:]))]
+                else:
+                    newvals += [list(map(lambda x: (x[1], 0, x[2]),
                                                         roundvals[x:x+100]))] 
-        roundvals = [roundvals[0][0]] + newvals
-        tempfile = file('tempfiles/tempdata', 'w')
-        tempfile.write(str(roundvals))
-        tempfile.close()
+            roundvals = [roundvals[0][0]] + newvals
+            tempfile = file('tempfiles/tempdata', 'w')
+            tempfile.write(str(roundvals))
+            tempfile.close()
 
-        #generate and store code to file, ANY CODE HERE WILL BE INCLUDED IN THE
-        #TIME MEASUREMENT!
-        codefile = file('tempfiles/tempcode', 'w')
-        execcode = """
+            #generate and store code to file, ANY CODE HERE WILL BE INCLUDED IN THE
+            #TIME MEASUREMENT!
+            codefile = file('tempfiles/tempcode', 'w')
+            execcode = """
 streamid = roundvals.pop(0)
 for val in roundvals:
     rdb.db_add(a, streamid, val)
-        """
-        codefile.write(execcode)
-        codefile.close()
+            """
+            codefile.write(execcode)
+            codefile.close()
 
-        #call the "driver"
-        a = subprocess.call([self.driver])
+            #call the "driver"
+            a = subprocess.call([self.driver])
 
-        #get the time taken list from file
-        timetaken = file('tempfiles/timetaken')
-        returnlist = eval(timetaken.read())
-        timetaken.close()
-        return returnlist
+            #get the time taken list from file
+            timetaken = file('tempfiles/timetaken')
+            returnlist = eval(timetaken.read())
+            completiontime += returnlist[2]
+            timetaken.close()
+        finishtime = time.time()
+        return [overallstart, finishtime, completiontime]
 
-
-        assert False, "NEED TO IMPLEMENT THIS" 
 
     def run_query_all(self):
         codefile = file('tempfiles/tempcode', 'w')
