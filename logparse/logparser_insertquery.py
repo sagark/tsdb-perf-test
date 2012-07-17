@@ -10,6 +10,7 @@ DB_NAMES = ["mysql-myisam", "mysql-innodb", "opentsdb", "postgres",
 itervals = ['r-', 'g-', 'b-', 'k-', 'r:', 'g:', 'b:', 'k:']
 graph_1_iter = iter(itervals)
 graph_2_iter = iter(itervals)
+graph_3_iter = iter(itervals)
 
 
 
@@ -59,18 +60,27 @@ db_arrays = []
 for x in sys.argv[1:]:
     db_arrays.append(parsedata(x))
 
-fig = plt.figure(figsize=(20, 20), dpi=300)
-ax1 = fig.add_subplot(211)
-ax2 = fig.add_subplot(212)
-ax1.set_title('Add 1 Record to 10000 Streams, 100 times')
+fig = plt.figure(figsize=(20, 30), dpi=300)
+
+ax1 = fig.add_subplot(311)
+ax2 = fig.add_subplot(312)
+ax3 = fig.add_subplot(313)
+
+ax1.set_title('Insert: Add 1 Record to 10000 Streams, 100 times')
 ax1.set_xlabel('# of Records in DB')
 ax1.set_ylabel('Time for operation completion (s)')
-ax2.set_title('Add 1 Record to 10000 Streams, 100 times')
+
+ax2.set_title('Query: Add 1 Record to 10000 Streams, 100 times')
 ax2.set_xlabel('# of Records in DB')
-ax2.set_ylabel('DB size (MB)')
+ax2.set_ylabel('Time for operation completion (s)')
+
+ax3.set_title('DB Size: Add 1 Record to 10000 Streams, 100 times')
+ax3.set_xlabel('# of Records in DB')
+ax3.set_ylabel('DB size (MB)')
 
 legend1 = ()
 legend2 = ()
+legend3 = ()
 
 for a in db_arrays:
     name = a[0]
@@ -79,12 +89,15 @@ for a in db_arrays:
     y1 = a[:,1]
     y2 = a[:,2]
     y3 = a[:,3]
-    ax1.plot(x, y1, graph_1_iter.next(), x, y2, graph_1_iter.next())
-    ax2.plot(x, y3, graph_2_iter.next())
-    legend1 += ('Insertion (' + name + ')', 'Query (' + name + ')')
+    ax1.plot(x, y1, graph_1_iter.next())
+    ax2.plot(x, y2, graph_2_iter.next())
+    ax3.plot(x, y3, graph_3_iter.next())
+    legend1 += (name,)
     legend2 += (name,)
+    legend3 += (name,)
 
-leg = ax1.legend(legend1, 'upper left', shadow=True)
+leg1 = ax1.legend(legend1, 'upper left', shadow=True)
 leg2 = ax2.legend(legend2, 'upper left', shadow=True)
+leg3 = ax3.legend(legend3, 'upper left', shadow=True)
 
 plt.savefig('test.png')
