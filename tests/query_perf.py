@@ -21,7 +21,7 @@ class TestRunner:
     def __init__(self):
         self.testdb = DBAccess()
         self.streams = 10000 #number of streams
-        self.pps = 10000 #points per stream
+        self.pps = 100000 #points per stream
         logstr = self.testdb.init_insert(self.streams, self.pps)
         grinder.logger.info(logstr)
 

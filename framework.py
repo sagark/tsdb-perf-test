@@ -9,6 +9,9 @@ class SubGenerator_w(object):
         self.valid_values = valid_values
         self.cur_stream = 1
 
+    def __iter__(self):
+        return self
+
     def next(self):
         """Return values 100 at a time"""
         out = []
@@ -26,7 +29,9 @@ class SubGenerator_h(object):
         self.points = num_pts #fixed
         self.valid_values = valid_values
         self.cur_pointtime = starttime
-        
+   
+    def __iter__(self):
+        return self     
     
     def next(self):
         """Return values 100 at a time"""
