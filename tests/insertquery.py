@@ -17,9 +17,6 @@ inp = grinder.getProperties()["grinder.inp"]
 inp = importstrs(inp)
 exec(inp)
 
-#test1 = Test(1, "Database insert")
-#test2 = Test(2, "Database query")
-
 class TestRunner:
     def __init__(self):
         self.testdb = DBAccess()
@@ -52,5 +49,3 @@ class TestRunner:
         grinder.logger.info("The database size is now " + size + " bytes.")
 
         self.testdb.reset_conn_state()
-
-

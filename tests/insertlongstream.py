@@ -17,43 +17,30 @@ inp = grinder.getProperties()["grinder.inp"]
 inp = importstrs(inp)
 exec(inp)
 
-#test1 = Test(1, "Database insert")
-#test2 = Test(2, "Database query")
-
 class TestRunner:
     def __init__(self):
         self.testdb = DBAccess()
-        self.numstreams = 5
+        self.numstreams = 10 
         logstr = self.testdb.init_insert(100000, self.numstreams, False)
         grinder.logger.info(logstr)
-        #setup by inserting 100,000 streams into self.numstreams streams
         #this has a crazy amount of overhead in python, need to figure out 
         #what's up
-        while True:
-            try:
-                
-                res = self.testdb.run_insert_h()
-                grinder.logger.info("Insertion Results as (start time, end time, "
-                            "completion" + 
-                            " time): (" + str(res[0]) + ", " + str(res[1]) + 
-                            ", " + str(res[2]) + ")")
-
-                size = self.testdb.get_db_size()
-                grinder.logger.info("The database size is now " + size + 
-                                                                      " bytes.")
-
-                print("done insert")
-            except StopIteration:
-                # the test setup is complete
-                grinder.logger.info("Insertion finished at: " + str(time.time()))
-                break      
-                #self.testdb.close_all()
-                #grinder.stopThisWorkerThread()
-        self.counter = 0
 
     def __call__(self):
-        #start Query test
-        self.counter += 1
+        try:
+            res = self.testdb.run_insert_h()
+            grinder.logger.info("Insertion Results as (start time, end time, "
+                        "completion" + 
+                        " time): (" + str(res[0]) + ", " + str(res[1]) + 
+                        ", " + str(res[2]) + ")")
+            print("done insert")
+        except StopIteration:
+            # the test is complete
+            grinder.logger.info("Insertion finished at: " + str(time.time()))    
+            self.testdb.close_all()
+            grinder.stopThisWorkerThread()
+        
+
         res = self.testdb.run_query_all()
         grinder.logger.info("Query     Results as (start time, end time, "
                             "completion" + 
@@ -65,7 +52,3 @@ class TestRunner:
         grinder.logger.info("The database size is now " + size + " bytes.")
 
         self.testdb.reset_conn_state()
-
-        if self.counter > 9:
-            self.testdb.close_all()
-            grinder.stopThisWorkerThread()
