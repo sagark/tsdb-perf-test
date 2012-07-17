@@ -1,7 +1,8 @@
 tsdb-perf-test
 ==============
 
-Performance Tests for Time Series Databases
+Performance Tests for Time Series Databases. Mostly written in Jython, with a
+few bits of Python where incompatibilities arose.
 
 
 Setting up Grinder
