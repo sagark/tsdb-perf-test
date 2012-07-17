@@ -20,8 +20,8 @@ exec(inp)
 class TestRunner:
     def __init__(self):
         self.testdb = DBAccess()
-        self.streams = 1000 #number of streams
-        self.pps = 1000 #points per stream
+        self.streams = 10000 #number of streams
+        self.pps = 10000 #points per stream
         logstr = self.testdb.init_insert(self.streams, self.pps)
         grinder.logger.info(logstr)
 
@@ -39,7 +39,7 @@ class TestRunner:
                 self.testdb.reset_conn_state()
 
             except StopIteration:
-                # the test is complete
+                # the prep is complete
                 grinder.logger.info("Insertion finished at: " + str(time.time())) 
                 size = self.testdb.get_db_size()
                 grinder.logger.info("The database size is now " + size + " bytes.")
@@ -49,16 +49,29 @@ class TestRunner:
     def __call__(self):
         #start this round
 
-        ##better query tests here
-        ##another query test
-        ##and another query test
-
-        res = self.testdb.query(100, 100)
-        
-        grinder.logger.info("Query     Results as (start time, end time, "
+        # this is the control. If the time that this takes varies, we know that
+        # external factors are affecting our results.
+        res = self.testdb.run_query_all()
+        grinder.logger.info("Control Query Results as (start time, end time, "
                             "completion" + 
                             " time): (" + str(res[0]) + ", " + str(res[1]) + 
                             ", " + str(res[2]) + ")")
 
 
+        # actual experiment. the values for this will vary over time
+        # this represents querying for data from an arbitrary time window of
+        # fixed width
+        res = self.testdb.query(1000, 1000)
+        grinder.logger.info("Query     Results as (start time, end time, "
+                            "completion" + 
+                            " time): (" + str(res[0]) + ", " + str(res[1]) + 
+                            ", " + str(res[2]) + ")")
+
+        # actual experiement. the values for this will vary over time.
+        # this represents querying for the last x values for the stream, which
+        # is very common
+
+
+
+        # reset the connection and statement
         self.testdb.reset_conn_state()
