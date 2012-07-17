@@ -20,8 +20,8 @@ exec(inp)
 class TestRunner:
     def __init__(self):
         self.testdb = DBAccess()
-        self.streams = 10000 #number of streams
-        self.pps = 100000 #points per stream
+        self.streams = 1000 #number of streams
+        self.pps = 1000 #points per stream
         logstr = self.testdb.init_insert(self.streams, self.pps)
         grinder.logger.info(logstr)
 
@@ -53,7 +53,7 @@ class TestRunner:
         ##another query test
         ##and another query test
 
-
+        res = self.testdb.query(100, 100)
         
         grinder.logger.info("Query     Results as (start time, end time, "
                             "completion" + 

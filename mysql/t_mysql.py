@@ -6,6 +6,7 @@ import com.mysql.jdbc.Driver
 #misc
 import time
 import sys
+import random
 
 #project specific
 from framework import DBTest
@@ -124,4 +125,38 @@ class MySQLAccess(DBTest):
         return [starttime, endtime, completiontime]
 
     def query(self, records, streams):
-        """Query "records" records from "streams" streams"""        
+        """Query "records" records from "streams" streams""" 
+        #ref: the bounds on between in mysql (and postgres) are inclusive
+        conn, s = self.dbconn, self.dbstate
+
+        #pick a random number between the db starttime and the greatest time
+        #value - records
+
+        #NOT PART OF timing
+        temp = s.executeQuery("select max(time) as time from grindertest")
+        temp.next()
+        last = temp.getInt("time")
+        lastpossible = last - records + 1
+        default_starttime = 946684800
+        starttime = random.randrange(default_starttime, lastpossible)
+        endtime = starttime + records - 1
+        #done random time window selection
+
+        self.reset_conn_state()
+        conn, s = self.dbconn, self.dbstate
+
+        #build the query
+        querystring = "select * from grindertest where time between "
+        querystring += str(starttime) + " and " + str(endtime) + " and "
+        querystring += "streamid between 1 and " + str(streams)
+
+        #start timing
+        starttime = time.time()
+        temp = s.executeQuery(querystring)
+        endtime = time.time()
+
+        while temp.next():
+            print(temp.getString('time'))
+
+        completiontime = endtime - starttime
+        return [starttime, endtime, completiontime]
