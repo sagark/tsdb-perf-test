@@ -89,7 +89,7 @@ class MySQLAccess(DBTest):
         #an index in mysql
 
         ########UNCOMMENT THIS LINE TO USE InnoDB Instead of MyISAM!!!!!!!!!!!!!
-        self.dbstate.executeUpdate("ALTER TABLE grindertest ENGINE = innodb")
+        #self.dbstate.executeUpdate("ALTER TABLE grindertest ENGINE = innodb")
 
 
 
@@ -122,4 +122,6 @@ class MySQLAccess(DBTest):
         endtime = time.time()
         completiontime = endtime - starttime
         return [starttime, endtime, completiontime]
-        
+
+    def query(self, records, streams):
+        """Query "records" records from "streams" streams"""        
