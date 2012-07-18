@@ -1,16 +1,329 @@
-2012-07-18 10:33:25,576 INFO  test-0 : The Grinder version 3.10
-2012-07-18 10:33:25,584 INFO  test-0 : Java(TM) SE Runtime Environment 1.7.0_05-b05: Java HotSpot(TM) 64-Bit Server VM (23.1-b03, mixed mode) on Linux amd64 3.2.0-23-generic
-2012-07-18 10:33:25,589 INFO  test-0 : time zone is PDT (-0700)
-2012-07-18 10:33:25,711 INFO  test-0 : worker process 0
-2012-07-18 10:33:25,790 INFO  test-0 : instrumentation agents: byte code transforming instrumenter for Jython 2.5; byte code transforming instrumenter for Java
-2012-07-18 10:33:28,814 INFO  test-0 : running "../tests/insertlongstream.py" using Jython 2.5.2 (Release_2_5_2:7206, Mar 2 2011, 23:12:06) 
+2012-07-18 11:34:15,992 INFO  test-0 : The Grinder version 3.10
+2012-07-18 11:34:16,003 INFO  test-0 : Java(TM) SE Runtime Environment 1.7.0_05-b05: Java HotSpot(TM) 64-Bit Server VM (23.1-b03, mixed mode) on Linux amd64 3.2.0-23-generic
+2012-07-18 11:34:16,010 INFO  test-0 : time zone is PDT (-0700)
+2012-07-18 11:34:16,151 INFO  test-0 : worker process 0
+2012-07-18 11:34:16,245 INFO  test-0 : instrumentation agents: byte code transforming instrumenter for Jython 2.5; byte code transforming instrumenter for Java
+2012-07-18 11:34:19,512 INFO  test-0 : running "../tests/insertlongstream.py" using Jython 2.5.2 (Release_2_5_2:7206, Mar 2 2011, 23:12:06) 
 [Java HotSpot(TM) 64-Bit Server VM (Oracle Corporation)]
-2012-07-18 10:33:36,935 INFO  test-0 thread-0: Started Logging: 100000 records each for 100 streams at 1342632816.92 seconds since the epoch.
-2012-07-18 10:33:36,936 INFO  test-0 thread-0: starting, will run forever
-2012-07-18 10:33:36,936 INFO  test-0 : start time is 1342632816936 ms since Epoch
-2012-07-18 10:35:21,143 INFO  test-0 thread-0 [ run-0 ]: Insertion Results as (start time, end time, completion time): (1342632816.94, 1342632921.14, 0.115827560425)
-2012-07-18 10:35:21,527 INFO  test-0 thread-0 [ run-0 ]: Query     Results as (start time, end time, completion time): (1342632921.24, 1342632921.52, 0.274204969406)
-2012-07-18 10:35:21,533 INFO  test-0 thread-0 [ run-0 ]: The database size is now 4064000 bytes.
-2012-07-18 10:37:04,794 INFO  test-0 thread-0 [ run-1 ]: Insertion Results as (start time, end time, completion time): (1342632921.54, 1342633024.79, 0.110691785812)
-2012-07-18 10:37:05,220 INFO  test-0 thread-0 [ run-1 ]: Query     Results as (start time, end time, completion time): (1342633024.92, 1342633025.21, 0.28545498848)
-2012-07-18 10:37:05,235 INFO  test-0 thread-0 [ run-1 ]: The database size is now 4676000 bytes.
+2012-07-18 11:34:27,479 INFO  test-0 thread-0: Started Logging: 100000 records each for 100 streams at 1342636467.47 seconds since the epoch.
+2012-07-18 11:34:27,480 INFO  test-0 thread-0: starting, will run forever
+2012-07-18 11:34:27,480 INFO  test-0 : start time is 1342636467480 ms since Epoch
+2012-07-18 11:34:27,892 INFO  test-0 thread-0 [ run-0 ]: Insertion Results as (start time, end time, completion time): (1342636467.57, 1342636467.87, 0.149914264679)
+2012-07-18 11:34:28,337 INFO  test-0 thread-0 [ run-0 ]: Query     Results as (start time, end time, completion time): (1342636468.01, 1342636468.32, 0.314228057861)
+2012-07-18 11:34:28,350 INFO  test-0 thread-0 [ run-0 ]: The database size is now 3776000 bytes.
+2012-07-18 11:34:28,807 INFO  test-0 thread-0 [ run-1 ]: Insertion Results as (start time, end time, completion time): (1342636468.46, 1342636468.79, 0.173176527023)
+2012-07-18 11:34:29,190 INFO  test-0 thread-0 [ run-1 ]: Query     Results as (start time, end time, completion time): (1342636468.9, 1342636469.17, 0.268366098404)
+2012-07-18 11:34:29,211 INFO  test-0 thread-0 [ run-1 ]: The database size is now 4080000 bytes.
+2012-07-18 11:34:29,640 INFO  test-0 thread-0 [ run-2 ]: Insertion Results as (start time, end time, completion time): (1342636469.32, 1342636469.63, 0.161618232727)
+2012-07-18 11:34:30,092 INFO  test-0 thread-0 [ run-2 ]: Query     Results as (start time, end time, completion time): (1342636469.73, 1342636470.07, 0.339952945709)
+2012-07-18 11:34:30,105 INFO  test-0 thread-0 [ run-2 ]: The database size is now 4372000 bytes.
+2012-07-18 11:34:30,578 INFO  test-0 thread-0 [ run-3 ]: Insertion Results as (start time, end time, completion time): (1342636470.21, 1342636470.57, 0.204587459564)
+2012-07-18 11:34:31,129 INFO  test-0 thread-0 [ run-3 ]: Query     Results as (start time, end time, completion time): (1342636470.66, 1342636471.1, 0.437585115433)
+2012-07-18 11:34:31,146 INFO  test-0 thread-0 [ run-3 ]: The database size is now 4672000 bytes.
+2012-07-18 11:34:31,761 INFO  test-0 thread-0 [ run-4 ]: Insertion Results as (start time, end time, completion time): (1342636471.33, 1342636471.75, 0.223122119904)
+2012-07-18 11:34:32,307 INFO  test-0 thread-0 [ run-4 ]: Query     Results as (start time, end time, completion time): (1342636471.86, 1342636472.29, 0.425042867661)
+2012-07-18 11:34:32,327 INFO  test-0 thread-0 [ run-4 ]: The database size is now 4968000 bytes.
+2012-07-18 11:34:32,833 INFO  test-0 thread-0 [ run-5 ]: Insertion Results as (start time, end time, completion time): (1342636472.44, 1342636472.8, 0.18395447731)
+2012-07-18 11:34:33,542 INFO  test-0 thread-0 [ run-5 ]: Query     Results as (start time, end time, completion time): (1342636472.96, 1342636473.53, 0.564743041992)
+2012-07-18 11:34:33,552 INFO  test-0 thread-0 [ run-5 ]: The database size is now 5268000 bytes.
+2012-07-18 11:34:34,077 INFO  test-0 thread-0 [ run-6 ]: Insertion Results as (start time, end time, completion time): (1342636473.68, 1342636474.06, 0.177016019821)
+2012-07-18 11:34:34,853 INFO  test-0 thread-0 [ run-6 ]: Query     Results as (start time, end time, completion time): (1342636474.21, 1342636474.84, 0.625141859055)
+2012-07-18 11:34:34,867 INFO  test-0 thread-0 [ run-6 ]: The database size is now 5572000 bytes.
+2012-07-18 11:34:35,387 INFO  test-0 thread-0 [ run-7 ]: Insertion Results as (start time, end time, completion time): (1342636474.96, 1342636475.37, 0.245083093643)
+2012-07-18 11:34:36,044 INFO  test-0 thread-0 [ run-7 ]: Query     Results as (start time, end time, completion time): (1342636475.48, 1342636476.03, 0.551275014877)
+2012-07-18 11:34:36,056 INFO  test-0 thread-0 [ run-7 ]: The database size is now 8168000 bytes.
+2012-07-18 11:34:36,508 INFO  test-0 thread-0 [ run-8 ]: Insertion Results as (start time, end time, completion time): (1342636476.15, 1342636476.49, 0.20107960701)
+2012-07-18 11:34:37,097 INFO  test-0 thread-0 [ run-8 ]: Query     Results as (start time, end time, completion time): (1342636476.58, 1342636477.08, 0.499939203262)
+2012-07-18 11:34:37,106 INFO  test-0 thread-0 [ run-8 ]: The database size is now 8468000 bytes.
+2012-07-18 11:34:37,537 INFO  test-0 thread-0 [ run-9 ]: Insertion Results as (start time, end time, completion time): (1342636477.2, 1342636477.52, 0.158525943756)
+2012-07-18 11:34:38,285 INFO  test-0 thread-0 [ run-9 ]: Query     Results as (start time, end time, completion time): (1342636477.62, 1342636478.27, 0.646347999573)
+2012-07-18 11:34:38,296 INFO  test-0 thread-0 [ run-9 ]: The database size is now 8764000 bytes.
+2012-07-18 11:34:38,792 INFO  test-0 thread-0 [ run-10 ]: Insertion Results as (start time, end time, completion time): (1342636478.38, 1342636478.78, 0.245012521744)
+2012-07-18 11:34:39,431 INFO  test-0 thread-0 [ run-10 ]: Query     Results as (start time, end time, completion time): (1342636478.88, 1342636479.42, 0.53807592392)
+2012-07-18 11:34:39,445 INFO  test-0 thread-0 [ run-10 ]: The database size is now 9064000 bytes.
+2012-07-18 11:34:39,945 INFO  test-0 thread-0 [ run-11 ]: Insertion Results as (start time, end time, completion time): (1342636479.56, 1342636479.93, 0.203171253204)
+2012-07-18 11:34:40,525 INFO  test-0 thread-0 [ run-11 ]: Query     Results as (start time, end time, completion time): (1342636480.04, 1342636480.51, 0.475958824158)
+2012-07-18 11:34:40,539 INFO  test-0 thread-0 [ run-11 ]: The database size is now 9360000 bytes.
+2012-07-18 11:34:40,942 INFO  test-0 thread-0 [ run-12 ]: Insertion Results as (start time, end time, completion time): (1342636480.64, 1342636480.93, 0.145579099655)
+2012-07-18 11:34:41,546 INFO  test-0 thread-0 [ run-12 ]: Query     Results as (start time, end time, completion time): (1342636481.04, 1342636481.53, 0.490051031113)
+2012-07-18 11:34:41,555 INFO  test-0 thread-0 [ run-12 ]: The database size is now 9660000 bytes.
+2012-07-18 11:34:42,015 INFO  test-0 thread-0 [ run-13 ]: Insertion Results as (start time, end time, completion time): (1342636481.65, 1342636482.0, 0.187930107117)
+2012-07-18 11:34:42,774 INFO  test-0 thread-0 [ run-13 ]: Query     Results as (start time, end time, completion time): (1342636482.11, 1342636482.76, 0.644675016403)
+2012-07-18 11:34:42,786 INFO  test-0 thread-0 [ run-13 ]: The database size is now 9964000 bytes.
+2012-07-18 11:34:43,309 INFO  test-0 thread-0 [ run-14 ]: Insertion Results as (start time, end time, completion time): (1342636482.89, 1342636483.3, 0.2469394207)
+2012-07-18 11:34:44,138 INFO  test-0 thread-0 [ run-14 ]: Query     Results as (start time, end time, completion time): (1342636483.4, 1342636484.12, 0.720268964767)
+2012-07-18 11:34:44,148 INFO  test-0 thread-0 [ run-14 ]: The database size is now 10256000 bytes.
+2012-07-18 11:34:44,712 INFO  test-0 thread-0 [ run-15 ]: Insertion Results as (start time, end time, completion time): (1342636484.3, 1342636484.7, 0.245203495026)
+2012-07-18 11:34:45,544 INFO  test-0 thread-0 [ run-15 ]: Query     Results as (start time, end time, completion time): (1342636484.81, 1342636485.53, 0.724120140076)
+2012-07-18 11:34:45,553 INFO  test-0 thread-0 [ run-15 ]: The database size is now 13008000 bytes.
+2012-07-18 11:34:46,077 INFO  test-0 thread-0 [ run-16 ]: Insertion Results as (start time, end time, completion time): (1342636485.68, 1342636486.06, 0.205391407013)
+2012-07-18 11:34:46,970 INFO  test-0 thread-0 [ run-16 ]: Query     Results as (start time, end time, completion time): (1342636486.17, 1342636486.96, 0.786650896072)
+2012-07-18 11:34:46,982 INFO  test-0 thread-0 [ run-16 ]: The database size is now 13300000 bytes.
+2012-07-18 11:34:47,456 INFO  test-0 thread-0 [ run-17 ]: Insertion Results as (start time, end time, completion time): (1342636487.09, 1342636487.44, 0.147488355637)
+2012-07-18 11:34:48,257 INFO  test-0 thread-0 [ run-17 ]: Query     Results as (start time, end time, completion time): (1342636487.54, 1342636488.23, 0.691377878189)
+2012-07-18 11:34:48,270 INFO  test-0 thread-0 [ run-17 ]: The database size is now 13600000 bytes.
+2012-07-18 11:34:48,720 INFO  test-0 thread-0 [ run-18 ]: Insertion Results as (start time, end time, completion time): (1342636488.38, 1342636488.7, 0.161029338837)
+2012-07-18 11:34:49,643 INFO  test-0 thread-0 [ run-18 ]: Query     Results as (start time, end time, completion time): (1342636488.82, 1342636489.61, 0.792244911194)
+2012-07-18 11:34:49,656 INFO  test-0 thread-0 [ run-18 ]: The database size is now 13900000 bytes.
+2012-07-18 11:34:50,099 INFO  test-0 thread-0 [ run-19 ]: Insertion Results as (start time, end time, completion time): (1342636489.75, 1342636490.09, 0.188771724701)
+2012-07-18 11:34:50,904 INFO  test-0 thread-0 [ run-19 ]: Query     Results as (start time, end time, completion time): (1342636490.2, 1342636490.89, 0.686690092087)
+2012-07-18 11:34:50,916 INFO  test-0 thread-0 [ run-19 ]: The database size is now 14196000 bytes.
+2012-07-18 11:34:51,355 INFO  test-0 thread-0 [ run-20 ]: Insertion Results as (start time, end time, completion time): (1342636491.01, 1342636491.34, 0.176882982254)
+2012-07-18 11:34:52,152 INFO  test-0 thread-0 [ run-20 ]: Query     Results as (start time, end time, completion time): (1342636491.45, 1342636492.14, 0.690170049667)
+2012-07-18 11:34:52,163 INFO  test-0 thread-0 [ run-20 ]: The database size is now 14500000 bytes.
+2012-07-18 11:34:52,697 INFO  test-0 thread-0 [ run-21 ]: Insertion Results as (start time, end time, completion time): (1342636492.27, 1342636492.69, 0.250483036041)
+2012-07-18 11:34:53,499 INFO  test-0 thread-0 [ run-21 ]: Query     Results as (start time, end time, completion time): (1342636492.8, 1342636493.49, 0.687890768051)
+2012-07-18 11:34:53,510 INFO  test-0 thread-0 [ run-21 ]: The database size is now 14792000 bytes.
+2012-07-18 11:34:53,974 INFO  test-0 thread-0 [ run-22 ]: Insertion Results as (start time, end time, completion time): (1342636493.61, 1342636493.95, 0.169357061386)
+2012-07-18 11:34:54,800 INFO  test-0 thread-0 [ run-22 ]: Query     Results as (start time, end time, completion time): (1342636494.07, 1342636494.79, 0.71919298172)
+2012-07-18 11:34:54,813 INFO  test-0 thread-0 [ run-22 ]: The database size is now 15092000 bytes.
+2012-07-18 11:34:55,307 INFO  test-0 thread-0 [ run-23 ]: Insertion Results as (start time, end time, completion time): (1342636494.9, 1342636495.29, 0.222632169724)
+2012-07-18 11:34:56,232 INFO  test-0 thread-0 [ run-23 ]: Query     Results as (start time, end time, completion time): (1342636495.4, 1342636496.22, 0.812194108963)
+2012-07-18 11:34:56,243 INFO  test-0 thread-0 [ run-23 ]: The database size is now 17756000 bytes.
+2012-07-18 11:34:56,724 INFO  test-0 thread-0 [ run-24 ]: Insertion Results as (start time, end time, completion time): (1342636496.37, 1342636496.71, 0.140511035919)
+2012-07-18 11:34:57,400 INFO  test-0 thread-0 [ run-24 ]: Query     Results as (start time, end time, completion time): (1342636496.82, 1342636497.39, 0.568926095963)
+2012-07-18 11:34:57,408 INFO  test-0 thread-0 [ run-24 ]: The database size is now 18056000 bytes.
+2012-07-18 11:34:58,036 INFO  test-0 thread-0 [ run-25 ]: Insertion Results as (start time, end time, completion time): (1342636497.51, 1342636498.02, 0.310251951218)
+2012-07-18 11:34:58,931 INFO  test-0 thread-0 [ run-25 ]: Query     Results as (start time, end time, completion time): (1342636498.15, 1342636498.91, 0.764883041382)
+2012-07-18 11:34:58,949 INFO  test-0 thread-0 [ run-25 ]: The database size is now 18360000 bytes.
+2012-07-18 11:34:59,450 INFO  test-0 thread-0 [ run-26 ]: Insertion Results as (start time, end time, completion time): (1342636499.06, 1342636499.44, 0.204124689102)
+2012-07-18 11:35:00,311 INFO  test-0 thread-0 [ run-26 ]: Query     Results as (start time, end time, completion time): (1342636499.53, 1342636500.29, 0.764472961426)
+2012-07-18 11:35:00,320 INFO  test-0 thread-0 [ run-26 ]: The database size is now 18652000 bytes.
+2012-07-18 11:35:00,811 INFO  test-0 thread-0 [ run-27 ]: Insertion Results as (start time, end time, completion time): (1342636500.43, 1342636500.8, 0.200654506683)
+2012-07-18 11:35:01,740 INFO  test-0 thread-0 [ run-27 ]: Query     Results as (start time, end time, completion time): (1342636500.89, 1342636501.72, 0.825198173523)
+2012-07-18 11:35:01,770 INFO  test-0 thread-0 [ run-27 ]: The database size is now 18956000 bytes.
+2012-07-18 11:35:02,394 INFO  test-0 thread-0 [ run-28 ]: Insertion Results as (start time, end time, completion time): (1342636501.94, 1342636502.37, 0.222482681274)
+2012-07-18 11:35:03,380 INFO  test-0 thread-0 [ run-28 ]: Query     Results as (start time, end time, completion time): (1342636502.52, 1342636503.36, 0.836817979813)
+2012-07-18 11:35:03,389 INFO  test-0 thread-0 [ run-28 ]: The database size is now 19248000 bytes.
+2012-07-18 11:35:03,836 INFO  test-0 thread-0 [ run-29 ]: Insertion Results as (start time, end time, completion time): (1342636503.49, 1342636503.82, 0.16085100174)
+2012-07-18 11:35:04,701 INFO  test-0 thread-0 [ run-29 ]: Query     Results as (start time, end time, completion time): (1342636503.93, 1342636504.68, 0.759465932846)
+2012-07-18 11:35:04,717 INFO  test-0 thread-0 [ run-29 ]: The database size is now 19548000 bytes.
+2012-07-18 11:35:05,288 INFO  test-0 thread-0 [ run-30 ]: Insertion Results as (start time, end time, completion time): (1342636504.85, 1342636505.26, 0.220991849899)
+2012-07-18 11:35:06,226 INFO  test-0 thread-0 [ run-30 ]: Query     Results as (start time, end time, completion time): (1342636505.42, 1342636506.21, 0.789472103119)
+2012-07-18 11:35:06,237 INFO  test-0 thread-0 [ run-30 ]: The database size is now 21908000 bytes.
+2012-07-18 11:35:06,770 INFO  test-0 thread-0 [ run-31 ]: Insertion Results as (start time, end time, completion time): (1342636506.34, 1342636506.76, 0.245881795883)
+2012-07-18 11:35:07,721 INFO  test-0 thread-0 [ run-31 ]: Query     Results as (start time, end time, completion time): (1342636506.91, 1342636507.7, 0.798024892807)
+2012-07-18 11:35:07,737 INFO  test-0 thread-0 [ run-31 ]: The database size is now 22208000 bytes.
+2012-07-18 11:35:08,227 INFO  test-0 thread-0 [ run-32 ]: Insertion Results as (start time, end time, completion time): (1342636507.87, 1342636508.21, 0.192631483078)
+2012-07-18 11:35:09,222 INFO  test-0 thread-0 [ run-32 ]: Query     Results as (start time, end time, completion time): (1342636508.35, 1342636509.2, 0.85329413414)
+2012-07-18 11:35:09,231 INFO  test-0 thread-0 [ run-32 ]: The database size is now 22512000 bytes.
+2012-07-18 11:35:09,643 INFO  test-0 thread-0 [ run-33 ]: Insertion Results as (start time, end time, completion time): (1342636509.33, 1342636509.63, 0.146326303482)
+2012-07-18 11:35:10,706 INFO  test-0 thread-0 [ run-33 ]: Query     Results as (start time, end time, completion time): (1342636509.73, 1342636510.68, 0.956649065018)
+2012-07-18 11:35:10,715 INFO  test-0 thread-0 [ run-33 ]: The database size is now 22804000 bytes.
+2012-07-18 11:35:11,237 INFO  test-0 thread-0 [ run-34 ]: Insertion Results as (start time, end time, completion time): (1342636510.82, 1342636511.21, 0.212255477905)
+2012-07-18 11:35:12,243 INFO  test-0 thread-0 [ run-34 ]: Query     Results as (start time, end time, completion time): (1342636511.39, 1342636512.23, 0.835052013397)
+2012-07-18 11:35:12,255 INFO  test-0 thread-0 [ run-34 ]: The database size is now 23104000 bytes.
+2012-07-18 11:35:12,805 INFO  test-0 thread-0 [ run-35 ]: Insertion Results as (start time, end time, completion time): (1342636512.36, 1342636512.78, 0.239898443222)
+2012-07-18 11:35:13,746 INFO  test-0 thread-0 [ run-35 ]: Query     Results as (start time, end time, completion time): (1342636512.93, 1342636513.73, 0.805364847183)
+2012-07-18 11:35:13,786 INFO  test-0 thread-0 [ run-35 ]: The database size is now 23400000 bytes.
+2012-07-18 11:35:14,293 INFO  test-0 thread-0 [ run-36 ]: Insertion Results as (start time, end time, completion time): (1342636513.91, 1342636514.27, 0.179347515106)
+2012-07-18 11:35:15,415 INFO  test-0 thread-0 [ run-36 ]: Query     Results as (start time, end time, completion time): (1342636514.41, 1342636515.4, 0.990185022354)
+2012-07-18 11:35:15,426 INFO  test-0 thread-0 [ run-36 ]: The database size is now 23700000 bytes.
+2012-07-18 11:35:15,940 INFO  test-0 thread-0 [ run-37 ]: Insertion Results as (start time, end time, completion time): (1342636515.54, 1342636515.93, 0.211250543594)
+2012-07-18 11:35:16,934 INFO  test-0 thread-0 [ run-37 ]: Query     Results as (start time, end time, completion time): (1342636516.08, 1342636516.92, 0.833833932877)
+2012-07-18 11:35:16,946 INFO  test-0 thread-0 [ run-37 ]: The database size is now 25772000 bytes.
+2012-07-18 11:35:17,427 INFO  test-0 thread-0 [ run-38 ]: Insertion Results as (start time, end time, completion time): (1342636517.07, 1342636517.42, 0.193256378174)
+2012-07-18 11:35:18,442 INFO  test-0 thread-0 [ run-38 ]: Query     Results as (start time, end time, completion time): (1342636517.53, 1342636518.43, 0.895499944687)
+2012-07-18 11:35:18,451 INFO  test-0 thread-0 [ run-38 ]: The database size is now 26072000 bytes.
+2012-07-18 11:35:18,909 INFO  test-0 thread-0 [ run-39 ]: Insertion Results as (start time, end time, completion time): (1342636518.52, 1342636518.89, 0.223322153091)
+2012-07-18 11:35:19,926 INFO  test-0 thread-0 [ run-39 ]: Query     Results as (start time, end time, completion time): (1342636519.02, 1342636519.91, 0.885725021362)
+2012-07-18 11:35:19,937 INFO  test-0 thread-0 [ run-39 ]: The database size is now 26376000 bytes.
+2012-07-18 11:35:20,341 INFO  test-0 thread-0 [ run-40 ]: Insertion Results as (start time, end time, completion time): (1342636520.03, 1342636520.33, 0.144690036774)
+2012-07-18 11:35:21,303 INFO  test-0 thread-0 [ run-40 ]: Query     Results as (start time, end time, completion time): (1342636520.44, 1342636521.29, 0.84867310524)
+2012-07-18 11:35:21,309 INFO  test-0 thread-0 [ run-40 ]: The database size is now 26688000 bytes.
+2012-07-18 11:35:21,716 INFO  test-0 thread-0 [ run-41 ]: Insertion Results as (start time, end time, completion time): (1342636521.4, 1342636521.68, 0.120291471481)
+2012-07-18 11:35:22,759 INFO  test-0 thread-0 [ run-41 ]: Query     Results as (start time, end time, completion time): (1342636521.83, 1342636522.75, 0.918740987778)
+2012-07-18 11:35:22,768 INFO  test-0 thread-0 [ run-41 ]: The database size is now 26988000 bytes.
+2012-07-18 11:35:23,302 INFO  test-0 thread-0 [ run-42 ]: Insertion Results as (start time, end time, completion time): (1342636522.88, 1342636523.29, 0.232738494873)
+2012-07-18 11:35:24,316 INFO  test-0 thread-0 [ run-42 ]: Query     Results as (start time, end time, completion time): (1342636523.4, 1342636524.3, 0.895446777344)
+2012-07-18 11:35:24,328 INFO  test-0 thread-0 [ run-42 ]: The database size is now 27284000 bytes.
+2012-07-18 11:35:24,784 INFO  test-0 thread-0 [ run-43 ]: Insertion Results as (start time, end time, completion time): (1342636524.43, 1342636524.73, 0.131087064743)
+2012-07-18 11:35:25,760 INFO  test-0 thread-0 [ run-43 ]: Query     Results as (start time, end time, completion time): (1342636524.9, 1342636525.75, 0.847016096115)
+2012-07-18 11:35:25,768 INFO  test-0 thread-0 [ run-43 ]: The database size is now 29700000 bytes.
+2012-07-18 11:35:26,302 INFO  test-0 thread-0 [ run-44 ]: Insertion Results as (start time, end time, completion time): (1342636525.91, 1342636526.29, 0.201219558716)
+2012-07-18 11:35:27,432 INFO  test-0 thread-0 [ run-44 ]: Query     Results as (start time, end time, completion time): (1342636526.41, 1342636527.42, 1.00529813766)
+2012-07-18 11:35:27,439 INFO  test-0 thread-0 [ run-44 ]: The database size is now 30004000 bytes.
+2012-07-18 11:35:27,912 INFO  test-0 thread-0 [ run-45 ]: Insertion Results as (start time, end time, completion time): (1342636527.52, 1342636527.9, 0.225520849228)
+2012-07-18 11:35:29,012 INFO  test-0 thread-0 [ run-45 ]: Query     Results as (start time, end time, completion time): (1342636528.06, 1342636529.0, 0.937954187393)
+2012-07-18 11:35:29,018 INFO  test-0 thread-0 [ run-45 ]: The database size is now 30296000 bytes.
+2012-07-18 11:35:29,529 INFO  test-0 thread-0 [ run-46 ]: Insertion Results as (start time, end time, completion time): (1342636529.12, 1342636529.52, 0.222183465958)
+2012-07-18 11:35:30,676 INFO  test-0 thread-0 [ run-46 ]: Query     Results as (start time, end time, completion time): (1342636529.64, 1342636530.66, 1.0250852108)
+2012-07-18 11:35:30,686 INFO  test-0 thread-0 [ run-46 ]: The database size is now 30596000 bytes.
+2012-07-18 11:35:31,213 INFO  test-0 thread-0 [ run-47 ]: Insertion Results as (start time, end time, completion time): (1342636530.86, 1342636531.2, 0.187404632568)
+2012-07-18 11:35:32,179 INFO  test-0 thread-0 [ run-47 ]: Query     Results as (start time, end time, completion time): (1342636531.37, 1342636532.16, 0.796561002731)
+2012-07-18 11:35:32,192 INFO  test-0 thread-0 [ run-47 ]: The database size is now 30892000 bytes.
+2012-07-18 11:35:32,728 INFO  test-0 thread-0 [ run-48 ]: Insertion Results as (start time, end time, completion time): (1342636532.32, 1342636532.71, 0.188444852829)
+2012-07-18 11:35:33,922 INFO  test-0 thread-0 [ run-48 ]: Query     Results as (start time, end time, completion time): (1342636532.87, 1342636533.91, 1.04375696182)
+2012-07-18 11:35:33,929 INFO  test-0 thread-0 [ run-48 ]: The database size is now 31192000 bytes.
+2012-07-18 11:35:34,413 INFO  test-0 thread-0 [ run-49 ]: Insertion Results as (start time, end time, completion time): (1342636534.03, 1342636534.4, 0.202975988388)
+2012-07-18 11:35:35,495 INFO  test-0 thread-0 [ run-49 ]: Query     Results as (start time, end time, completion time): (1342636534.49, 1342636535.48, 0.99079990387)
+2012-07-18 11:35:35,505 INFO  test-0 thread-0 [ run-49 ]: The database size is now 31488000 bytes.
+2012-07-18 11:35:35,978 INFO  test-0 thread-0 [ run-50 ]: Insertion Results as (start time, end time, completion time): (1342636535.61, 1342636535.97, 0.174221038818)
+2012-07-18 11:35:37,106 INFO  test-0 thread-0 [ run-50 ]: Query     Results as (start time, end time, completion time): (1342636536.07, 1342636537.09, 1.01690912247)
+2012-07-18 11:35:37,116 INFO  test-0 thread-0 [ run-50 ]: The database size is now 33564000 bytes.
+2012-07-18 11:35:37,556 INFO  test-0 thread-0 [ run-51 ]: Insertion Results as (start time, end time, completion time): (1342636537.23, 1342636537.55, 0.134135723114)
+2012-07-18 11:35:38,699 INFO  test-0 thread-0 [ run-51 ]: Query     Results as (start time, end time, completion time): (1342636537.66, 1342636538.69, 1.02869796753)
+2012-07-18 11:35:38,708 INFO  test-0 thread-0 [ run-51 ]: The database size is now 33868000 bytes.
+2012-07-18 11:35:39,102 INFO  test-0 thread-0 [ run-52 ]: Insertion Results as (start time, end time, completion time): (1342636538.81, 1342636539.09, 0.137596130371)
+2012-07-18 11:35:40,296 INFO  test-0 thread-0 [ run-52 ]: Query     Results as (start time, end time, completion time): (1342636539.24, 1342636540.28, 1.03393006325)
+2012-07-18 11:35:40,307 INFO  test-0 thread-0 [ run-52 ]: The database size is now 34160000 bytes.
+2012-07-18 11:35:40,734 INFO  test-0 thread-0 [ run-53 ]: Insertion Results as (start time, end time, completion time): (1342636540.44, 1342636540.72, 0.099223613739)
+2012-07-18 11:35:42,064 INFO  test-0 thread-0 [ run-53 ]: Query     Results as (start time, end time, completion time): (1342636540.81, 1342636542.05, 1.24293804169)
+2012-07-18 11:35:42,072 INFO  test-0 thread-0 [ run-53 ]: The database size is now 34464000 bytes.
+2012-07-18 11:35:42,485 INFO  test-0 thread-0 [ run-54 ]: Insertion Results as (start time, end time, completion time): (1342636542.17, 1342636542.47, 0.148977041245)
+2012-07-18 11:35:43,593 INFO  test-0 thread-0 [ run-54 ]: Query     Results as (start time, end time, completion time): (1342636542.57, 1342636543.58, 1.01188588142)
+2012-07-18 11:35:43,600 INFO  test-0 thread-0 [ run-54 ]: The database size is now 34760000 bytes.
+2012-07-18 11:35:44,069 INFO  test-0 thread-0 [ run-55 ]: Insertion Results as (start time, end time, completion time): (1342636543.7, 1342636544.06, 0.163629770279)
+2012-07-18 11:35:45,184 INFO  test-0 thread-0 [ run-55 ]: Query     Results as (start time, end time, completion time): (1342636544.17, 1342636545.17, 1.00035405159)
+2012-07-18 11:35:45,194 INFO  test-0 thread-0 [ run-55 ]: The database size is now 35060000 bytes.
+2012-07-18 11:35:45,617 INFO  test-0 thread-0 [ run-56 ]: Insertion Results as (start time, end time, completion time): (1342636545.32, 1342636545.59, 0.109412908554)
+2012-07-18 11:35:46,761 INFO  test-0 thread-0 [ run-56 ]: Query     Results as (start time, end time, completion time): (1342636545.7, 1342636546.75, 1.04848217964)
+2012-07-18 11:35:46,775 INFO  test-0 thread-0 [ run-56 ]: The database size is now 37400000 bytes.
+2012-07-18 11:35:47,285 INFO  test-0 thread-0 [ run-57 ]: Insertion Results as (start time, end time, completion time): (1342636546.89, 1342636547.27, 0.209400415421)
+2012-07-18 11:35:48,529 INFO  test-0 thread-0 [ run-57 ]: Query     Results as (start time, end time, completion time): (1342636547.4, 1342636548.52, 1.11518096924)
+2012-07-18 11:35:48,540 INFO  test-0 thread-0 [ run-57 ]: The database size is now 37692000 bytes.
+2012-07-18 11:35:48,974 INFO  test-0 thread-0 [ run-58 ]: Insertion Results as (start time, end time, completion time): (1342636548.65, 1342636548.96, 0.156252384186)
+2012-07-18 11:35:50,190 INFO  test-0 thread-0 [ run-58 ]: Query     Results as (start time, end time, completion time): (1342636549.05, 1342636550.18, 1.12278413773)
+2012-07-18 11:35:50,198 INFO  test-0 thread-0 [ run-58 ]: The database size is now 37992000 bytes.
+2012-07-18 11:35:50,681 INFO  test-0 thread-0 [ run-59 ]: Insertion Results as (start time, end time, completion time): (1342636550.31, 1342636550.66, 0.197479724884)
+2012-07-18 11:35:51,904 INFO  test-0 thread-0 [ run-59 ]: Query     Results as (start time, end time, completion time): (1342636550.78, 1342636551.88, 1.10075688362)
+2012-07-18 11:35:51,911 INFO  test-0 thread-0 [ run-59 ]: The database size is now 38288000 bytes.
+2012-07-18 11:35:52,353 INFO  test-0 thread-0 [ run-60 ]: Insertion Results as (start time, end time, completion time): (1342636552.02, 1342636552.34, 0.152975797653)
+2012-07-18 11:35:53,598 INFO  test-0 thread-0 [ run-60 ]: Query     Results as (start time, end time, completion time): (1342636552.47, 1342636553.58, 1.11146783829)
+2012-07-18 11:35:53,664 INFO  test-0 thread-0 [ run-60 ]: The database size is now 38588000 bytes.
+2012-07-18 11:35:54,139 INFO  test-0 thread-0 [ run-61 ]: Insertion Results as (start time, end time, completion time): (1342636553.75, 1342636554.13, 0.218445777893)
+2012-07-18 11:35:55,365 INFO  test-0 thread-0 [ run-61 ]: Query     Results as (start time, end time, completion time): (1342636554.21, 1342636555.35, 1.14154720306)
+2012-07-18 11:35:55,377 INFO  test-0 thread-0 [ run-61 ]: The database size is now 38884000 bytes.
+2012-07-18 11:35:55,897 INFO  test-0 thread-0 [ run-62 ]: Insertion Results as (start time, end time, completion time): (1342636555.46, 1342636555.87, 0.244239807129)
+2012-07-18 11:35:57,393 INFO  test-0 thread-0 [ run-62 ]: Query     Results as (start time, end time, completion time): (1342636555.97, 1342636557.37, 1.40392017365)
+2012-07-18 11:35:57,405 INFO  test-0 thread-0 [ run-62 ]: The database size is now 40884000 bytes.
+2012-07-18 11:35:57,852 INFO  test-0 thread-0 [ run-63 ]: Insertion Results as (start time, end time, completion time): (1342636557.51, 1342636557.84, 0.154349803925)
+2012-07-18 11:35:59,212 INFO  test-0 thread-0 [ run-63 ]: Query     Results as (start time, end time, completion time): (1342636557.98, 1342636559.2, 1.22139883041)
+2012-07-18 11:35:59,220 INFO  test-0 thread-0 [ run-63 ]: The database size is now 41188000 bytes.
+2012-07-18 11:35:59,709 INFO  test-0 thread-0 [ run-64 ]: Insertion Results as (start time, end time, completion time): (1342636559.33, 1342636559.7, 0.203935861588)
+2012-07-18 11:36:01,037 INFO  test-0 thread-0 [ run-64 ]: Query     Results as (start time, end time, completion time): (1342636559.8, 1342636561.03, 1.22936081886)
+2012-07-18 11:36:01,045 INFO  test-0 thread-0 [ run-64 ]: The database size is now 41480000 bytes.
+2012-07-18 11:36:01,546 INFO  test-0 thread-0 [ run-65 ]: Insertion Results as (start time, end time, completion time): (1342636561.16, 1342636561.53, 0.196108102798)
+2012-07-18 11:36:03,134 INFO  test-0 thread-0 [ run-65 ]: Query     Results as (start time, end time, completion time): (1342636561.7, 1342636563.12, 1.42253518105)
+2012-07-18 11:36:03,143 INFO  test-0 thread-0 [ run-65 ]: The database size is now 41788000 bytes.
+2012-07-18 11:36:03,597 INFO  test-0 thread-0 [ run-66 ]: Insertion Results as (start time, end time, completion time): (1342636563.25, 1342636563.59, 0.173939466476)
+2012-07-18 11:36:05,021 INFO  test-0 thread-0 [ run-66 ]: Query     Results as (start time, end time, completion time): (1342636563.67, 1342636565.01, 1.33925390244)
+2012-07-18 11:36:05,029 INFO  test-0 thread-0 [ run-66 ]: The database size is now 42080000 bytes.
+2012-07-18 11:36:05,502 INFO  test-0 thread-0 [ run-67 ]: Insertion Results as (start time, end time, completion time): (1342636565.14, 1342636565.49, 0.193632364273)
+2012-07-18 11:36:06,743 INFO  test-0 thread-0 [ run-67 ]: Query     Results as (start time, end time, completion time): (1342636565.58, 1342636566.73, 1.15541410446)
+2012-07-18 11:36:06,749 INFO  test-0 thread-0 [ run-67 ]: The database size is now 43980000 bytes.
+2012-07-18 11:36:07,166 INFO  test-0 thread-0 [ run-68 ]: Insertion Results as (start time, end time, completion time): (1342636566.84, 1342636567.16, 0.170712709427)
+2012-07-18 11:36:08,549 INFO  test-0 thread-0 [ run-68 ]: Query     Results as (start time, end time, completion time): (1342636567.26, 1342636568.54, 1.27733588219)
+2012-07-18 11:36:08,559 INFO  test-0 thread-0 [ run-68 ]: The database size is now 44276000 bytes.
+2012-07-18 11:36:08,987 INFO  test-0 thread-0 [ run-69 ]: Insertion Results as (start time, end time, completion time): (1342636568.64, 1342636568.98, 0.185637712479)
+2012-07-18 11:36:10,341 INFO  test-0 thread-0 [ run-69 ]: Query     Results as (start time, end time, completion time): (1342636569.07, 1342636570.33, 1.25736904144)
+2012-07-18 11:36:10,354 INFO  test-0 thread-0 [ run-69 ]: The database size is now 44576000 bytes.
+2012-07-18 11:36:10,800 INFO  test-0 thread-0 [ run-70 ]: Insertion Results as (start time, end time, completion time): (1342636570.46, 1342636570.79, 0.153762817383)
+2012-07-18 11:36:12,161 INFO  test-0 thread-0 [ run-70 ]: Query     Results as (start time, end time, completion time): (1342636570.87, 1342636572.15, 1.27758097649)
+2012-07-18 11:36:12,169 INFO  test-0 thread-0 [ run-70 ]: The database size is now 44880000 bytes.
+2012-07-18 11:36:12,643 INFO  test-0 thread-0 [ run-71 ]: Insertion Results as (start time, end time, completion time): (1342636572.27, 1342636572.63, 0.205756664276)
+2012-07-18 11:36:13,993 INFO  test-0 thread-0 [ run-71 ]: Query     Results as (start time, end time, completion time): (1342636572.71, 1342636573.97, 1.26021194458)
+2012-07-18 11:36:14,002 INFO  test-0 thread-0 [ run-71 ]: The database size is now 45172000 bytes.
+2012-07-18 11:36:14,459 INFO  test-0 thread-0 [ run-72 ]: Insertion Results as (start time, end time, completion time): (1342636574.09, 1342636574.45, 0.214279651642)
+2012-07-18 11:36:15,786 INFO  test-0 thread-0 [ run-72 ]: Query     Results as (start time, end time, completion time): (1342636574.55, 1342636575.77, 1.22019386292)
+2012-07-18 11:36:15,799 INFO  test-0 thread-0 [ run-72 ]: The database size is now 45472000 bytes.
+2012-07-18 11:36:16,314 INFO  test-0 thread-0 [ run-73 ]: Insertion Results as (start time, end time, completion time): (1342636575.9, 1342636576.29, 0.217787504196)
+2012-07-18 11:36:17,650 INFO  test-0 thread-0 [ run-73 ]: Query     Results as (start time, end time, completion time): (1342636576.39, 1342636577.64, 1.24542593956)
+2012-07-18 11:36:17,659 INFO  test-0 thread-0 [ run-73 ]: The database size is now 47240000 bytes.
+2012-07-18 11:36:18,113 INFO  test-0 thread-0 [ run-74 ]: Insertion Results as (start time, end time, completion time): (1342636577.76, 1342636578.1, 0.184706926346)
+2012-07-18 11:36:19,495 INFO  test-0 thread-0 [ run-74 ]: Query     Results as (start time, end time, completion time): (1342636578.2, 1342636579.48, 1.28425598145)
+2012-07-18 11:36:19,505 INFO  test-0 thread-0 [ run-74 ]: The database size is now 47540000 bytes.
+2012-07-18 11:36:19,956 INFO  test-0 thread-0 [ run-75 ]: Insertion Results as (start time, end time, completion time): (1342636579.63, 1342636579.94, 0.152287244797)
+2012-07-18 11:36:21,446 INFO  test-0 thread-0 [ run-75 ]: Query     Results as (start time, end time, completion time): (1342636580.04, 1342636581.43, 1.38311696053)
+2012-07-18 11:36:21,458 INFO  test-0 thread-0 [ run-75 ]: The database size is now 47844000 bytes.
+2012-07-18 11:36:21,902 INFO  test-0 thread-0 [ run-76 ]: Insertion Results as (start time, end time, completion time): (1342636581.54, 1342636581.88, 0.176684856415)
+2012-07-18 11:36:23,465 INFO  test-0 thread-0 [ run-76 ]: Query     Results as (start time, end time, completion time): (1342636582.01, 1342636583.45, 1.44529294968)
+2012-07-18 11:36:23,477 INFO  test-0 thread-0 [ run-76 ]: The database size is now 48136000 bytes.
+2012-07-18 11:36:23,958 INFO  test-0 thread-0 [ run-77 ]: Insertion Results as (start time, end time, completion time): (1342636583.59, 1342636583.95, 0.193203449249)
+2012-07-18 11:36:25,417 INFO  test-0 thread-0 [ run-77 ]: Query     Results as (start time, end time, completion time): (1342636584.06, 1342636585.4, 1.34231615067)
+2012-07-18 11:36:25,424 INFO  test-0 thread-0 [ run-77 ]: The database size is now 48440000 bytes.
+2012-07-18 11:36:25,921 INFO  test-0 thread-0 [ run-78 ]: Insertion Results as (start time, end time, completion time): (1342636585.52, 1342636585.91, 0.220196723938)
+2012-07-18 11:36:27,086 INFO  test-0 thread-0 [ run-78 ]: Query     Results as (start time, end time, completion time): (1342636586.03, 1342636587.08, 1.04541993141)
+2012-07-18 11:36:27,094 INFO  test-0 thread-0 [ run-78 ]: The database size is now 50508000 bytes.
+2012-07-18 11:36:27,598 INFO  test-0 thread-0 [ run-79 ]: Insertion Results as (start time, end time, completion time): (1342636587.18, 1342636587.59, 0.260068178177)
+2012-07-18 11:36:29,087 INFO  test-0 thread-0 [ run-79 ]: Query     Results as (start time, end time, completion time): (1342636587.69, 1342636589.07, 1.38765501976)
+2012-07-18 11:36:29,099 INFO  test-0 thread-0 [ run-79 ]: The database size is now 50808000 bytes.
+2012-07-18 11:36:29,562 INFO  test-0 thread-0 [ run-80 ]: Insertion Results as (start time, end time, completion time): (1342636589.21, 1342636589.55, 0.190213441849)
+2012-07-18 11:36:30,982 INFO  test-0 thread-0 [ run-80 ]: Query     Results as (start time, end time, completion time): (1342636589.63, 1342636590.96, 1.32477092743)
+2012-07-18 11:36:30,992 INFO  test-0 thread-0 [ run-80 ]: The database size is now 51108000 bytes.
+2012-07-18 11:36:31,405 INFO  test-0 thread-0 [ run-81 ]: Insertion Results as (start time, end time, completion time): (1342636591.08, 1342636591.4, 0.192043542862)
+2012-07-18 11:36:33,046 INFO  test-0 thread-0 [ run-81 ]: Query     Results as (start time, end time, completion time): (1342636591.49, 1342636593.03, 1.5317029953)
+2012-07-18 11:36:33,056 INFO  test-0 thread-0 [ run-81 ]: The database size is now 51408000 bytes.
+2012-07-18 11:36:33,567 INFO  test-0 thread-0 [ run-82 ]: Insertion Results as (start time, end time, completion time): (1342636593.16, 1342636593.55, 0.164888381958)
+2012-07-18 11:36:35,033 INFO  test-0 thread-0 [ run-82 ]: Query     Results as (start time, end time, completion time): (1342636593.7, 1342636595.02, 1.32157802582)
+2012-07-18 11:36:35,040 INFO  test-0 thread-0 [ run-82 ]: The database size is now 51712000 bytes.
+2012-07-18 11:36:35,514 INFO  test-0 thread-0 [ run-83 ]: Insertion Results as (start time, end time, completion time): (1342636595.15, 1342636595.5, 0.197729349136)
+2012-07-18 11:36:37,003 INFO  test-0 thread-0 [ run-83 ]: Query     Results as (start time, end time, completion time): (1342636595.59, 1342636596.98, 1.38892507553)
+2012-07-18 11:36:37,011 INFO  test-0 thread-0 [ run-83 ]: The database size is now 53508000 bytes.
+2012-07-18 11:36:37,580 INFO  test-0 thread-0 [ run-84 ]: Insertion Results as (start time, end time, completion time): (1342636597.14, 1342636597.56, 0.229580163956)
+2012-07-18 11:36:39,041 INFO  test-0 thread-0 [ run-84 ]: Query     Results as (start time, end time, completion time): (1342636597.69, 1342636599.03, 1.33432006836)
+2012-07-18 11:36:39,049 INFO  test-0 thread-0 [ run-84 ]: The database size is now 53808000 bytes.
+2012-07-18 11:36:39,534 INFO  test-0 thread-0 [ run-85 ]: Insertion Results as (start time, end time, completion time): (1342636599.17, 1342636599.52, 0.189102649689)
+2012-07-18 11:36:41,146 INFO  test-0 thread-0 [ run-85 ]: Query     Results as (start time, end time, completion time): (1342636599.62, 1342636601.13, 1.51496887207)
+2012-07-18 11:36:41,154 INFO  test-0 thread-0 [ run-85 ]: The database size is now 54108000 bytes.
+2012-07-18 11:36:41,599 INFO  test-0 thread-0 [ run-86 ]: Insertion Results as (start time, end time, completion time): (1342636601.26, 1342636601.59, 0.163990974426)
+2012-07-18 11:36:43,217 INFO  test-0 thread-0 [ run-86 ]: Query     Results as (start time, end time, completion time): (1342636601.67, 1342636603.2, 1.53451395035)
+2012-07-18 11:36:43,235 INFO  test-0 thread-0 [ run-86 ]: The database size is now 54408000 bytes.
+2012-07-18 11:36:43,688 INFO  test-0 thread-0 [ run-87 ]: Insertion Results as (start time, end time, completion time): (1342636603.36, 1342636603.68, 0.163205385208)
+2012-07-18 11:36:45,262 INFO  test-0 thread-0 [ run-87 ]: Query     Results as (start time, end time, completion time): (1342636603.79, 1342636605.25, 1.45642495155)
+2012-07-18 11:36:45,271 INFO  test-0 thread-0 [ run-87 ]: The database size is now 54704000 bytes.
+2012-07-18 11:36:45,727 INFO  test-0 thread-0 [ run-88 ]: Insertion Results as (start time, end time, completion time): (1342636605.38, 1342636605.72, 0.185698032379)
+2012-07-18 11:36:47,334 INFO  test-0 thread-0 [ run-88 ]: Query     Results as (start time, end time, completion time): (1342636605.81, 1342636607.31, 1.50248098373)
+2012-07-18 11:36:47,341 INFO  test-0 thread-0 [ run-88 ]: The database size is now 56476000 bytes.
+2012-07-18 11:36:47,787 INFO  test-0 thread-0 [ run-89 ]: Insertion Results as (start time, end time, completion time): (1342636607.43, 1342636607.77, 0.162789106369)
+2012-07-18 11:36:49,403 INFO  test-0 thread-0 [ run-89 ]: Query     Results as (start time, end time, completion time): (1342636607.88, 1342636609.39, 1.50805807114)
+2012-07-18 11:36:49,416 INFO  test-0 thread-0 [ run-89 ]: The database size is now 56780000 bytes.
+2012-07-18 11:36:49,952 INFO  test-0 thread-0 [ run-90 ]: Insertion Results as (start time, end time, completion time): (1342636609.52, 1342636609.92, 0.198875665665)
+2012-07-18 11:36:51,603 INFO  test-0 thread-0 [ run-90 ]: Query     Results as (start time, end time, completion time): (1342636610.13, 1342636611.59, 1.46002697945)
+2012-07-18 11:36:51,609 INFO  test-0 thread-0 [ run-90 ]: The database size is now 57072000 bytes.
+2012-07-18 11:36:52,086 INFO  test-0 thread-0 [ run-91 ]: Insertion Results as (start time, end time, completion time): (1342636611.71, 1342636612.08, 0.201939821243)
+2012-07-18 11:36:53,643 INFO  test-0 thread-0 [ run-91 ]: Query     Results as (start time, end time, completion time): (1342636612.16, 1342636613.63, 1.47141289711)
+2012-07-18 11:36:53,651 INFO  test-0 thread-0 [ run-91 ]: The database size is now 57372000 bytes.
+2012-07-18 11:36:54,136 INFO  test-0 thread-0 [ run-92 ]: Insertion Results as (start time, end time, completion time): (1342636613.74, 1342636614.12, 0.228297472)
+2012-07-18 11:36:55,711 INFO  test-0 thread-0 [ run-92 ]: Query     Results as (start time, end time, completion time): (1342636614.22, 1342636615.7, 1.47611904144)
+2012-07-18 11:36:55,721 INFO  test-0 thread-0 [ run-92 ]: The database size is now 57668000 bytes.
+2012-07-18 11:36:56,168 INFO  test-0 thread-0 [ run-93 ]: Insertion Results as (start time, end time, completion time): (1342636615.82, 1342636616.16, 0.177642583847)
+2012-07-18 11:36:57,740 INFO  test-0 thread-0 [ run-93 ]: Query     Results as (start time, end time, completion time): (1342636616.25, 1342636617.73, 1.48129796982)
+2012-07-18 11:36:57,749 INFO  test-0 thread-0 [ run-93 ]: The database size is now 59456000 bytes.
+2012-07-18 11:36:58,222 INFO  test-0 thread-0 [ run-94 ]: Insertion Results as (start time, end time, completion time): (1342636617.85, 1342636618.21, 0.192566871643)
+2012-07-18 11:36:59,797 INFO  test-0 thread-0 [ run-94 ]: Query     Results as (start time, end time, completion time): (1342636618.34, 1342636619.78, 1.44429111481)
+2012-07-18 11:36:59,804 INFO  test-0 thread-0 [ run-94 ]: The database size is now 59760000 bytes.
+2012-07-18 11:37:00,324 INFO  test-0 thread-0 [ run-95 ]: Insertion Results as (start time, end time, completion time): (1342636619.9, 1342636620.3, 0.214787960052)
+2012-07-18 11:37:01,959 INFO  test-0 thread-0 [ run-95 ]: Query     Results as (start time, end time, completion time): (1342636620.46, 1342636621.95, 1.48791885376)
+2012-07-18 11:37:01,968 INFO  test-0 thread-0 [ run-95 ]: The database size is now 60052000 bytes.
+2012-07-18 11:37:02,515 INFO  test-0 thread-0 [ run-96 ]: Insertion Results as (start time, end time, completion time): (1342636622.08, 1342636622.5, 0.268355369568)
+2012-07-18 11:37:04,012 INFO  test-0 thread-0 [ run-96 ]: Query     Results as (start time, end time, completion time): (1342636622.59, 1342636623.99, 1.40108799934)
+2012-07-18 11:37:04,024 INFO  test-0 thread-0 [ run-96 ]: The database size is now 60356000 bytes.
+2012-07-18 11:37:04,465 INFO  test-0 thread-0 [ run-97 ]: Insertion Results as (start time, end time, completion time): (1342636624.14, 1342636624.46, 0.170196533203)
+2012-07-18 11:37:06,231 INFO  test-0 thread-0 [ run-97 ]: Query     Results as (start time, end time, completion time): (1342636624.55, 1342636626.22, 1.66770005226)
+2012-07-18 11:37:06,243 INFO  test-0 thread-0 [ run-97 ]: The database size is now 60652000 bytes.
+2012-07-18 11:37:06,710 INFO  test-0 thread-0 [ run-98 ]: Insertion Results as (start time, end time, completion time): (1342636626.37, 1342636626.7, 0.175578355789)
+2012-07-18 11:37:08,300 INFO  test-0 thread-0 [ run-98 ]: Query     Results as (start time, end time, completion time): (1342636626.8, 1342636628.28, 1.47906517982)
+2012-07-18 11:37:08,311 INFO  test-0 thread-0 [ run-98 ]: The database size is now 62136000 bytes.
+2012-07-18 11:37:08,801 INFO  test-0 thread-0 [ run-99 ]: Insertion Results as (start time, end time, completion time): (1342636628.43, 1342636628.79, 0.19248175621)
+2012-07-18 11:37:10,317 INFO  test-0 thread-0 [ run-99 ]: Query     Results as (start time, end time, completion time): (1342636628.87, 1342636630.3, 1.42829298973)
+2012-07-18 11:37:10,325 INFO  test-0 thread-0 [ run-99 ]: The database size is now 62432000 bytes.
+2012-07-18 11:37:10,326 INFO  test-0 thread-0 [ run-100 ]: Insertion finished at: 1342636630.33
+2012-07-18 11:37:10,330 INFO  test-0 thread-0 [ run-100 ]: shut down
+2012-07-18 11:37:10,330 INFO  test-0 thread-0: finished 100 runs
+2012-07-18 11:37:10,335 INFO  test-0 : elapsed time is 162855 ms
+2012-07-18 11:37:10,336 INFO  test-0 : Final statistics for this process:
+2012-07-18 11:37:10,357 INFO  test-0 : 
+             Tests        Errors       Mean Test    Test Time    TPS          
+                                       Time (ms)    Standard                  
+                                                    Deviation                 
+                                                    (ms)                      
+
+
+Totals       0            0            �            0.00         0.00         
+
+  Tests resulting in error only contribute to the Errors column.          
+  Statistics for individual tests can be found in the data file, including
+  (possibly incomplete) statistics for erroneous tests. Composite tests   
+  are marked with () and not included in the totals.                      
+

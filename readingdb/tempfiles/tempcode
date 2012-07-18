@@ -1,4 +1,3 @@
 
-streamid = roundvals.pop(0)
-rdb.db_add(a, streamid, roundvals)
-            
+rdb.db_query(list(range(1, 10001)), 0, 1000000000000)
+        

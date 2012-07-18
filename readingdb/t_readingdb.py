@@ -97,6 +97,7 @@ class ReadingDBAccess(DBTest):
         time.sleep(5) #give reading-server 5 seconds to startup
 
     def run_insert_w(self):
+        #this code could use some optimization, but not critical
         #generate and store values to file
         roundgen = self.insertGenerator.next() #potential StopIteration()
         overallstart = time.time()
@@ -129,57 +130,46 @@ for val in roundvals:
         return [overalltime, finishtime, completiontime]
 
     def run_insert_h(self):
-        #hackily implemented for now, but shouldn't affect results
+        #should be fairly well-optimized at this point
         #special height-wise insert for readingdb
         roundgen = self.insertGenerator.next() #potential StopIteration()
-        overallstart = time.time()
-        completiontime = 0
+        genprops = [roundgen.points, roundgen.stream, roundgen.valid_values,
+                                                        roundgen.cur_pointtime]
+        proptransfer = file('tempfiles/tempdata', 'w')
+        proptransfer.write(str(genprops))
+        proptransfer.close()
 
-
-########New idea: pickle roundgen instead of storing values to file, 
-########move all of this code into python
-        pickle_file = open('tempfiles/tempgen', 'wb')
-        pickle.dump(roundgen, pickle_file)
-        pickle_file.close()
+        codefile = file('tempfiles/tempcode', 'w')
         execcode = """
-
-
+from framework import SubGenerator_h
+getd = file('tempfiles/tempdata')
+data = getd.read()
+getd.close()
+props = eval(data)
+roundgen = SubGenerator_h(*props)
+completiontime = 0
+overallstart = time.time()
+for roundvals in roundgen:
+    newvals = list(map(lambda x: (x[1], 0, x[2]), roundvals))
+    streamid = roundvals[0][0]
+    starttime = time.time()
+    rdb.db_add(a, streamid, newvals)
+    endtime = time.time()
+    completiontime += (endtime - starttime)
+overallfinish = time.time()
+timings = [overallstart, overallfinish, completiontime]
 """
+        codefile.write(execcode)
+        codefile.close()
 
-
-
-
-
-
-
-
-        #now process roundvals into groups of 100 for readingdb add
-        for roundvals in roundgen:
-            newvals = list(map(lambda x: (x[1], 0, x[2]), roundvals))
-            roundvals = [roundvals[0][0]] + newvals
-            tempfile = file('tempfiles/tempdata', 'w')
-            tempfile.write(str(roundvals))
-            tempfile.close()
-            #generate and store code to file, ANY CODE HERE WILL BE INCLUDED IN THE
-            #TIME MEASUREMENT!
-            codefile = file('tempfiles/tempcode', 'w')
-            execcode = """
-streamid = roundvals.pop(0)
-rdb.db_add(a, streamid, roundvals)
-            """
-            codefile.write(execcode)
-            codefile.close()
-
-            #call the "driver"
-            a = subprocess.call([self.driver_complex])
-
-            #get the time taken list from file
-            timetaken = file('tempfiles/timetaken')
-            returnlist = eval(timetaken.read())
-            completiontime += returnlist[2]
-            timetaken.close()
-        finishtime = time.time()
-        return [overallstart, finishtime, completiontime]
+        #call the "driver"
+        a = subprocess.call([self.driver_complex])
+        
+        #get the time taken list from file
+        timetaken = file('tempfiles/timetaken')
+        returnlist = eval(timetaken.read())
+        timetaken.close()
+        return returnlist
 
 
     def run_query_all(self):
@@ -190,7 +180,7 @@ rdb.db_query(list(range(1, 10001)), 0, 1000000000000)
         codefile.write(execcode)
         codefile.close()
 
-        a = subprocess.call([self.driver])
+        a = subprocess.call([self.driver_simple])
         
         timetaken = file('tempfiles/timetaken')
         returnlist = eval(timetaken.read())
