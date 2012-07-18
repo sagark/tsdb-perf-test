@@ -134,25 +134,17 @@ for val in roundvals:
         completiontime = 0
         #now process roundvals into groups of 100 for readingdb add
         for roundvals in roundgen:
-            newvals = []
-            for x in range(0, len(roundvals), 100):
-                if (x+100)>(len(roundvals)-1):
-                    newvals += [list(map(lambda x: (x[1], 0, x[2]), roundvals[x:]))]
-                else:
-                    newvals += [list(map(lambda x: (x[1], 0, x[2]),
-                                                        roundvals[x:x+100]))] 
+            newvals = list(map(lambda x: (x[1], 0, x[2]), roundvals))
             roundvals = [roundvals[0][0]] + newvals
             tempfile = file('tempfiles/tempdata', 'w')
             tempfile.write(str(roundvals))
             tempfile.close()
-
             #generate and store code to file, ANY CODE HERE WILL BE INCLUDED IN THE
             #TIME MEASUREMENT!
             codefile = file('tempfiles/tempcode', 'w')
             execcode = """
 streamid = roundvals.pop(0)
-for val in roundvals:
-    rdb.db_add(a, streamid, val)
+rdb.db_add(a, streamid, roundvals)
             """
             codefile.write(execcode)
             codefile.close()
