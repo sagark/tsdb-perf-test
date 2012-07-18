@@ -7,6 +7,7 @@ import sys
 import subprocess
 import glob
 import shlex
+import pickle
 
 #project specific
 from framework import DBTest
@@ -27,7 +28,8 @@ class ReadingDBAccess(DBTest):
         #self.dbaboutstate = None
 
         #setup driver
-        self.driver = "readingdb_drv/reading.py"
+        self.driver_simple = "readingdb_drv/reading_simple.py"
+        self.driver_complex = "readingdb_drv/reading_complex.py"
     
 
         #start connection/statement
@@ -116,7 +118,7 @@ for val in roundvals:
             codefile.close()
 
             #call the "driver"
-            a = subprocess.call([self.driver])
+            a = subprocess.call([self.driver_simple])
 
             #get the time taken list from file
             timetaken = file('tempfiles/timetaken')
@@ -132,6 +134,25 @@ for val in roundvals:
         roundgen = self.insertGenerator.next() #potential StopIteration()
         overallstart = time.time()
         completiontime = 0
+
+
+########New idea: pickle roundgen instead of storing values to file, 
+########move all of this code into python
+        pickle_file = open('tempfiles/tempgen', 'wb')
+        pickle.dump(roundgen, pickle_file)
+        pickle_file.close()
+        execcode = """
+
+
+"""
+
+
+
+
+
+
+
+
         #now process roundvals into groups of 100 for readingdb add
         for roundvals in roundgen:
             newvals = list(map(lambda x: (x[1], 0, x[2]), roundvals))
@@ -150,7 +171,7 @@ rdb.db_add(a, streamid, roundvals)
             codefile.close()
 
             #call the "driver"
-            a = subprocess.call([self.driver])
+            a = subprocess.call([self.driver_complex])
 
             #get the time taken list from file
             timetaken = file('tempfiles/timetaken')
