@@ -1,8 +1,4 @@
-This is an insertion test for "height-wise" insertion (10000 points for 5
+This is an insertion test for "height-wise" insertion (10000 points for 10
 streams, one stream at a time).
-
-
-x: # points in database
-y: insertion time
 
 This uses insertlongstream.py

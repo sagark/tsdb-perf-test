@@ -1,0 +1,6 @@
+This is an insertion test for "height-wise" insertion (10000 points for 100
+streams, one stream at a time)
+
+Uses insertlongstream.py
+
+Final databases were manually verified. All operations completed properly.

@@ -66,15 +66,15 @@ ax1 = fig.add_subplot(311)
 ax2 = fig.add_subplot(312)
 ax3 = fig.add_subplot(313)
 
-ax1.set_title('Insert: Add 10000 Records to 1 Stream, 10 times')
+ax1.set_title('Insert: Add 10000 Records to 1 Stream, 100 times')
 ax1.set_xlabel('# of Records in DB')
 ax1.set_ylabel('Time for operation completion (s)')
 
-ax2.set_title('Query: Add 10000 Records to 1 Stream, 10 times')
+ax2.set_title('Query: Add 10000 Records to 1 Stream, 100 times')
 ax2.set_xlabel('# of Records in DB')
 ax2.set_ylabel('Time for operation completion (s)')
 
-ax3.set_title('DB Size: Add 10000 Records to 1 Stream, 10 times')
+ax3.set_title('DB Size: Add 10000 Records to 1 Stream, 100 times')
 ax3.set_xlabel('# of Records in DB')
 ax3.set_ylabel('DB size (MB)')
 
