@@ -1,4 +1,4 @@
-do 
+do
 $ mysql -u root -p
 enter password toor
 mysql> create database grindertest;

@@ -13,7 +13,7 @@ See setupguide
 Folder Structure
 ================
 
-Because I didn't want to waste even more time dealing with jython and grinder's
+Because I didn't want to waste time dealing with jython and grinder's
 path system, I instead resorted to symlinks. Here's a breakdown of where things
 are, starting from project root:
 
