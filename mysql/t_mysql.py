@@ -90,8 +90,8 @@ class MySQLAccess(DBTest):
         #an index in mysql
 
         ########UNCOMMENT THIS LINE TO USE InnoDB Instead of MyISAM!!!!!!!!!!!!!
-        self.dbstate.executeUpdate("ALTER TABLE grindertest ENGINE = innodb")
-
+        #self.dbstate.executeUpdate("ALTER TABLE grindertest ENGINE = innodb")
+        self.dbstate.executeUpdate("ALTER TABLE grindertest ENGINE = myisam")
 
 
         #################Other things go here like clearing cache
