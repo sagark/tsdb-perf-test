@@ -2,3 +2,6 @@ This is an insertion test for "height-wise" insertion (10000 points for 10
 streams, one stream at a time).
 
 This uses insertlongstream.py
+
+NOTE: This test is invalid for MyISAM. When it was run, switching back to MyISAM
+was broken in the testing framework.
