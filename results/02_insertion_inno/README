@@ -5,3 +5,6 @@ About this test:
 3) Using /tests/insertquery.py
 
 See graph.png
+
+NOTE: This test is invalid for MyISAM. When it was run, switching back to MyISAM
+was broken in the testing framework.
