@@ -9,7 +9,7 @@ protobuf-compiler doxygen flex bison libxerces-c-dev libxerces-c3.1 liblog4cxx10
 liblog4cxx10-dev libcppunit-1.12-1 libcppunit-dev libbz2-dev \
 postgresql-contrib-8.4 libconfig++8 libconfig++8-dev libconfig8-dev subversion \
 libreadline6-dev libreadline6 python-paramiko python-crypto xsltproc \
-libncurses5-dev
+libncurses5-dev swig
 
 
 
