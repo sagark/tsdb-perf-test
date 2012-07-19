@@ -3,12 +3,12 @@ libncurses5-dev). You'll also need to replace dependencies.json with the one
 included in setupmods/ . The modded file is released under GPL like the rest of scidb.
 
 
-sudo apt-get install -y build-essential cmake libboost1.46-all-dev
-postgresql-8.4 libpqxx-3.1 libpqxx3-dev libprotobuf7 libprotobuf-dev
-protobuf-compiler doxygen flex bison libxerces-c-dev libxerces-c3.1 liblog4cxx10
-liblog4cxx10-dev libcppunit-1.12-1 libcppunit-dev libbz2-dev
-postgresql-contrib-8.4 libconfig++8 libconfig++8-dev libconfig8-dev subversion
-libreadline6-dev libreadline6 python-paramiko python-crypto xsltproc
+sudo apt-get install -y build-essential cmake libboost1.46-all-dev \
+postgresql-8.4 libpqxx-3.1 libpqxx3-dev libprotobuf7 libprotobuf-dev \
+protobuf-compiler doxygen flex bison libxerces-c-dev libxerces-c3.1 liblog4cxx10 \
+liblog4cxx10-dev libcppunit-1.12-1 libcppunit-dev libbz2-dev \
+postgresql-contrib-8.4 libconfig++8 libconfig++8-dev libconfig8-dev subversion \
+libreadline6-dev libreadline6 python-paramiko python-crypto xsltproc \
 libncurses5-dev
 
 
