@@ -1,5 +1,30 @@
-follow the instructions at https://github.com/stevedh/readingdb
+Instructions adapted from https://github.com/stevedh/readingdb
 
 sudo apt-get install build-essential
 
-sudo apt-get install libdb4.8 libdb4.8-dev libprotobuf-dev libprotoc7 libprotoc-dev gcc make automake
+sudo apt-get install build-essential libdb4.8 libdb4.8-dev libprotobuf-dev
+libprotoc7 libprotoc-dev gcc make automake python-numpy libtool
+libprotobuf-c0-dev check
+
+sudo autoreconf --install
+sudo ./configure
+sudo make
+sudo make install
+
+
+python bindings:
+copy readingdb/c6/pbuf folder to readingdb/iface_bin/c6
+
+then do sudo make install in iface_bin
+
+
+Next do 
+adduser --system readingdb
+Then
+sudo mkdir /var/lib/readingdb
+sudo chown -R readingdb /var/lib/readingdb
+
+Then:
+sudo reading-server
+
+Use python bindings
