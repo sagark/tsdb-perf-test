@@ -1,7 +1,9 @@
-Follow the instructions in the PDF, but with these mods for ubuntu 12.04 (namely
-libncurses5-dev). You'll also need to replace dependencies.json with the one
+The following instructions are adapted from scidb documentation for ubuntu 12.04. 
+
+Firstly, you'll also need to replace dependencies.json in the downloaded tar with the one
 included in setupmods/ . The modded file is released under GPL like the rest of scidb.
 
+Now do:
 
 sudo apt-get install -y build-essential cmake libboost1.46-all-dev \
 postgresql-8.4 libpqxx-3.1 libpqxx3-dev libprotobuf7 libprotobuf-dev \
@@ -11,5 +13,40 @@ postgresql-contrib-8.4 libconfig++8 libconfig++8-dev libconfig8-dev subversion \
 libreadline6-dev libreadline6 python-paramiko python-crypto xsltproc \
 libncurses5-dev swig
 
+Other steps:
+Manually disable postgres9.1
+    Change the text in /etc/postgresql/9.1/main/start.conf to disabled
+    Reboot
+
+Confirm postgres 8.4 running and 9.1 NOT running
+sudo /etc/init.d/postgresql status
+
+Configure postgres user password as indicated in ReadingDB folder's README
 
 
+Do the usual build after copying over modded dependencies.json file:
+sudo cmake .
+sudo make -j4
+sudo make install
+
+Once this is all done:
+cd /opt/scidb/12.3/etc
+sudo cp sample_config.ini config.ini
+cd /opt/scidb/12.3/bin
+sudo ./scidb-prepare-db.sh
+user and pass is always postgres, everything else should be default
+
+This script will give you a string that you might need to feed to scidb.py, but
+first try:
+sudo ./scidb.py initall SingleInstance
+if this doesn't work do:
+sudo ./scidb.py -c "STRING GIVEN BY prepare-db" initall SingleInstance
+sudo ./scidb.py startall SingleInstance
+
+SciDB should now be up and running
+
+To use in python, see the docs here:
+http://trac.scidb.org/wiki/Docs/Development/PythonConnector
+
+For help with AQL, see the docs here:
+http://trac.scidb.org/wiki/Docs/Release_11.06/ArrayQueryLanguage_11.06
