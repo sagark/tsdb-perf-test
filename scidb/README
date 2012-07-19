@@ -23,7 +23,6 @@ sudo /etc/init.d/postgresql status
 
 Configure postgres user password as indicated in ReadingDB folder's README
 
-
 Do the usual build after copying over modded dependencies.json file:
 sudo cmake .
 sudo make -j4
