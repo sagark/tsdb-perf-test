@@ -1,3 +1,11 @@
+Looks like SciDB isn't designed for usual tsdb usage. 
+See the report here: Page 91 "Features"
+https://www.jstage.jst.go.jp/article/dsj/7/0/7_7-88/_pdf
+
+
+
+These instructions are now here just for reference. 
+
 The following instructions are adapted from scidb documentation for ubuntu 12.04. 
 
 Firstly, you'll also need to replace dependencies.json in the downloaded tar with the one
