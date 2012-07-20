@@ -1,1 +1,0 @@
-../tests/query_perf.py
