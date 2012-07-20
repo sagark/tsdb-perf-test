@@ -6,7 +6,7 @@ https://www.jstage.jst.go.jp/article/dsj/7/0/7_7-88/_pdf
 
 These instructions are now here just for reference. 
 
-The following instructions are adapted from scidb documentation for ubuntu 12.04. 
+The following instructions for Ubuntu 12.04 are adapted from scidb documentation for Ubuntu 11.10. 
 
 Firstly, you'll also need to replace dependencies.json in the downloaded tar with the one
 included in setupmods/ . The modded file is released under GPL like the rest of scidb.
