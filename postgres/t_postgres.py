@@ -14,7 +14,8 @@ class PostgresAccess(DBTest):
     def __init__(self):
         #general properties
         self.db = "grindertest"
-        self.urlroot = "jdbc:postgresql://localhost/"
+        port = "5433"
+        self.urlroot = "jdbc:postgresql://localhost:" + port + "/"
         self.dbabout = "information_schema"
         self.user = "postgres"
         self.passw = "postgres"

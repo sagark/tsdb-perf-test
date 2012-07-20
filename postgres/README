@@ -1,13 +1,16 @@
 sudo apt-get install postgres
 
+make sure this is using port 5433 (default may be 5432)
+
+
 sudo su
 su postgres
 
-createdb grindertest
-psql grindertest
+createdb -p 5433 grindertest
+psql -p 5433 grindertest
 
 fix postgres password:
-sudo -u postgres psql postgres
+sudo -u postgres psql -p 5433 postgres
 then in the psql prompt:
 \password postgres
 >>>and you'll be prompted for a new password

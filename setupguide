@@ -27,7 +27,9 @@ MySQL:
 	Finally do:
     sudo apt-get install libmysql-java
 
-Postgres:
+SciDB: YOU MUST INSTALL THIS BEFORE POSTGRES, see README
 
-ReadingDB:
+Postgres: see README
+
+ReadingDB: see README
 
