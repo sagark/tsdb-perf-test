@@ -13,3 +13,7 @@
 # Swap/temp files #
 ###################
 *.swp
+
+# DB Configuration Files #
+##########################
+*dbconfig.py
