@@ -112,7 +112,7 @@ class DBTest(object):
     ### When a test is complete, these should raise a StopIteration from the
     ### TSdata generator.
     
-    def init_insert(self, records, streams, width=True):
+    def init_insert(self, records, streams, width):
         """Initialize an insertion test, return string describing the test."""
         if width:
             self.insertGenerator = TSdata_w(records, streams, range(80, 120, 1))

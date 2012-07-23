@@ -20,7 +20,7 @@ exec(inp)
 class TestRunner:
     def __init__(self):
         self.testdb = DBAccess()
-        logstr = self.testdb.init_insert(100, 10000)
+        logstr = self.testdb.init_insert(100, 10000, True)
         grinder.logger.info(logstr)
 
     def __call__(self):

@@ -20,15 +20,17 @@ exec(inp)
 class TestRunner:
     def __init__(self):
         self.testdb = DBAccess()
-        self.streams = 10000 #number of streams
+        self.streams = 100 #number of streams
         self.pps = 100000 #points per stream
-        logstr = self.testdb.init_insert(self.streams, self.pps)
+        logstr = self.testdb.init_insert(self.streams, self.pps, False)
         grinder.logger.info(logstr)
-
+        self.callcounter = 0 #start the test callcounter
+        counter = 0
         #prepare by inserting large number of points
         while True:
             try:
-                res = self.testdb.run_insert_w()
+                #print("inserting " + str(counter))
+                res = self.testdb.run_insert_h()
                 grinder.logger.info("Insertion Results as (start time, end time, "
                                 "completion" + 
                                 " time): (" + str(res[0]) + ", " + str(res[1]) + 
@@ -37,7 +39,7 @@ class TestRunner:
                 grinder.logger.info("The database size is now " + size + " bytes.")
 
                 self.testdb.reset_conn_state()
-
+                #counter += 1
             except StopIteration:
                 # the prep is complete
                 grinder.logger.info("Insertion finished at: " + str(time.time())) 
@@ -47,6 +49,13 @@ class TestRunner:
                 break
 
     def __call__(self):
+        if self.callcounter > 100:
+            grinder.logger.info("Test complete")
+            self.testdb.close_all()
+            grinder.stopThisWorkerThread()
+
+        else:
+            self.callcounter += 1 
         #start this round
 
         # this is the control. If the time that this takes varies, we know that
@@ -61,7 +70,7 @@ class TestRunner:
         # actual experiment. the values for this will vary over time
         # this represents querying for data from an arbitrary time window of
         # fixed width
-        res = self.testdb.query(1000, 1000)
+        res = self.testdb.query(10000, self.streams)
         grinder.logger.info("Query     Results as (start time, end time, "
                             "completion" + 
                             " time): (" + str(res[0]) + ", " + str(res[1]) + 
