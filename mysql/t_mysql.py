@@ -10,16 +10,16 @@ import random
 
 #project specific
 from framework import DBTest
-
+from dbconfig import DBconfig
 
 class MySQLAccess(DBTest):
     def __init__(self):
         #general properties
-        self.db = "grindertest"
+        self.db = DBconfig.db
         self.urlroot = "jdbc:mysql://localhost/"
-        self.dbabout = "information_schema"
-        self.user = "root"
-        self.passw = "toor"
+        self.dbabout = DBconfig.dbabout
+        self.user = DBconfig.user
+        self.passw = DBconfig.passw
         self.dbconn = None
         self.dbstate = None
         self.dbaboutconn = None
@@ -47,7 +47,8 @@ class MySQLAccess(DBTest):
                                                     "?user=" + self.user + 
                                                     "&password=" + self.passw)
         self.dbstate = self.dbconn.createStatement()
-    
+        self.dbstate.setQueryTimeout(100) #fixes timeout errors
+
         #start connection to information_schema db
         self.dbaboutconn = DriverManager.getConnection(self.urlroot +
                                                        self.dbabout + "?user=" +

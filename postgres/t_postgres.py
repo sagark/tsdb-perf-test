@@ -8,17 +8,18 @@ import sys
 
 #project specific
 from framework import DBTest
+from dbconfig import DBconfig
 
 
 class PostgresAccess(DBTest):
     def __init__(self):
         #general properties
-        self.db = "grindertest"
-        port = "5433"
+        self.db = DBconfig.db
+        port = DBconfig.port
         self.urlroot = "jdbc:postgresql://localhost:" + port + "/"
-        self.dbabout = "information_schema"
-        self.user = "postgres"
-        self.passw = "postgres"
+        self.dbabout = DBconfig.dbabout
+        self.user = DBconfig.user
+        self.passw = DBconfig.passw
         self.dbconn = None
         self.dbstate = None
         self.dbaboutconn = None #not needed for postgres
