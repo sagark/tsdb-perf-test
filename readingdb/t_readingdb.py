@@ -114,7 +114,7 @@ class ReadingDBAccess(DBTest):
             execcode = """
 for val in roundvals:
     rdb.db_add(a, val[0], [(val[1], 0, val[2])])
-            """
+"""
             codefile.write(execcode)
             codefile.close()
 
@@ -176,7 +176,7 @@ timings = [overallstart, overallfinish, completiontime]
         codefile = file('tempfiles/tempcode', 'w')
         execcode = """
 rdb.db_query(list(range(1, 10001)), 0, 1000000000000)
-        """
+"""
         codefile.write(execcode)
         codefile.close()
 
