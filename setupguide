@@ -7,7 +7,7 @@ This assumes you're using Ubuntu 12.04 x64
 3.1) Modify grinder to store up to 100 logs in rolling order:
 	cd /opt/grinder-3.10/lib
 	jar xf grinder-core-3.7.jar logback-worker.xml
-3.2) Change <maxitems> attribute in the xml file to 100
+3.2) Change <maxIndex> attribute in the xml file to 100
 3.3) Make sure the lib folder is in your classpath (should be from the above export)
 4) Modify .bashrc to 
 
