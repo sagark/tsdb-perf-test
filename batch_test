@@ -1,0 +1,13 @@
+#runs a batch test, $1 (the first arg) is the number of runs
+#requires that grinder be set to store # of logs > $1
+
+for ((n=0; n<$1; n++))
+do
+  cd mysql
+  java net.grinder.Grinder
+  cd ..
+  cd postgres
+  java net.grinder.Grinder
+  cd ..
+done
+

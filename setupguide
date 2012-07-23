@@ -32,9 +32,11 @@ MySQL:
 	Finally do:
     sudo apt-get install libmysql-java
 
+    see instructions in mysql/sample_dbconfig.py
+
 SciDB: YOU MUST INSTALL THIS BEFORE POSTGRES, see README
 
-Postgres: see README
+Postgres: see README, see instructions in postgres/sample_dbconfig.py
 
 ReadingDB: see README
 

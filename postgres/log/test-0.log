@@ -1,19 +1,5 @@
-2012-07-23 12:21:36,026 INFO  test-0 : The Grinder version 3.10
-2012-07-23 12:21:36,036 INFO  test-0 : Java(TM) SE Runtime Environment 1.7.0_05-b05: Java HotSpot(TM) 64-Bit Server VM (23.1-b03, mixed mode) on Linux amd64 3.2.0-23-generic
-2012-07-23 12:21:36,041 INFO  test-0 : time zone is PDT (-0700)
-2012-07-23 12:21:36,191 INFO  test-0 : worker process 0
-2012-07-23 12:21:36,271 INFO  test-0 : instrumentation agents: byte code transforming instrumenter for Jython 2.5; byte code transforming instrumenter for Java
-2012-07-23 12:21:38,379 INFO  test-0 : running "../tests/insertlongstream.py" using Jython 2.5.2 (Release_2_5_2:7206, Mar 2 2011, 23:12:06) 
-[Java HotSpot(TM) 64-Bit Server VM (Oracle Corporation)]
-2012-07-23 12:21:38,851 INFO  test-0 thread-0: Started Logging: 100000 records each for 100 streams at 1343071298.84 seconds since the epoch.
-2012-07-23 12:21:38,852 INFO  test-0 thread-0: starting, will run forever
-2012-07-23 12:21:38,852 INFO  test-0 : start time is 1343071298852 ms since Epoch
-2012-07-23 12:21:45,821 INFO  test-0 thread-0 [ run-0 ]: Insertion Results as (start time, end time, completion time): (1343071298.85, 1343071305.81, 5.54699921608)
-2012-07-23 12:21:46,082 INFO  test-0 thread-0 [ run-0 ]: Query     Results as (start time, end time, completion time): (1343071305.83, 1343071306.08, 0.256000041962)
-2012-07-23 12:21:46,094 INFO  test-0 thread-0 [ run-0 ]: The database size is now 12772152 bytes.
-2012-07-23 12:21:53,174 INFO  test-0 thread-0 [ run-1 ]: Insertion Results as (start time, end time, completion time): (1343071306.1, 1343071313.17, 5.94400525093)
-2012-07-23 12:21:53,468 INFO  test-0 thread-0 [ run-1 ]: Query     Results as (start time, end time, completion time): (1343071313.17, 1343071313.46, 0.290999889374)
-2012-07-23 12:21:53,470 INFO  test-0 thread-0 [ run-1 ]: The database size is now 19456824 bytes.
-2012-07-23 12:21:57,204 INFO  test-0 thread-0 [ run-2 ]: Insertion Results as (start time, end time, completion time): (1343071313.48, 1343071317.2, 3.39099836349)
-2012-07-23 12:21:57,651 INFO  test-0 thread-0 [ run-2 ]: Query     Results as (start time, end time, completion time): (1343071317.2, 1343071317.65, 0.444999933243)
-2012-07-23 12:21:57,657 INFO  test-0 thread-0 [ run-2 ]: The database size is now 26125112 bytes.
+2012-07-23 12:37:04,942 INFO  test-0 : The Grinder version 3.10
+2012-07-23 12:37:04,955 INFO  test-0 : Java(TM) SE Runtime Environment 1.7.0_05-b05: Java HotSpot(TM) 64-Bit Server VM (23.1-b03, mixed mode) on Linux amd64 3.2.0-23-generic
+2012-07-23 12:37:04,964 INFO  test-0 : time zone is PDT (-0700)
+2012-07-23 12:37:05,099 INFO  test-0 : worker process 0
+2012-07-23 12:37:05,178 INFO  test-0 : instrumentation agents: byte code transforming instrumenter for Jython 2.5; byte code transforming instrumenter for Java
