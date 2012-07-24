@@ -47,7 +47,7 @@ class MySQLAccess(DBTest):
                                                     "?user=" + self.user + 
                                                     "&password=" + self.passw)
         self.dbstate = self.dbconn.createStatement()
-        self.dbstate.setQueryTimeout(100) #fixes timeout errors
+        self.dbstate.setQueryTimeout(10000000) #fixes timeout errors
 
         #start connection to information_schema db
         self.dbaboutconn = DriverManager.getConnection(self.urlroot +
