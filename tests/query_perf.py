@@ -74,7 +74,7 @@ class TestRunner:
         # fixed width
         # measure performance vs query size
         res = self.testdb.query(self.t1size, self.streams)
-        grinder.logger.info("Query " + str(self.t1size) + " items Results as (start time, end time, "
+        grinder.logger.info("Query " + str(self.t1size*self.streams) + " items Results as (start time, end time, "
                             "completion" + 
                             " time): (" + str(res[0]) + ", " + str(res[1]) + 
                             ", " + str(res[2]) + ")")
