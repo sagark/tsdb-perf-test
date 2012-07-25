@@ -44,6 +44,7 @@ def average_from_files(filedatalst):
     for lineset in filedata:
         parsed.append(parsedata(lineset))
         numdiv += 1
+        print(numdiv)
    
     totalarr = parsed[0]
     for x in range(1, len(parsed)):
@@ -73,9 +74,14 @@ def parsedata(lines):
     while "finished" not in lines[0]:
         insert = lines.pop(0).split(": ")[2]
         query = lines.pop(0).split(": ")[2]
-        size = lines.pop(0).split("now ")[1].replace(" bytes.", "")
+        try:
+            line = lines.pop(0)
+            size = line.split("now ")[1].replace(" bytes.", "")
+        except:
+            print("exception parsing file")
+            sys.exit(0)
         points.append([counter, eval(insert), eval(query), eval(size)])
-        counter += 100000 #number of records before each round
+        counter += 10000 #number of records before each round
 
     graphthis = []
     for x in points:
@@ -106,22 +112,22 @@ for db in dbfolders:
 print(db_arrays)
 
 fig = plt.figure(figsize=(20, 30), dpi=300)
-
+fig.suptitle('Adding 10000 Records to 1 Stream, 100 Times - Averaged over 5 Runs', fontsize=18)
 ax1 = fig.add_subplot(311)
 ax2 = fig.add_subplot(312)
 ax3 = fig.add_subplot(313)
 
-ax1.set_title('Insert: Add 100000 Records to 1 Stream, 100 times')
+ax1.set_title('Insert (10,000 record batches, 100 records/insert)')
 ax1.set_xlabel('# of Records in DB')
 ax1.set_ylabel('Time for operation completion (s)')
-ax1.set_ylim(bottom = 0, top = 10)
+ax1.set_ylim(bottom = 0, top = 0.3)
 
-ax2.set_title('Query: Add 100000 Records to 1 Stream, 100 times')
+ax2.set_title('Query (All records)')
 ax2.set_xlabel('# of Records in DB')
 ax2.set_ylabel('Time for operation completion (s)')
-ax2.set_ylim(bottom = 0, top = 20)
+ax2.set_ylim(bottom = 0, top = 1.5)
 
-ax3.set_title('DB Size: Add 100000 Records to 1 Stream, 100 times')
+ax3.set_title('DB Size')
 ax3.set_xlabel('# of Records in DB')
 ax3.set_ylabel('DB size (MB)')
 
