@@ -187,4 +187,46 @@ rdb.db_query(list(range(1, 10001)), 0, 1000000000000)
         timetaken.close()
 
         return returnlist
+       
+
+    def query(self, records, streams):
+        """Query "records" records from "streams" streams"""
         
+        conn, s = self.dbconn, self.dbstate
+        
+        ##getting latest point in db
+        ##rdb.db_prev(STREAMID, 100000000000000, conn=a)
+        subprocess.call(["readingdb_drv/reading_getlatest.py"])
+    
+        latest = file('tempfiles/lasttime')
+        last = int(eval(latest.read()))
+        latest.close()
+
+        lastpossible = last - records + 1
+        default_starttime = 946684800
+
+        if default_starttime >= lastpossible:
+            print("WARNING: timerange starts before earliest, resorting to" + 
+                    " forced lastpossible")
+            starttime = lastpossible
+        else:  
+            starttime = random.randrange(default_starttime, lastpossible)
+
+        endtime = starttime + records - 1
+      
+
+
+        codefile = file('tempfiles/tempcode', 'w')
+        execcode = """
+rdb.db_query(list(range(1, """ + str(1+streams) + """)), """ + str(starttime) + """, """ + str(endtime) + """)
+"""
+        codefile.write(execcode)
+        codefile.close()
+
+        a = subprocess.call([self.driver_simple])
+
+        timetaken = file('tempfiles/timetaken')
+        returnlist = eval(timetaken.read())
+        timetaken.close()
+        
+        return returnlist

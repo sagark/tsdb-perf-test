@@ -114,7 +114,7 @@ class PostgresAccess(DBTest):
         return [starttime, endtime, completiontime]
 
     def query(self, records, streams):
-        """Query "records" records from "streams" streams""" 
+         """Query "records" records from "streams" streams""" 
         #ref: the bounds on between in mysql (and postgres) are inclusive
         conn, s = self.dbconn, self.dbstate
 
@@ -127,7 +127,14 @@ class PostgresAccess(DBTest):
         last = temp.getInt("time")
         lastpossible = last - records + 1
         default_starttime = 946684800
-        starttime = random.randrange(default_starttime, lastpossible)
+
+        if default_starttime >= lastpossible:
+            print("WARNING: timerange starts before earliest, resorting to" + 
+                    " forced lastpossible")
+            starttime = lastpossible
+        else:  
+            starttime = random.randrange(default_starttime, lastpossible)
+
         endtime = starttime + records - 1
         #done random time window selection
 
