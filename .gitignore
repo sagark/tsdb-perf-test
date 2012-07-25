@@ -6,8 +6,8 @@
 
 # Non-first logs #
 ##################
-*.log1
 *0-data.log
+*/log/*.log1
 
 
 # Swap/temp files #
