@@ -1,0 +1,39 @@
+The usual use is "horizontal", at one time, multiple streams sending in one point. 
+Not usually "vertical" or one stream sending in multiple times (long range)
+
+1) Append Test (Sequential w.r.t time/streamid)
+   Insert lots of data in sequence - Insert Time vs Database Size
+   Query All of it - Query vs Database Size
+
+   #When done inserting
+
+   Query All of it - Control
+   Query Parts of it - Query Time vs Query Size
+
+
+Sample data pattern 
+Streamid Time Value
+0        0    10
+1        0    12
+2        0    4
+0        1    32
+1        1    13
+2        1    9
+etc.
+
+
+2) Insertion Test (non-sequential w.r.t time/streamid)
+    (sequential streamid, random time in range, random value in range)
+                                        -Random Insert Time vs Database Size
+   #when done inserting
+   Query parts of it - Query Time vs Query Size
+
+Sample data pattern
+Streamid Time Value
+3        1    4
+2        0    3
+4        3    78
+3        2    5
+3        3    84
+4        5    32
+etc.
