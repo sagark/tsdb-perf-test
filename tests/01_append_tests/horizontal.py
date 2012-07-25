@@ -23,20 +23,30 @@ class TestRunner:
     def __init__(self):
         self.callcounter = 0
         self.testdb = DBAccess()
-        self.streams = 10000
-        self.numpts = 100
+
+        self.streams = 100 #number of streams
+        self.numpts = 10000 #number of points per stream
+        self.callcountermax = self.numpts #set counter for loop
+
+        self.qnumpts = 100 #smallest query size
+        self.qnumptsmax = 10000 #largest query size
+        self.qnumptsinc = 10 #query size increment
+
+        self.callcounter_q_max = (self.qnumptsmax - self.qnumpts)/self.qnumptsinc
+
         logstr = self.testdb.init_insert(self.numpts, self.streams, True)
         grinder.logger.info(logstr)
 
     def __call__(self):
         #start this round
-        if self.callcounter < 100:
+        print("run #" + str(self.callcounter))
+        if self.callcounter < self.callcountermax:
             self.part_one() #this is the pre/during insertion test
-            if self.callcounter == 99:
+            if self.callcounter == (self.callcountermax-1):
                 #record completion to log
                 grinder.logger.info("Insertion finished at: " + str(time.time()))       
 
-        elif self.callcounter < 200:
+        elif self.callcounter < (self.callcountermax + self.callcounter_q_max):
             self.part_two() #this is the post insertion test
 
         else:
@@ -77,14 +87,15 @@ class TestRunner:
 
 
         #the query over all streams where numpts (qnumpts) varies over time
-        qnumpts = self.callcounter * 10  #starts at 1000 by default
+        #qnumpts = self.callcounter * 10  #starts at 1000 by default
         ####NEED SOME CODE HERE TO CONTROL THE QUERY SIZE based on run #
-        res = self.testdb.query(qnumpts, self.streams)
-        grinder.logger.info("Query " + str(qnumpts*self.streams) + 
-                            "items Results as (start time, end time, "
+        res = self.testdb.query(self.qnumpts, self.streams)
+        grinder.logger.info("Query " + str(self.qnumpts*self.streams) + 
+                            " items Results as (start time, end time, "
                             "completion" + 
                             " time): (" + str(res[0]) + ", " + str(res[1]) + 
                             ", " + str(res[2]) + ")")
+        self.qnumpts += self.qnumptsinc
 
         
         #the query over all streams where numstreams (qnumstreams) varies over time

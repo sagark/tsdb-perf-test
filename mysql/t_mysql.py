@@ -141,7 +141,14 @@ class MySQLAccess(DBTest):
         last = temp.getInt("time")
         lastpossible = last - records + 1
         default_starttime = 946684800
-        starttime = random.randrange(default_starttime, lastpossible)
+
+        if default_starttime >= lastpossible:
+            print("WARNING: timerange starts before earliest, resorting to" + 
+                    " forced lastpossible")
+            starttime = lastpossible
+        else:  
+            starttime = random.randrange(default_starttime, lastpossible)
+
         endtime = starttime + records - 1
         #done random time window selection
 
