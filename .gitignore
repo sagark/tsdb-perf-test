@@ -13,6 +13,7 @@
 # Swap/temp files #
 ###################
 *.swp
+*tempfiles/*
 
 # DB Configuration Files #
 ##########################
