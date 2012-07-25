@@ -21,7 +21,7 @@ class TestRunner:
     def __init__(self):
         self.testdb = DBAccess()
         self.numstreams = 100 
-        logstr = self.testdb.init_insert(100000, self.numstreams, False)
+        logstr = self.testdb.init_insert(10000, self.numstreams, False)
         grinder.logger.info(logstr)
         #this has a crazy amount of overhead in python, need to figure out 
         #what's up

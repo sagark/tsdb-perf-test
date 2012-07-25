@@ -158,8 +158,8 @@ class MySQLAccess(DBTest):
         temp = s.executeQuery(querystring)
         endtime = time.time()
 
-        #while temp.next():
-        #    print(temp.getString('time'))
+        while temp.next():
+            print(temp.getString('time'))
 
         completiontime = endtime - starttime
         return [starttime, endtime, completiontime]

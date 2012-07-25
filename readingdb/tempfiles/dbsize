@@ -1,9 +1,9 @@
-620	/var/lib/readingdb/__db.005
-2048	/var/lib/readingdb/__db.002
-12672	/var/lib/readingdb/__db.003
-12	/var/lib/readingdb/__db.006
+628	/var/lib/readingdb/__db.005
+2060	/var/lib/readingdb/__db.002
+23828	/var/lib/readingdb/__db.003
+16	/var/lib/readingdb/__db.006
 12	/var/lib/readingdb/__db.001
-44	/var/lib/readingdb/__db.004
+48	/var/lib/readingdb/__db.004
 32	/var/lib/readingdb/readings-2.db
 32	/var/lib/readingdb/readings-7.db
 32	/var/lib/readingdb/readings-4.db
@@ -11,7 +11,7 @@
 32	/var/lib/readingdb/readings-9.db
 32	/var/lib/readingdb/readings-3.db
 32	/var/lib/readingdb/readings-1.db
-11364	/var/lib/readingdb/readings-0.db
+28964	/var/lib/readingdb/readings-0.db
 32	/var/lib/readingdb/readings-6.db
 32	/var/lib/readingdb/readings-8.db
-27060	total
+55844	total

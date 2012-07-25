@@ -7,7 +7,7 @@
 # Non-first logs #
 ##################
 *.log1
-*test-0-data.log
+*0-data.log
 
 
 # Swap/temp files #

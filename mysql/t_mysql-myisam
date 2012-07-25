@@ -91,8 +91,8 @@ class MySQLAccess(DBTest):
         #an index in mysql
 
         ########UNCOMMENT THIS LINE TO USE InnoDB Instead of MyISAM!!!!!!!!!!!!!
-        self.dbstate.executeUpdate("ALTER TABLE grindertest ENGINE = innodb")
-        #self.dbstate.executeUpdate("ALTER TABLE grindertest ENGINE = myisam")
+        #self.dbstate.executeUpdate("ALTER TABLE grindertest ENGINE = innodb")
+        self.dbstate.executeUpdate("ALTER TABLE grindertest ENGINE = myisam")
 
 
         #################Other things go here like clearing cache
@@ -158,8 +158,8 @@ class MySQLAccess(DBTest):
         temp = s.executeQuery(querystring)
         endtime = time.time()
 
-        #while temp.next():
-        #    print(temp.getString('time'))
+        while temp.next():
+            print(temp.getString('time'))
 
         completiontime = endtime - starttime
         return [starttime, endtime, completiontime]

@@ -11,15 +11,8 @@ do
   java net.grinder.Grinder
   cp log/verde-0.log ../results/05_verde_batch/logs/mysql-innodb/verde-0.log$n
   cd ..
-  cd postgres
-  java net.grinder.Grinder
-  cp log/verde-0.log ../results/05_verde_batch/logs/postgres/verde-0.log$n
-  cd ..
-  cd readingdb
-  java net.grinder.Grinder
-  cp log/verde-0.log ../results/05_verde_batch/logs/readingdb/verde-0.log$n
-  cd ..
+
 done
 
-echo "TEST COMPLETED, check results for err"
+echo "TEST COMPLETED, USER SHOULD NOW SWITCH mysql-engine after copying results"
 
