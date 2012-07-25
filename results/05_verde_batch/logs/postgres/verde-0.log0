@@ -1,0 +1,329 @@
+2012-07-25 10:23:27,676 INFO  verde-0 : The Grinder version 3.10
+2012-07-25 10:23:27,681 INFO  verde-0 : Java(TM) SE Runtime Environment 1.6.0_26-b03: Java HotSpot(TM) 64-Bit Server VM (20.1-b02, mixed mode) on Linux amd64 2.6.32-5-amd64
+2012-07-25 10:23:27,684 INFO  verde-0 : time zone is PDT (-0700)
+2012-07-25 10:23:27,754 INFO  verde-0 : worker process 0
+2012-07-25 10:23:27,805 INFO  verde-0 : instrumentation agents: byte code transforming instrumenter for Jython 2.5; byte code transforming instrumenter for Java
+2012-07-25 10:23:29,184 INFO  verde-0 : running "../tests/insertlongstream.py" using Jython 2.5.2 (Release_2_5_2:7206, Mar 2 2011, 23:12:06) 
+[Java HotSpot(TM) 64-Bit Server VM (Sun Microsystems Inc.)]
+2012-07-25 10:23:29,384 INFO  verde-0 thread-0: Started Logging: 10000 records each for 100 streams at 1343237009.36 seconds since the epoch.
+2012-07-25 10:23:29,385 INFO  verde-0 thread-0: starting, will run forever
+2012-07-25 10:23:29,385 INFO  verde-0 : start time is 1343237009386 ms since Epoch
+2012-07-25 10:23:30,527 INFO  verde-0 thread-0 [ run-0 ]: Insertion Results as (start time, end time, completion time): (1343237009.39, 1343237010.53, 0.199999570847)
+2012-07-25 10:23:30,678 INFO  verde-0 thread-0 [ run-0 ]: Query     Results as (start time, end time, completion time): (1343237010.53, 1343237010.68, 0.148999929428)
+2012-07-25 10:23:30,684 INFO  verde-0 thread-0 [ run-0 ]: The database size is now 6477584 bytes.
+2012-07-25 10:23:30,945 INFO  verde-0 thread-0 [ run-1 ]: Insertion Results as (start time, end time, completion time): (1343237010.69, 1343237010.94, 0.134000062943)
+2012-07-25 10:23:30,972 INFO  verde-0 thread-0 [ run-1 ]: Query     Results as (start time, end time, completion time): (1343237010.94, 1343237010.97, 0.0260000228882)
+2012-07-25 10:23:30,974 INFO  verde-0 thread-0 [ run-1 ]: The database size is now 7141136 bytes.
+2012-07-25 10:23:31,257 INFO  verde-0 thread-0 [ run-2 ]: Insertion Results as (start time, end time, completion time): (1343237010.98, 1343237011.26, 0.186000585556)
+2012-07-25 10:23:31,307 INFO  verde-0 thread-0 [ run-2 ]: Query     Results as (start time, end time, completion time): (1343237011.26, 1343237011.31, 0.0490000247955)
+2012-07-25 10:23:31,308 INFO  verde-0 thread-0 [ run-2 ]: The database size is now 7804688 bytes.
+2012-07-25 10:23:31,618 INFO  verde-0 thread-0 [ run-3 ]: Insertion Results as (start time, end time, completion time): (1343237011.31, 1343237011.62, 0.22600030899)
+2012-07-25 10:23:31,674 INFO  verde-0 thread-0 [ run-3 ]: Query     Results as (start time, end time, completion time): (1343237011.62, 1343237011.67, 0.0550000667572)
+2012-07-25 10:23:31,676 INFO  verde-0 thread-0 [ run-3 ]: The database size is now 8476432 bytes.
+2012-07-25 10:23:31,976 INFO  verde-0 thread-0 [ run-4 ]: Insertion Results as (start time, end time, completion time): (1343237011.68, 1343237011.97, 0.223999738693)
+2012-07-25 10:23:32,060 INFO  verde-0 thread-0 [ run-4 ]: Query     Results as (start time, end time, completion time): (1343237011.98, 1343237012.06, 0.0820000171661)
+2012-07-25 10:23:32,063 INFO  verde-0 thread-0 [ run-4 ]: The database size is now 9139984 bytes.
+2012-07-25 10:23:32,350 INFO  verde-0 thread-0 [ run-5 ]: Insertion Results as (start time, end time, completion time): (1343237012.07, 1343237012.35, 0.215999364853)
+2012-07-25 10:23:32,437 INFO  verde-0 thread-0 [ run-5 ]: Query     Results as (start time, end time, completion time): (1343237012.35, 1343237012.44, 0.0860002040863)
+2012-07-25 10:23:32,438 INFO  verde-0 thread-0 [ run-5 ]: The database size is now 9803536 bytes.
+2012-07-25 10:23:32,711 INFO  verde-0 thread-0 [ run-6 ]: Insertion Results as (start time, end time, completion time): (1343237012.44, 1343237012.71, 0.208999633789)
+2012-07-25 10:23:32,805 INFO  verde-0 thread-0 [ run-6 ]: Query     Results as (start time, end time, completion time): (1343237012.71, 1343237012.8, 0.0929999351501)
+2012-07-25 10:23:32,806 INFO  verde-0 thread-0 [ run-6 ]: The database size is now 10475280 bytes.
+2012-07-25 10:23:33,091 INFO  verde-0 thread-0 [ run-7 ]: Insertion Results as (start time, end time, completion time): (1343237012.81, 1343237013.09, 0.225998878479)
+2012-07-25 10:23:33,200 INFO  verde-0 thread-0 [ run-7 ]: Query     Results as (start time, end time, completion time): (1343237013.09, 1343237013.2, 0.106999874115)
+2012-07-25 10:23:33,202 INFO  verde-0 thread-0 [ run-7 ]: The database size is now 11138832 bytes.
+2012-07-25 10:23:33,491 INFO  verde-0 thread-0 [ run-8 ]: Insertion Results as (start time, end time, completion time): (1343237013.21, 1343237013.49, 0.228998422623)
+2012-07-25 10:23:33,611 INFO  verde-0 thread-0 [ run-8 ]: Query     Results as (start time, end time, completion time): (1343237013.49, 1343237013.61, 0.117999792099)
+2012-07-25 10:23:33,612 INFO  verde-0 thread-0 [ run-8 ]: The database size is now 11802384 bytes.
+2012-07-25 10:23:33,904 INFO  verde-0 thread-0 [ run-9 ]: Insertion Results as (start time, end time, completion time): (1343237013.62, 1343237013.9, 0.21599984169)
+2012-07-25 10:23:34,045 INFO  verde-0 thread-0 [ run-9 ]: Query     Results as (start time, end time, completion time): (1343237013.9, 1343237014.04, 0.138999938965)
+2012-07-25 10:23:34,047 INFO  verde-0 thread-0 [ run-9 ]: The database size is now 12474128 bytes.
+2012-07-25 10:23:34,327 INFO  verde-0 thread-0 [ run-10 ]: Insertion Results as (start time, end time, completion time): (1343237014.05, 1343237014.33, 0.222000360489)
+2012-07-25 10:23:34,474 INFO  verde-0 thread-0 [ run-10 ]: Query     Results as (start time, end time, completion time): (1343237014.33, 1343237014.47, 0.144999980927)
+2012-07-25 10:23:34,475 INFO  verde-0 thread-0 [ run-10 ]: The database size is now 13137680 bytes.
+2012-07-25 10:23:34,759 INFO  verde-0 thread-0 [ run-11 ]: Insertion Results as (start time, end time, completion time): (1343237014.48, 1343237014.76, 0.221999406815)
+2012-07-25 10:23:34,918 INFO  verde-0 thread-0 [ run-11 ]: Query     Results as (start time, end time, completion time): (1343237014.76, 1343237014.92, 0.15700006485)
+2012-07-25 10:23:34,920 INFO  verde-0 thread-0 [ run-11 ]: The database size is now 13801232 bytes.
+2012-07-25 10:23:35,202 INFO  verde-0 thread-0 [ run-12 ]: Insertion Results as (start time, end time, completion time): (1343237014.92, 1343237015.2, 0.211999177933)
+2012-07-25 10:23:35,374 INFO  verde-0 thread-0 [ run-12 ]: Query     Results as (start time, end time, completion time): (1343237015.2, 1343237015.37, 0.169999837875)
+2012-07-25 10:23:35,376 INFO  verde-0 thread-0 [ run-12 ]: The database size is now 14472976 bytes.
+2012-07-25 10:23:35,667 INFO  verde-0 thread-0 [ run-13 ]: Insertion Results as (start time, end time, completion time): (1343237015.38, 1343237015.66, 0.220999479294)
+2012-07-25 10:23:35,858 INFO  verde-0 thread-0 [ run-13 ]: Query     Results as (start time, end time, completion time): (1343237015.67, 1343237015.86, 0.1890001297)
+2012-07-25 10:23:35,859 INFO  verde-0 thread-0 [ run-13 ]: The database size is now 15136528 bytes.
+2012-07-25 10:23:36,014 INFO  verde-0 thread-0 [ run-14 ]: Insertion Results as (start time, end time, completion time): (1343237015.86, 1343237016.01, 0.11900138855)
+2012-07-25 10:23:36,206 INFO  verde-0 thread-0 [ run-14 ]: Query     Results as (start time, end time, completion time): (1343237016.01, 1343237016.2, 0.190999984741)
+2012-07-25 10:23:36,207 INFO  verde-0 thread-0 [ run-14 ]: The database size is now 15816464 bytes.
+2012-07-25 10:23:36,480 INFO  verde-0 thread-0 [ run-15 ]: Insertion Results as (start time, end time, completion time): (1343237016.21, 1343237016.48, 0.216999053955)
+2012-07-25 10:23:36,695 INFO  verde-0 thread-0 [ run-15 ]: Query     Results as (start time, end time, completion time): (1343237016.48, 1343237016.69, 0.213000059128)
+2012-07-25 10:23:36,698 INFO  verde-0 thread-0 [ run-15 ]: The database size is now 16488208 bytes.
+2012-07-25 10:23:36,979 INFO  verde-0 thread-0 [ run-16 ]: Insertion Results as (start time, end time, completion time): (1343237016.7, 1343237016.98, 0.22600030899)
+2012-07-25 10:23:37,207 INFO  verde-0 thread-0 [ run-16 ]: Query     Results as (start time, end time, completion time): (1343237016.98, 1343237017.21, 0.226999998093)
+2012-07-25 10:23:37,208 INFO  verde-0 thread-0 [ run-16 ]: The database size is now 17151760 bytes.
+2012-07-25 10:23:37,486 INFO  verde-0 thread-0 [ run-17 ]: Insertion Results as (start time, end time, completion time): (1343237017.21, 1343237017.48, 0.218000888824)
+2012-07-25 10:23:37,747 INFO  verde-0 thread-0 [ run-17 ]: Query     Results as (start time, end time, completion time): (1343237017.49, 1343237017.74, 0.256999969482)
+2012-07-25 10:23:37,748 INFO  verde-0 thread-0 [ run-17 ]: The database size is now 17815312 bytes.
+2012-07-25 10:23:37,908 INFO  verde-0 thread-0 [ run-18 ]: Insertion Results as (start time, end time, completion time): (1343237017.75, 1343237017.91, 0.125)
+2012-07-25 10:23:38,150 INFO  verde-0 thread-0 [ run-18 ]: Query     Results as (start time, end time, completion time): (1343237017.91, 1343237018.15, 0.240999937057)
+2012-07-25 10:23:38,151 INFO  verde-0 thread-0 [ run-18 ]: The database size is now 18495248 bytes.
+2012-07-25 10:23:38,307 INFO  verde-0 thread-0 [ run-19 ]: Insertion Results as (start time, end time, completion time): (1343237018.16, 1343237018.31, 0.123000621796)
+2012-07-25 10:23:38,565 INFO  verde-0 thread-0 [ run-19 ]: Query     Results as (start time, end time, completion time): (1343237018.31, 1343237018.56, 0.255999803543)
+2012-07-25 10:23:38,566 INFO  verde-0 thread-0 [ run-19 ]: The database size is now 19158800 bytes.
+2012-07-25 10:23:38,835 INFO  verde-0 thread-0 [ run-20 ]: Insertion Results as (start time, end time, completion time): (1343237018.57, 1343237018.83, 0.207999229431)
+2012-07-25 10:23:39,109 INFO  verde-0 thread-0 [ run-20 ]: Query     Results as (start time, end time, completion time): (1343237018.84, 1343237019.11, 0.272000074387)
+2012-07-25 10:23:39,111 INFO  verde-0 thread-0 [ run-20 ]: The database size is now 19822352 bytes.
+2012-07-25 10:23:39,397 INFO  verde-0 thread-0 [ run-21 ]: Insertion Results as (start time, end time, completion time): (1343237019.12, 1343237019.4, 0.22100019455)
+2012-07-25 10:23:39,702 INFO  verde-0 thread-0 [ run-21 ]: Query     Results as (start time, end time, completion time): (1343237019.4, 1343237019.7, 0.302000045776)
+2012-07-25 10:23:39,704 INFO  verde-0 thread-0 [ run-21 ]: The database size is now 20485904 bytes.
+2012-07-25 10:23:39,982 INFO  verde-0 thread-0 [ run-22 ]: Insertion Results as (start time, end time, completion time): (1343237019.71, 1343237019.98, 0.21799993515)
+2012-07-25 10:23:40,284 INFO  verde-0 thread-0 [ run-22 ]: Query     Results as (start time, end time, completion time): (1343237019.98, 1343237020.28, 0.300999879837)
+2012-07-25 10:23:40,286 INFO  verde-0 thread-0 [ run-22 ]: The database size is now 21157648 bytes.
+2012-07-25 10:23:40,569 INFO  verde-0 thread-0 [ run-23 ]: Insertion Results as (start time, end time, completion time): (1343237020.29, 1343237020.57, 0.221999645233)
+2012-07-25 10:23:40,883 INFO  verde-0 thread-0 [ run-23 ]: Query     Results as (start time, end time, completion time): (1343237020.57, 1343237020.88, 0.31299996376)
+2012-07-25 10:23:40,885 INFO  verde-0 thread-0 [ run-23 ]: The database size is now 21821200 bytes.
+2012-07-25 10:23:41,169 INFO  verde-0 thread-0 [ run-24 ]: Insertion Results as (start time, end time, completion time): (1343237020.89, 1343237021.17, 0.22200012207)
+2012-07-25 10:23:41,491 INFO  verde-0 thread-0 [ run-24 ]: Query     Results as (start time, end time, completion time): (1343237021.17, 1343237021.49, 0.321000099182)
+2012-07-25 10:23:41,492 INFO  verde-0 thread-0 [ run-24 ]: The database size is now 22484752 bytes.
+2012-07-25 10:23:41,789 INFO  verde-0 thread-0 [ run-25 ]: Insertion Results as (start time, end time, completion time): (1343237021.5, 1343237021.79, 0.225999355316)
+2012-07-25 10:23:42,129 INFO  verde-0 thread-0 [ run-25 ]: Query     Results as (start time, end time, completion time): (1343237021.79, 1343237022.13, 0.338000059128)
+2012-07-25 10:23:42,131 INFO  verde-0 thread-0 [ run-25 ]: The database size is now 23164688 bytes.
+2012-07-25 10:23:42,419 INFO  verde-0 thread-0 [ run-26 ]: Insertion Results as (start time, end time, completion time): (1343237022.14, 1343237022.42, 0.226998806)
+2012-07-25 10:23:42,773 INFO  verde-0 thread-0 [ run-26 ]: Query     Results as (start time, end time, completion time): (1343237022.42, 1343237022.77, 0.353000164032)
+2012-07-25 10:23:42,774 INFO  verde-0 thread-0 [ run-26 ]: The database size is now 23828240 bytes.
+2012-07-25 10:23:43,059 INFO  verde-0 thread-0 [ run-27 ]: Insertion Results as (start time, end time, completion time): (1343237022.78, 1343237023.06, 0.224000453949)
+2012-07-25 10:23:43,422 INFO  verde-0 thread-0 [ run-27 ]: Query     Results as (start time, end time, completion time): (1343237023.06, 1343237023.42, 0.361000061035)
+2012-07-25 10:23:43,423 INFO  verde-0 thread-0 [ run-27 ]: The database size is now 24491792 bytes.
+2012-07-25 10:23:43,725 INFO  verde-0 thread-0 [ run-28 ]: Insertion Results as (start time, end time, completion time): (1343237023.43, 1343237023.72, 0.225998878479)
+2012-07-25 10:23:44,111 INFO  verde-0 thread-0 [ run-28 ]: Query     Results as (start time, end time, completion time): (1343237023.73, 1343237024.11, 0.383999824524)
+2012-07-25 10:23:44,113 INFO  verde-0 thread-0 [ run-28 ]: The database size is now 25163536 bytes.
+2012-07-25 10:23:44,400 INFO  verde-0 thread-0 [ run-29 ]: Insertion Results as (start time, end time, completion time): (1343237024.12, 1343237024.4, 0.228998661041)
+2012-07-25 10:23:44,790 INFO  verde-0 thread-0 [ run-29 ]: Query     Results as (start time, end time, completion time): (1343237024.4, 1343237024.79, 0.388999938965)
+2012-07-25 10:23:44,792 INFO  verde-0 thread-0 [ run-29 ]: The database size is now 25827088 bytes.
+2012-07-25 10:23:45,073 INFO  verde-0 thread-0 [ run-30 ]: Insertion Results as (start time, end time, completion time): (1343237024.8, 1343237025.07, 0.215000629425)
+2012-07-25 10:23:45,472 INFO  verde-0 thread-0 [ run-30 ]: Query     Results as (start time, end time, completion time): (1343237025.07, 1343237025.47, 0.398999929428)
+2012-07-25 10:23:45,474 INFO  verde-0 thread-0 [ run-30 ]: The database size is now 26490640 bytes.
+2012-07-25 10:23:45,708 INFO  verde-0 thread-0 [ run-31 ]: Insertion Results as (start time, end time, completion time): (1343237025.48, 1343237025.71, 0.184000968933)
+2012-07-25 10:23:46,133 INFO  verde-0 thread-0 [ run-31 ]: Query     Results as (start time, end time, completion time): (1343237025.71, 1343237026.13, 0.421000003815)
+2012-07-25 10:23:46,135 INFO  verde-0 thread-0 [ run-31 ]: The database size is now 27162384 bytes.
+2012-07-25 10:23:46,295 INFO  verde-0 thread-0 [ run-32 ]: Insertion Results as (start time, end time, completion time): (1343237026.14, 1343237026.29, 0.123000621796)
+2012-07-25 10:23:46,724 INFO  verde-0 thread-0 [ run-32 ]: Query     Results as (start time, end time, completion time): (1343237026.3, 1343237026.72, 0.427999973297)
+2012-07-25 10:23:46,725 INFO  verde-0 thread-0 [ run-32 ]: The database size is now 27825936 bytes.
+2012-07-25 10:23:47,009 INFO  verde-0 thread-0 [ run-33 ]: Insertion Results as (start time, end time, completion time): (1343237026.73, 1343237027.01, 0.229999303818)
+2012-07-25 10:23:47,447 INFO  verde-0 thread-0 [ run-33 ]: Query     Results as (start time, end time, completion time): (1343237027.01, 1343237027.45, 0.436000108719)
+2012-07-25 10:23:47,449 INFO  verde-0 thread-0 [ run-33 ]: The database size is now 28489488 bytes.
+2012-07-25 10:23:47,690 INFO  verde-0 thread-0 [ run-34 ]: Insertion Results as (start time, end time, completion time): (1343237027.45, 1343237027.69, 0.183001279831)
+2012-07-25 10:23:48,141 INFO  verde-0 thread-0 [ run-34 ]: Query     Results as (start time, end time, completion time): (1343237027.69, 1343237028.14, 0.450000047684)
+2012-07-25 10:23:48,143 INFO  verde-0 thread-0 [ run-34 ]: The database size is now 29161232 bytes.
+2012-07-25 10:23:48,426 INFO  verde-0 thread-0 [ run-35 ]: Insertion Results as (start time, end time, completion time): (1343237028.15, 1343237028.42, 0.22100019455)
+2012-07-25 10:23:48,889 INFO  verde-0 thread-0 [ run-35 ]: Query     Results as (start time, end time, completion time): (1343237028.43, 1343237028.89, 0.460999965668)
+2012-07-25 10:23:48,890 INFO  verde-0 thread-0 [ run-35 ]: The database size is now 29832976 bytes.
+2012-07-25 10:23:49,175 INFO  verde-0 thread-0 [ run-36 ]: Insertion Results as (start time, end time, completion time): (1343237028.89, 1343237029.17, 0.225000143051)
+2012-07-25 10:25:27,616 INFO  verde-0 thread-0 [ run-36 ]: Query     Results as (start time, end time, completion time): (1343237029.18, 1343237127.61, 98.4379999638)
+2012-07-25 10:25:27,619 INFO  verde-0 thread-0 [ run-36 ]: The database size is now 30496528 bytes.
+2012-07-25 10:25:27,842 INFO  verde-0 thread-0 [ run-37 ]: Insertion Results as (start time, end time, completion time): (1343237127.62, 1343237127.84, 0.166999816895)
+2012-07-25 10:25:28,331 INFO  verde-0 thread-0 [ run-37 ]: Query     Results as (start time, end time, completion time): (1343237127.84, 1343237128.33, 0.486999988556)
+2012-07-25 10:25:28,332 INFO  verde-0 thread-0 [ run-37 ]: The database size is now 31176464 bytes.
+2012-07-25 10:25:28,614 INFO  verde-0 thread-0 [ run-38 ]: Insertion Results as (start time, end time, completion time): (1343237128.34, 1343237128.61, 0.22300028801)
+2012-07-25 10:25:29,115 INFO  verde-0 thread-0 [ run-38 ]: Query     Results as (start time, end time, completion time): (1343237128.62, 1343237129.11, 0.499000072479)
+2012-07-25 10:25:29,117 INFO  verde-0 thread-0 [ run-38 ]: The database size is now 31840016 bytes.
+2012-07-25 10:25:29,395 INFO  verde-0 thread-0 [ run-39 ]: Insertion Results as (start time, end time, completion time): (1343237129.12, 1343237129.39, 0.220000505447)
+2012-07-25 10:25:29,929 INFO  verde-0 thread-0 [ run-39 ]: Query     Results as (start time, end time, completion time): (1343237129.4, 1343237129.93, 0.53200006485)
+2012-07-25 10:25:29,931 INFO  verde-0 thread-0 [ run-39 ]: The database size is now 32503568 bytes.
+2012-07-25 10:25:30,158 INFO  verde-0 thread-0 [ run-40 ]: Insertion Results as (start time, end time, completion time): (1343237129.94, 1343237130.16, 0.167000770569)
+2012-07-25 10:25:30,677 INFO  verde-0 thread-0 [ run-40 ]: Query     Results as (start time, end time, completion time): (1343237130.16, 1343237130.68, 0.517000198364)
+2012-07-25 10:25:30,678 INFO  verde-0 thread-0 [ run-40 ]: The database size is now 33175312 bytes.
+2012-07-25 10:25:30,965 INFO  verde-0 thread-0 [ run-41 ]: Insertion Results as (start time, end time, completion time): (1343237130.68, 1343237130.96, 0.224998950958)
+2012-07-25 10:25:31,502 INFO  verde-0 thread-0 [ run-41 ]: Query     Results as (start time, end time, completion time): (1343237130.96, 1343237131.5, 0.536000013351)
+2012-07-25 10:25:31,503 INFO  verde-0 thread-0 [ run-41 ]: The database size is now 33838864 bytes.
+2012-07-25 10:25:31,782 INFO  verde-0 thread-0 [ run-42 ]: Insertion Results as (start time, end time, completion time): (1343237131.51, 1343237131.78, 0.214999675751)
+2012-07-25 10:25:32,335 INFO  verde-0 thread-0 [ run-42 ]: Query     Results as (start time, end time, completion time): (1343237131.78, 1343237132.33, 0.552000045776)
+2012-07-25 10:25:32,336 INFO  verde-0 thread-0 [ run-42 ]: The database size is now 34502416 bytes.
+2012-07-25 10:25:32,610 INFO  verde-0 thread-0 [ run-43 ]: Insertion Results as (start time, end time, completion time): (1343237132.34, 1343237132.61, 0.211999416351)
+2012-07-25 10:25:33,174 INFO  verde-0 thread-0 [ run-43 ]: Query     Results as (start time, end time, completion time): (1343237132.61, 1343237133.17, 0.56200003624)
+2012-07-25 10:25:33,176 INFO  verde-0 thread-0 [ run-43 ]: The database size is now 35174160 bytes.
+2012-07-25 10:25:33,452 INFO  verde-0 thread-0 [ run-44 ]: Insertion Results as (start time, end time, completion time): (1343237133.18, 1343237133.45, 0.219000816345)
+2012-07-25 10:25:34,031 INFO  verde-0 thread-0 [ run-44 ]: Query     Results as (start time, end time, completion time): (1343237133.45, 1343237134.03, 0.578000068665)
+2012-07-25 10:25:34,032 INFO  verde-0 thread-0 [ run-44 ]: The database size is now 35837712 bytes.
+2012-07-25 10:25:34,337 INFO  verde-0 thread-0 [ run-45 ]: Insertion Results as (start time, end time, completion time): (1343237134.04, 1343237134.34, 0.219999551773)
+2012-07-25 10:25:34,926 INFO  verde-0 thread-0 [ run-45 ]: Query     Results as (start time, end time, completion time): (1343237134.34, 1343237134.92, 0.586999893188)
+2012-07-25 10:25:34,927 INFO  verde-0 thread-0 [ run-45 ]: The database size is now 36501264 bytes.
+2012-07-25 10:25:35,236 INFO  verde-0 thread-0 [ run-46 ]: Insertion Results as (start time, end time, completion time): (1343237134.93, 1343237135.23, 0.221999168396)
+2012-07-25 10:25:35,841 INFO  verde-0 thread-0 [ run-46 ]: Query     Results as (start time, end time, completion time): (1343237135.24, 1343237135.84, 0.602999925613)
+2012-07-25 10:25:35,842 INFO  verde-0 thread-0 [ run-46 ]: The database size is now 37181200 bytes.
+2012-07-25 10:25:36,125 INFO  verde-0 thread-0 [ run-47 ]: Insertion Results as (start time, end time, completion time): (1343237135.85, 1343237136.12, 0.22000002861)
+2012-07-25 10:25:36,737 INFO  verde-0 thread-0 [ run-47 ]: Query     Results as (start time, end time, completion time): (1343237136.13, 1343237136.74, 0.610000133514)
+2012-07-25 10:25:36,739 INFO  verde-0 thread-0 [ run-47 ]: The database size is now 37844752 bytes.
+2012-07-25 10:25:37,018 INFO  verde-0 thread-0 [ run-48 ]: Insertion Results as (start time, end time, completion time): (1343237136.74, 1343237137.02, 0.215000152588)
+2012-07-25 10:25:37,650 INFO  verde-0 thread-0 [ run-48 ]: Query     Results as (start time, end time, completion time): (1343237137.02, 1343237137.65, 0.631000041962)
+2012-07-25 10:25:37,652 INFO  verde-0 thread-0 [ run-48 ]: The database size is now 38508304 bytes.
+2012-07-25 10:25:37,933 INFO  verde-0 thread-0 [ run-49 ]: Insertion Results as (start time, end time, completion time): (1343237137.66, 1343237137.93, 0.219999313354)
+2012-07-25 10:25:38,575 INFO  verde-0 thread-0 [ run-49 ]: Query     Results as (start time, end time, completion time): (1343237137.93, 1343237138.57, 0.639999866486)
+2012-07-25 10:25:38,577 INFO  verde-0 thread-0 [ run-49 ]: The database size is now 39180048 bytes.
+2012-07-25 10:25:38,820 INFO  verde-0 thread-0 [ run-50 ]: Insertion Results as (start time, end time, completion time): (1343237138.58, 1343237138.82, 0.188998699188)
+2012-07-25 10:25:39,478 INFO  verde-0 thread-0 [ run-50 ]: Query     Results as (start time, end time, completion time): (1343237138.82, 1343237139.48, 0.65700006485)
+2012-07-25 10:25:39,480 INFO  verde-0 thread-0 [ run-50 ]: The database size is now 39843600 bytes.
+2012-07-25 10:25:39,769 INFO  verde-0 thread-0 [ run-51 ]: Insertion Results as (start time, end time, completion time): (1343237139.48, 1343237139.77, 0.230999469757)
+2012-07-25 10:25:40,437 INFO  verde-0 thread-0 [ run-51 ]: Query     Results as (start time, end time, completion time): (1343237139.77, 1343237140.44, 0.666000127792)
+2012-07-25 10:25:40,439 INFO  verde-0 thread-0 [ run-51 ]: The database size is now 40507152 bytes.
+2012-07-25 10:25:40,720 INFO  verde-0 thread-0 [ run-52 ]: Insertion Results as (start time, end time, completion time): (1343237140.44, 1343237140.72, 0.227000236511)
+2012-07-25 10:25:41,395 INFO  verde-0 thread-0 [ run-52 ]: Query     Results as (start time, end time, completion time): (1343237140.72, 1343237141.39, 0.674000024796)
+2012-07-25 10:25:41,397 INFO  verde-0 thread-0 [ run-52 ]: The database size is now 41170704 bytes.
+2012-07-25 10:25:41,681 INFO  verde-0 thread-0 [ run-53 ]: Insertion Results as (start time, end time, completion time): (1343237141.4, 1343237141.68, 0.228999853134)
+2012-07-25 10:25:42,369 INFO  verde-0 thread-0 [ run-53 ]: Query     Results as (start time, end time, completion time): (1343237141.68, 1343237142.37, 0.685000181198)
+2012-07-25 10:25:42,370 INFO  verde-0 thread-0 [ run-53 ]: The database size is now 41842448 bytes.
+2012-07-25 10:25:42,687 INFO  verde-0 thread-0 [ run-54 ]: Insertion Results as (start time, end time, completion time): (1343237142.37, 1343237142.68, 0.227000713348)
+2012-07-25 10:25:43,390 INFO  verde-0 thread-0 [ run-54 ]: Query     Results as (start time, end time, completion time): (1343237142.69, 1343237143.39, 0.701999902725)
+2012-07-25 10:25:43,391 INFO  verde-0 thread-0 [ run-54 ]: The database size is now 42506000 bytes.
+2012-07-25 10:25:43,709 INFO  verde-0 thread-0 [ run-55 ]: Insertion Results as (start time, end time, completion time): (1343237143.4, 1343237143.71, 0.232000350952)
+2012-07-25 10:25:44,489 INFO  verde-0 thread-0 [ run-55 ]: Query     Results as (start time, end time, completion time): (1343237143.71, 1343237144.49, 0.77799987793)
+2012-07-25 10:25:44,491 INFO  verde-0 thread-0 [ run-55 ]: The database size is now 43177744 bytes.
+2012-07-25 10:25:44,774 INFO  verde-0 thread-0 [ run-56 ]: Insertion Results as (start time, end time, completion time): (1343237144.5, 1343237144.77, 0.22100019455)
+2012-07-25 10:25:45,503 INFO  verde-0 thread-0 [ run-56 ]: Query     Results as (start time, end time, completion time): (1343237144.78, 1343237145.5, 0.726999998093)
+2012-07-25 10:25:45,504 INFO  verde-0 thread-0 [ run-56 ]: The database size is now 43857680 bytes.
+2012-07-25 10:25:45,782 INFO  verde-0 thread-0 [ run-57 ]: Insertion Results as (start time, end time, completion time): (1343237145.51, 1343237145.78, 0.218000173569)
+2012-07-25 10:25:46,522 INFO  verde-0 thread-0 [ run-57 ]: Query     Results as (start time, end time, completion time): (1343237145.78, 1343237146.52, 0.738999843597)
+2012-07-25 10:25:46,524 INFO  verde-0 thread-0 [ run-57 ]: The database size is now 44521232 bytes.
+2012-07-25 10:25:46,805 INFO  verde-0 thread-0 [ run-58 ]: Insertion Results as (start time, end time, completion time): (1343237146.53, 1343237146.8, 0.22200012207)
+2012-07-25 10:25:47,557 INFO  verde-0 thread-0 [ run-58 ]: Query     Results as (start time, end time, completion time): (1343237146.8, 1343237147.56, 0.750999927521)
+2012-07-25 10:25:47,559 INFO  verde-0 thread-0 [ run-58 ]: The database size is now 45184784 bytes.
+2012-07-25 10:25:47,790 INFO  verde-0 thread-0 [ run-59 ]: Insertion Results as (start time, end time, completion time): (1343237147.56, 1343237147.79, 0.182000875473)
+2012-07-25 10:25:48,558 INFO  verde-0 thread-0 [ run-59 ]: Query     Results as (start time, end time, completion time): (1343237147.79, 1343237148.56, 0.766000032425)
+2012-07-25 10:25:48,559 INFO  verde-0 thread-0 [ run-59 ]: The database size is now 45856528 bytes.
+2012-07-25 10:25:48,844 INFO  verde-0 thread-0 [ run-60 ]: Insertion Results as (start time, end time, completion time): (1343237148.56, 1343237148.84, 0.219999313354)
+2012-07-25 10:25:49,619 INFO  verde-0 thread-0 [ run-60 ]: Query     Results as (start time, end time, completion time): (1343237148.84, 1343237149.62, 0.773999929428)
+2012-07-25 10:25:49,621 INFO  verde-0 thread-0 [ run-60 ]: The database size is now 46520080 bytes.
+2012-07-25 10:25:49,900 INFO  verde-0 thread-0 [ run-61 ]: Insertion Results as (start time, end time, completion time): (1343237149.62, 1343237149.9, 0.219000339508)
+2012-07-25 10:25:50,709 INFO  verde-0 thread-0 [ run-61 ]: Query     Results as (start time, end time, completion time): (1343237149.9, 1343237150.71, 0.805000066757)
+2012-07-25 10:25:50,711 INFO  verde-0 thread-0 [ run-61 ]: The database size is now 47183632 bytes.
+2012-07-25 10:25:51,003 INFO  verde-0 thread-0 [ run-62 ]: Insertion Results as (start time, end time, completion time): (1343237150.72, 1343237151.0, 0.230998516083)
+2012-07-25 10:25:51,807 INFO  verde-0 thread-0 [ run-62 ]: Query     Results as (start time, end time, completion time): (1343237151.0, 1343237151.81, 0.802999973297)
+2012-07-25 10:25:51,809 INFO  verde-0 thread-0 [ run-62 ]: The database size is now 47855376 bytes.
+2012-07-25 10:25:52,091 INFO  verde-0 thread-0 [ run-63 ]: Insertion Results as (start time, end time, completion time): (1343237151.81, 1343237152.09, 0.22000002861)
+2012-07-25 10:25:52,911 INFO  verde-0 thread-0 [ run-63 ]: Query     Results as (start time, end time, completion time): (1343237152.09, 1343237152.91, 0.819000005722)
+2012-07-25 10:25:52,913 INFO  verde-0 thread-0 [ run-63 ]: The database size is now 48518928 bytes.
+2012-07-25 10:25:53,194 INFO  verde-0 thread-0 [ run-64 ]: Insertion Results as (start time, end time, completion time): (1343237152.92, 1343237153.19, 0.220000267029)
+2012-07-25 10:25:54,020 INFO  verde-0 thread-0 [ run-64 ]: Query     Results as (start time, end time, completion time): (1343237153.2, 1343237154.02, 0.822999954224)
+2012-07-25 10:25:54,021 INFO  verde-0 thread-0 [ run-64 ]: The database size is now 49182480 bytes.
+2012-07-25 10:25:54,273 INFO  verde-0 thread-0 [ run-65 ]: Insertion Results as (start time, end time, completion time): (1343237154.02, 1343237154.27, 0.194000720978)
+2012-07-25 10:25:55,115 INFO  verde-0 thread-0 [ run-65 ]: Query     Results as (start time, end time, completion time): (1343237154.27, 1343237155.11, 0.841000080109)
+2012-07-25 10:25:55,117 INFO  verde-0 thread-0 [ run-65 ]: The database size is now 49854224 bytes.
+2012-07-25 10:25:55,399 INFO  verde-0 thread-0 [ run-66 ]: Insertion Results as (start time, end time, completion time): (1343237155.12, 1343237155.4, 0.22200012207)
+2012-07-25 10:25:56,257 INFO  verde-0 thread-0 [ run-66 ]: Query     Results as (start time, end time, completion time): (1343237155.4, 1343237156.26, 0.857000112534)
+2012-07-25 10:25:56,259 INFO  verde-0 thread-0 [ run-66 ]: The database size is now 50517776 bytes.
+2012-07-25 10:25:56,579 INFO  verde-0 thread-0 [ run-67 ]: Insertion Results as (start time, end time, completion time): (1343237156.26, 1343237156.58, 0.227999687195)
+2012-07-25 10:25:57,454 INFO  verde-0 thread-0 [ run-67 ]: Query     Results as (start time, end time, completion time): (1343237156.58, 1343237157.45, 0.873000144958)
+2012-07-25 10:25:57,455 INFO  verde-0 thread-0 [ run-67 ]: The database size is now 51189520 bytes.
+2012-07-25 10:25:57,770 INFO  verde-0 thread-0 [ run-68 ]: Insertion Results as (start time, end time, completion time): (1343237157.46, 1343237157.77, 0.223999977112)
+2012-07-25 10:25:58,653 INFO  verde-0 thread-0 [ run-68 ]: Query     Results as (start time, end time, completion time): (1343237157.77, 1343237158.65, 0.881000041962)
+2012-07-25 10:25:58,655 INFO  verde-0 thread-0 [ run-68 ]: The database size is now 51861264 bytes.
+2012-07-25 10:25:58,975 INFO  verde-0 thread-0 [ run-69 ]: Insertion Results as (start time, end time, completion time): (1343237158.66, 1343237158.97, 0.225999116898)
+2012-07-25 10:25:59,891 INFO  verde-0 thread-0 [ run-69 ]: Query     Results as (start time, end time, completion time): (1343237158.98, 1343237159.89, 0.912999868393)
+2012-07-25 10:25:59,893 INFO  verde-0 thread-0 [ run-69 ]: The database size is now 52524816 bytes.
+2012-07-25 10:26:00,094 INFO  verde-0 thread-0 [ run-70 ]: Insertion Results as (start time, end time, completion time): (1343237159.9, 1343237160.09, 0.155999660492)
+2012-07-25 10:26:00,998 INFO  verde-0 thread-0 [ run-70 ]: Query     Results as (start time, end time, completion time): (1343237160.1, 1343237161.0, 0.901999950409)
+2012-07-25 10:26:01,000 INFO  verde-0 thread-0 [ run-70 ]: The database size is now 53188368 bytes.
+2012-07-25 10:26:01,524 INFO  verde-0 thread-0 [ run-71 ]: Insertion Results as (start time, end time, completion time): (1343237161.0, 1343237161.52, 0.467000246048)
+2012-07-25 10:26:02,441 INFO  verde-0 thread-0 [ run-71 ]: Query     Results as (start time, end time, completion time): (1343237161.52, 1343237162.44, 0.914999961853)
+2012-07-25 10:26:02,443 INFO  verde-0 thread-0 [ run-71 ]: The database size is now 53860112 bytes.
+2012-07-25 10:26:02,723 INFO  verde-0 thread-0 [ run-72 ]: Insertion Results as (start time, end time, completion time): (1343237162.45, 1343237162.72, 0.223999500275)
+2012-07-25 10:26:03,653 INFO  verde-0 thread-0 [ run-72 ]: Query     Results as (start time, end time, completion time): (1343237162.72, 1343237163.65, 0.927999973297)
+2012-07-25 10:26:03,655 INFO  verde-0 thread-0 [ run-72 ]: The database size is now 54523664 bytes.
+2012-07-25 10:26:03,940 INFO  verde-0 thread-0 [ run-73 ]: Insertion Results as (start time, end time, completion time): (1343237163.66, 1343237163.94, 0.229000329971)
+2012-07-25 10:26:04,881 INFO  verde-0 thread-0 [ run-73 ]: Query     Results as (start time, end time, completion time): (1343237163.94, 1343237164.88, 0.9390001297)
+2012-07-25 10:26:04,882 INFO  verde-0 thread-0 [ run-73 ]: The database size is now 55187216 bytes.
+2012-07-25 10:26:05,164 INFO  verde-0 thread-0 [ run-74 ]: Insertion Results as (start time, end time, completion time): (1343237164.89, 1343237165.16, 0.220000505447)
+2012-07-25 10:26:06,116 INFO  verde-0 thread-0 [ run-74 ]: Query     Results as (start time, end time, completion time): (1343237165.16, 1343237166.12, 0.950000047684)
+2012-07-25 10:26:06,118 INFO  verde-0 thread-0 [ run-74 ]: The database size is now 55867152 bytes.
+2012-07-25 10:26:06,392 INFO  verde-0 thread-0 [ run-75 ]: Insertion Results as (start time, end time, completion time): (1343237166.12, 1343237166.39, 0.217999458313)
+2012-07-25 10:26:07,362 INFO  verde-0 thread-0 [ run-75 ]: Query     Results as (start time, end time, completion time): (1343237166.39, 1343237167.36, 0.969000101089)
+2012-07-25 10:26:07,364 INFO  verde-0 thread-0 [ run-75 ]: The database size is now 56538896 bytes.
+2012-07-25 10:26:07,644 INFO  verde-0 thread-0 [ run-76 ]: Insertion Results as (start time, end time, completion time): (1343237167.37, 1343237167.64, 0.220000267029)
+2012-07-25 10:26:08,723 INFO  verde-0 thread-0 [ run-76 ]: Query     Results as (start time, end time, completion time): (1343237167.64, 1343237168.72, 1.07699990273)
+2012-07-25 10:26:08,724 INFO  verde-0 thread-0 [ run-76 ]: The database size is now 57202448 bytes.
+2012-07-25 10:26:09,002 INFO  verde-0 thread-0 [ run-77 ]: Insertion Results as (start time, end time, completion time): (1343237168.73, 1343237169.0, 0.21799993515)
+2012-07-25 10:26:09,986 INFO  verde-0 thread-0 [ run-77 ]: Query     Results as (start time, end time, completion time): (1343237169.0, 1343237169.98, 0.982999801636)
+2012-07-25 10:26:09,987 INFO  verde-0 thread-0 [ run-77 ]: The database size is now 57882384 bytes.
+2012-07-25 10:26:10,233 INFO  verde-0 thread-0 [ run-78 ]: Insertion Results as (start time, end time, completion time): (1343237169.99, 1343237170.23, 0.190000534058)
+2012-07-25 10:26:11,234 INFO  verde-0 thread-0 [ run-78 ]: Query     Results as (start time, end time, completion time): (1343237170.23, 1343237171.23, 0.999000072479)
+2012-07-25 10:26:11,236 INFO  verde-0 thread-0 [ run-78 ]: The database size is now 58545936 bytes.
+2012-07-25 10:26:11,511 INFO  verde-0 thread-0 [ run-79 ]: Insertion Results as (start time, end time, completion time): (1343237171.24, 1343237171.51, 0.211000442505)
+2012-07-25 10:26:12,531 INFO  verde-0 thread-0 [ run-79 ]: Query     Results as (start time, end time, completion time): (1343237171.51, 1343237172.53, 1.01799988747)
+2012-07-25 10:26:12,532 INFO  verde-0 thread-0 [ run-79 ]: The database size is now 59209488 bytes.
+2012-07-25 10:26:12,803 INFO  verde-0 thread-0 [ run-80 ]: Insertion Results as (start time, end time, completion time): (1343237172.54, 1343237172.8, 0.213000059128)
+2012-07-25 10:26:13,837 INFO  verde-0 thread-0 [ run-80 ]: Query     Results as (start time, end time, completion time): (1343237172.8, 1343237173.84, 1.03200006485)
+2012-07-25 10:26:13,838 INFO  verde-0 thread-0 [ run-80 ]: The database size is now 59881232 bytes.
+2012-07-25 10:26:14,116 INFO  verde-0 thread-0 [ run-81 ]: Insertion Results as (start time, end time, completion time): (1343237173.84, 1343237174.12, 0.218000888824)
+2012-07-25 10:26:15,159 INFO  verde-0 thread-0 [ run-81 ]: Query     Results as (start time, end time, completion time): (1343237174.12, 1343237175.16, 1.04099988937)
+2012-07-25 10:26:15,160 INFO  verde-0 thread-0 [ run-81 ]: The database size is now 60544784 bytes.
+2012-07-25 10:26:15,437 INFO  verde-0 thread-0 [ run-82 ]: Insertion Results as (start time, end time, completion time): (1343237175.16, 1343237175.44, 0.214000940323)
+2012-07-25 10:26:16,493 INFO  verde-0 thread-0 [ run-82 ]: Query     Results as (start time, end time, completion time): (1343237175.44, 1343237176.49, 1.05500006676)
+2012-07-25 10:26:16,495 INFO  verde-0 thread-0 [ run-82 ]: The database size is now 61208336 bytes.
+2012-07-25 10:26:16,771 INFO  verde-0 thread-0 [ run-83 ]: Insertion Results as (start time, end time, completion time): (1343237176.5, 1343237176.77, 0.213999986649)
+2012-07-25 10:26:17,837 INFO  verde-0 thread-0 [ run-83 ]: Query     Results as (start time, end time, completion time): (1343237176.77, 1343237177.84, 1.06500005722)
+2012-07-25 10:26:17,839 INFO  verde-0 thread-0 [ run-83 ]: The database size is now 61871888 bytes.
+2012-07-25 10:26:18,138 INFO  verde-0 thread-0 [ run-84 ]: Insertion Results as (start time, end time, completion time): (1343237177.84, 1343237178.14, 0.223001241684)
+2012-07-25 10:26:19,220 INFO  verde-0 thread-0 [ run-84 ]: Query     Results as (start time, end time, completion time): (1343237178.14, 1343237179.22, 1.08100008965)
+2012-07-25 10:26:19,222 INFO  verde-0 thread-0 [ run-84 ]: The database size is now 62543632 bytes.
+2012-07-25 10:26:19,537 INFO  verde-0 thread-0 [ run-85 ]: Insertion Results as (start time, end time, completion time): (1343237179.23, 1343237179.54, 0.223000764847)
+2012-07-25 10:26:20,639 INFO  verde-0 thread-0 [ run-85 ]: Query     Results as (start time, end time, completion time): (1343237179.54, 1343237180.64, 1.09999990463)
+2012-07-25 10:26:20,641 INFO  verde-0 thread-0 [ run-85 ]: The database size is now 63207184 bytes.
+2012-07-25 10:26:20,951 INFO  verde-0 thread-0 [ run-86 ]: Insertion Results as (start time, end time, completion time): (1343237180.64, 1343237180.95, 0.22100019455)
+2012-07-25 10:26:22,078 INFO  verde-0 thread-0 [ run-86 ]: Query     Results as (start time, end time, completion time): (1343237180.95, 1343237182.08, 1.125)
+2012-07-25 10:26:22,079 INFO  verde-0 thread-0 [ run-86 ]: The database size is now 63870736 bytes.
+2012-07-25 10:26:22,357 INFO  verde-0 thread-0 [ run-87 ]: Insertion Results as (start time, end time, completion time): (1343237182.08, 1343237182.36, 0.217000007629)
+2012-07-25 10:26:23,473 INFO  verde-0 thread-0 [ run-87 ]: Query     Results as (start time, end time, completion time): (1343237182.36, 1343237183.47, 1.11500000954)
+2012-07-25 10:26:23,475 INFO  verde-0 thread-0 [ run-87 ]: The database size is now 64550672 bytes.
+2012-07-25 10:26:23,750 INFO  verde-0 thread-0 [ run-88 ]: Insertion Results as (start time, end time, completion time): (1343237183.48, 1343237183.75, 0.213000059128)
+2012-07-25 10:26:24,877 INFO  verde-0 thread-0 [ run-88 ]: Query     Results as (start time, end time, completion time): (1343237183.75, 1343237184.88, 1.125)
+2012-07-25 10:26:24,878 INFO  verde-0 thread-0 [ run-88 ]: The database size is now 65214224 bytes.
+2012-07-25 10:26:25,152 INFO  verde-0 thread-0 [ run-89 ]: Insertion Results as (start time, end time, completion time): (1343237184.88, 1343237185.15, 0.210999727249)
+2012-07-25 10:26:26,298 INFO  verde-0 thread-0 [ run-89 ]: Query     Results as (start time, end time, completion time): (1343237185.15, 1343237186.3, 1.14399981499)
+2012-07-25 10:26:26,299 INFO  verde-0 thread-0 [ run-89 ]: The database size is now 65877776 bytes.
+2012-07-25 10:26:26,579 INFO  verde-0 thread-0 [ run-90 ]: Insertion Results as (start time, end time, completion time): (1343237186.3, 1343237186.58, 0.214999914169)
+2012-07-25 10:26:27,730 INFO  verde-0 thread-0 [ run-90 ]: Query     Results as (start time, end time, completion time): (1343237186.58, 1343237187.73, 1.15000009537)
+2012-07-25 10:26:27,731 INFO  verde-0 thread-0 [ run-90 ]: The database size is now 66549520 bytes.
+2012-07-25 10:26:27,961 INFO  verde-0 thread-0 [ run-91 ]: Insertion Results as (start time, end time, completion time): (1343237187.74, 1343237187.96, 0.186999559402)
+2012-07-25 10:26:29,136 INFO  verde-0 thread-0 [ run-91 ]: Query     Results as (start time, end time, completion time): (1343237187.96, 1343237189.14, 1.17300009727)
+2012-07-25 10:26:29,137 INFO  verde-0 thread-0 [ run-91 ]: The database size is now 67213072 bytes.
+2012-07-25 10:26:29,412 INFO  verde-0 thread-0 [ run-92 ]: Insertion Results as (start time, end time, completion time): (1343237189.14, 1343237189.41, 0.209000349045)
+2012-07-25 10:26:30,587 INFO  verde-0 thread-0 [ run-92 ]: Query     Results as (start time, end time, completion time): (1343237189.41, 1343237190.59, 1.17299985886)
+2012-07-25 10:26:30,588 INFO  verde-0 thread-0 [ run-92 ]: The database size is now 67884816 bytes.
+2012-07-25 10:26:30,869 INFO  verde-0 thread-0 [ run-93 ]: Insertion Results as (start time, end time, completion time): (1343237190.59, 1343237190.87, 0.22100019455)
+2012-07-25 10:26:32,060 INFO  verde-0 thread-0 [ run-93 ]: Query     Results as (start time, end time, completion time): (1343237190.87, 1343237192.06, 1.19000005722)
+2012-07-25 10:26:32,062 INFO  verde-0 thread-0 [ run-93 ]: The database size is now 68556560 bytes.
+2012-07-25 10:26:32,339 INFO  verde-0 thread-0 [ run-94 ]: Insertion Results as (start time, end time, completion time): (1343237192.07, 1343237192.34, 0.221999406815)
+2012-07-25 10:26:33,543 INFO  verde-0 thread-0 [ run-94 ]: Query     Results as (start time, end time, completion time): (1343237192.34, 1343237193.54, 1.20399999619)
+2012-07-25 10:26:33,545 INFO  verde-0 thread-0 [ run-94 ]: The database size is now 69220112 bytes.
+2012-07-25 10:26:33,809 INFO  verde-0 thread-0 [ run-95 ]: Insertion Results as (start time, end time, completion time): (1343237193.55, 1343237193.81, 0.207000017166)
+2012-07-25 10:26:35,047 INFO  verde-0 thread-0 [ run-95 ]: Query     Results as (start time, end time, completion time): (1343237193.81, 1343237195.04, 1.23500013351)
+2012-07-25 10:26:35,049 INFO  verde-0 thread-0 [ run-95 ]: The database size is now 69883664 bytes.
+2012-07-25 10:26:35,314 INFO  verde-0 thread-0 [ run-96 ]: Insertion Results as (start time, end time, completion time): (1343237195.05, 1343237195.31, 0.210000038147)
+2012-07-25 10:26:36,540 INFO  verde-0 thread-0 [ run-96 ]: Query     Results as (start time, end time, completion time): (1343237195.31, 1343237196.54, 1.22500014305)
+2012-07-25 10:26:36,541 INFO  verde-0 thread-0 [ run-96 ]: The database size is now 70555408 bytes.
+2012-07-25 10:26:36,818 INFO  verde-0 thread-0 [ run-97 ]: Insertion Results as (start time, end time, completion time): (1343237196.55, 1343237196.82, 0.221999168396)
+2012-07-25 10:26:38,061 INFO  verde-0 thread-0 [ run-97 ]: Query     Results as (start time, end time, completion time): (1343237196.82, 1343237198.06, 1.24099993706)
+2012-07-25 10:26:38,062 INFO  verde-0 thread-0 [ run-97 ]: The database size is now 71218960 bytes.
+2012-07-25 10:26:38,260 INFO  verde-0 thread-0 [ run-98 ]: Insertion Results as (start time, end time, completion time): (1343237198.07, 1343237198.26, 0.147001028061)
+2012-07-25 10:26:39,514 INFO  verde-0 thread-0 [ run-98 ]: Query     Results as (start time, end time, completion time): (1343237198.26, 1343237199.51, 1.25300002098)
+2012-07-25 10:26:39,516 INFO  verde-0 thread-0 [ run-98 ]: The database size is now 71890704 bytes.
+2012-07-25 10:26:39,792 INFO  verde-0 thread-0 [ run-99 ]: Insertion Results as (start time, end time, completion time): (1343237199.52, 1343237199.79, 0.214999914169)
+2012-07-25 10:26:41,053 INFO  verde-0 thread-0 [ run-99 ]: Query     Results as (start time, end time, completion time): (1343237199.79, 1343237201.05, 1.26099991798)
+2012-07-25 10:26:41,055 INFO  verde-0 thread-0 [ run-99 ]: The database size is now 72562448 bytes.
+2012-07-25 10:26:41,059 INFO  verde-0 thread-0 [ run-100 ]: Insertion finished at: 1343237201.06
+2012-07-25 10:26:41,065 INFO  verde-0 thread-0 [ run-100 ]: shut down
+2012-07-25 10:26:41,065 INFO  verde-0 thread-0: finished 100 runs
+2012-07-25 10:26:41,067 INFO  verde-0 : elapsed time is 191681 ms
+2012-07-25 10:26:41,067 INFO  verde-0 : Final statistics for this process:
+2012-07-25 10:26:41,083 INFO  verde-0 : 
+             Tests        Errors       Mean Test    Test Time    TPS          
+                                       Time (ms)    Standard                  
+                                                    Deviation                 
+                                                    (ms)                      
+
+
+Totals       0            0            �            0.00         0.00         
+
+  Tests resulting in error only contribute to the Errors column.          
+  Statistics for individual tests can be found in the data file, including
+  (possibly incomplete) statistics for erroneous tests. Composite tests   
+  are marked with () and not included in the totals.                      
+
