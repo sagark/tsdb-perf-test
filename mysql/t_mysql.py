@@ -123,16 +123,21 @@ class MySQLAccess(DBTest):
     def run_query_all(self):
         #this needs to be paginated, otherwise the statement can't handle it
         conn, s = self.dbconn, self.dbstate
-        #pts_query = s.executeQuery("select count(time) as ptsindb from grindertest")
-        #pts_query.next()
-        #pts_in_db = pts_query.getInt("ptsindb") 
-        
-        starttime = time.time()
-        #might want to paginate this so that mysql doesn't die
-        temp = s.executeQuery("select * from grindertest")
-        endtime = time.time()
-        completiontime = endtime - starttime
-        return [starttime, endtime, completiontime]
+        pts_query = s.executeQuery("select count(time) as ptsindb from grindertest")
+        pts_query.next()
+        pts_in_db = pts_query.getInt("ptsindb") 
+        ptcounter = 0
+        origstarttime = time.time()
+        completiontime = 0
+        while ptcounter < pts_in_db:
+            self.reset_conn_state()
+            starttime = time.time()
+            temp = s.executeQuery("select * from grindertest limit " + str(ptcounter) + ", 1000")
+            endtime = time.time()
+            completiontime += (endtime - starttime)
+            pts_in_db += 1000
+       
+        return [origstarttime, endtime, completiontime]
 
     def query(self, records, streams):
         """Query "records" records from "streams" streams""" 
