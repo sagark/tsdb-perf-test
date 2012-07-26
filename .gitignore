@@ -18,3 +18,7 @@
 # DB Configuration Files #
 ##########################
 *dbconfig.py
+
+# Non-sample grinder configuration files #
+##########################################
+*grinder.properties
