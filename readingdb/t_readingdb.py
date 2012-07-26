@@ -91,10 +91,19 @@ class ReadingDBAccess(DBTest):
         #subprocess.call(['gksudo', 'chown', '-R', 'readingdb',
         #                                                  '/var/lib/readingdb'])
         #make sure readingdb_drv/prep_server has been chmod +x'd
-        subprocess.call(['gksudo', 'readingdb_drv/prep_server'])
-        subprocess.Popen(['gksudo', 'reading-server'], stdin = None,
+        #first we need to find out if we are running as root:
+        p = subprocess.Popen(['whoami'], stdout = subprocess.PIPE)
+        out, err = p.communicate()
+        if 'root' in out:
+            subprocess.call(['readingdb_drv/prep_server_root'])
+            subprocess.Popen(['reading-server'], stdin = None,
                                             stdout = None, stderr = None)
-        time.sleep(5) #give reading-server 5 seconds to startup
+            #time.sleep(5) #give reading-server 5 seconds to startup
+        else:
+            subprocess.call(['gksudo', 'readingdb_drv/prep_server'])
+            subprocess.Popen(['gksudo', 'reading-server'], stdin = None,
+                                            stdout = None, stderr = None)
+            time.sleep(5) #give reading-server 5 seconds to startup
 
     def run_insert_w(self):
         #this code could use some optimization, but not critical

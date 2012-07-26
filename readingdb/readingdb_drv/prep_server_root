@@ -1,0 +1,5 @@
+pkill reading-server
+rm -r /var/lib/readingdb
+mkdir /var/lib/readingdb
+chown -R readingdb /var/lib/readingdb
+
