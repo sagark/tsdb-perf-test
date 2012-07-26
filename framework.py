@@ -1,4 +1,5 @@
 from random import choice
+import random
 import time
 
 
@@ -96,6 +97,52 @@ class TSdata_h(TSdata_w):
             return out
         else:
             raise StopIteration()
+
+class RandomTSdata_w(object):
+    def __init__(self, num_pts, num_streams, values_range):
+        """ Initialize the tsdata generator
+        Args:
+        num_pts -- the number of points to generate before raising StopIteration
+        num_streams -- number of streams to generate per point
+        values_range -- range(...) of valid values
+        """
+        self.num_pts = num_pts
+        self.pt_time = 946684800
+        self.timerange = list(xrange(self.pt_time, self.pt_time + self.num_pts))
+        self.streams = num_streams
+        self.valid_values = values_range
+        self.currentstream = 1
+    
+    def __iter__(self):
+        return self
+    
+    def next(self):
+        """ Returns a list of 3-tuples of (streamid, time, point) of length
+        num_streams."""
+        result = randremover(self.timerange)
+        if result is not None:
+            out = SubGenerator_w(self.streams, result, self.valid_values)
+            #self.num_pts -= 1
+            #self.pt_time += 1
+            return out
+        else:
+            raise StopIteration()
+
+
+
+def randremover(lst):
+    ##pops a random number from a list and returns it
+    if len(lst) == 0:
+        return None
+    index = random.choice(xrange(len(lst)))
+    randnum = lst.pop(index)
+    return randnum
+
+class RandomTSdata_h(object):
+    pass
+
+class RandomSubGenerator_h(object):
+    pass
 
 
 class DBTest(object):
