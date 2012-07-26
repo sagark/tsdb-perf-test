@@ -21,4 +21,4 @@
 
 # Non-sample grinder configuration files #
 ##########################################
-*grinder.properties
+*/grinder.properties
