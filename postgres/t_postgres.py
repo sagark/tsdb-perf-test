@@ -108,11 +108,23 @@ class PostgresAccess(DBTest):
 
     def run_query_all(self):
         conn, s = self.dbconn, self.dbstate
-        starttime = time.time()
-        temp = s.executeQuery("select * from grindertest")
-        endtime = time.time()
-        completiontime = endtime - starttime
-        return [starttime, endtime, completiontime]
+        
+        pts_query = s.executeQuery("select count(time) as ptsindb from grindertest")
+        pts_query.next()
+        pts_in_db = pts_query.getInt("ptsindb")
+        ptcounter = 0
+        origstarttime = time.time()
+        completiontime = 0
+        while ptcounter < pts_in_db:
+            self.reset_conn_state()
+            conn, s = self.dbconn, self.dbstate
+            starttime = time.time()
+            temp = s.executeQuery("select * from grindertest limit 1000 offset " + str(ptcounter))
+            endtime = time.time()
+            completiontime += (endtime - starttime)
+            ptcounter += 1000
+
+        return [origstarttime, endtime, completiontime]
 
     def query(self, records, streams):
         """Query "records" records from "streams" streams""" 
