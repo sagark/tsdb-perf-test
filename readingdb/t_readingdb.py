@@ -136,7 +136,7 @@ for val in roundvals:
             completiontime += returnlist[2]
             timetaken.close()
         finishtime = time.time()
-        return [overalltime, finishtime, completiontime]
+        return [overallstart, finishtime, completiontime]
 
     def run_insert_h(self):
         #should be fairly well-optimized at this point
@@ -210,7 +210,7 @@ rdb.db_query(list(range(1, 10001)), 0, 1000000000000)
         latest = file('tempfiles/lasttime')
         last = int(eval(latest.read()))
         latest.close()
-
+        print(last)
         lastpossible = last - records + 1
         default_starttime = 946684800
 
