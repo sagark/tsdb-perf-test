@@ -1,0 +1,1 @@
+export CLASSPATH=/root/jython2.5.2/jython.jar:/root/grinder-3.10/lib/grinder.jar:/root/grinder-3.10/lib:/root/jython2.5.2:/root/sagar_tsdb_perf/tsdb-perf-test/bin/mysql-connector-java-5.1.21-bin.jar:/usr/share/java/mysql.jar:/usr/share/java/mysql-connector-java.jar:/root/sagar_tsdb_perf/tsdb-perf-test/bin/postgresql-9.1-902.jdbc4.jar
