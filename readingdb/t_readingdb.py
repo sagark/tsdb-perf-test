@@ -8,6 +8,7 @@ import subprocess
 import glob
 import shlex
 import pickle
+import random
 
 #project specific
 from framework import DBTest

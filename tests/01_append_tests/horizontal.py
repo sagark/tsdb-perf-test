@@ -25,11 +25,11 @@ class TestRunner:
         self.testdb = DBAccess()
 
         self.streams = 100 #number of streams
-        self.numpts = 1000 #number of points per stream
+        self.numpts = 10000 #number of points per stream
         self.callcountermax = self.numpts #set counter for loop
 
         self.qnumpts = 100 #smallest query size
-        self.qnumptsmax = 1000 #largest query size
+        self.qnumptsmax = 10000 #largest query size
         self.qnumptsinc = 10 #query size increment
 
         self.callcounter_q_max = (self.qnumptsmax - self.qnumpts)/self.qnumptsinc

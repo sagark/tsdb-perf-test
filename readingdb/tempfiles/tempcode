@@ -1,2 +1,2 @@
 
-rdb.db_query(list(range(1, 10001)), 0, 1000000000000)
+rdb.db_query(list(range(1, 101)), 946684807, 946685096)
