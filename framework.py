@@ -88,7 +88,6 @@ class TSdata_h(TSdata_w):
     def next(self):
         """ Returns a list of 3-tuples of (streamid, time, point) of length
         num_points."""
-        out = []
         ptime = self.pt_time
         if self.currentstream <= self.streams:
             out = SubGenerator_h(self.num_pts, self.currentstream,
@@ -138,8 +137,45 @@ def randremover(lst):
     randnum = lst.pop(index)
     return randnum
 
+
+#this is probably not necessary
 class RandomTSdata_h(object):
-    pass
+    def __init__(self, num_pts, num_streams, values_range):
+        """ Initialize the tsdata generator
+        Args:
+        num_pts -- the number of points to generate per stream
+        num_streams -- number of streams to generate before raising StopIteration
+        values_range -- range(...) of valid values
+        """
+        self.num_pts = num_pts
+        self.pt_time = 946684800
+        self.timerange = list(xrange(self.pt_time, self.pt_time + self.num_pts))
+        self.streams = num_streams
+        self.streamrange = list(xrange(1, num_streams+1))
+        self.valid_values = values_range
+        self.currentstream = 1
+    
+    def __iter__(self):
+        return self
+
+    def next(self):
+        """ Returns a list of 3-tuples of (streamid, time, point) of length
+        num_points."""
+        ##########THIS is non-randomized
+        
+        ptime = self.pt_time
+        if self.currentstream <= self.streams:
+            out = SubGenerator_h(self.num_pts, self.currentstream,
+                                                      self.valid_values, ptime)
+            self.currentstream += 1
+            return out
+        else:
+            raise StopIteration()
+        
+        ##########END non randomized
+
+    
+
 
 class RandomSubGenerator_h(object):
     pass
