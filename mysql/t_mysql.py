@@ -103,11 +103,11 @@ class MySQLAccess(DBTest):
         self.reset_conn_state()
 
     def run_insert_w(self):
-        conn, s = self.dbconn, self.dbstate
         valmaker = self.insertGenerator.next() #potential StopIteration()
         overallstart = time.time()
         completiontime = 0
         for roundvals in valmaker: #for catches the Sub-StopIteration
+            conn, s = self.dbconn, self.dbstate
             queryend = ''
             for tup in roundvals:
                 queryend += str(tup) + ','
@@ -116,12 +116,19 @@ class MySQLAccess(DBTest):
             s.executeUpdate("insert into grindertest values " + queryend)
             endtime = time.time()
             completiontime += (endtime - starttime)
+            self.reset_conn_state()	
         return [overallstart, endtime, completiontime]
 
 
     def run_query_all(self):
+        #this needs to be paginated, otherwise the statement can't handle it
         conn, s = self.dbconn, self.dbstate
+        #pts_query = s.executeQuery("select count(time) as ptsindb from grindertest")
+        #pts_query.next()
+        #pts_in_db = pts_query.getInt("ptsindb") 
+        
         starttime = time.time()
+        #might want to paginate this so that mysql doesn't die
         temp = s.executeQuery("select * from grindertest")
         endtime = time.time()
         completiontime = endtime - starttime

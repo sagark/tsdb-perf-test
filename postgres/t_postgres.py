@@ -88,11 +88,11 @@ class PostgresAccess(DBTest):
         self.reset_conn_state()
 
     def run_insert_w(self):
-        conn, s = self.dbconn, self.dbstate
         valmaker = self.insertGenerator.next() #potential StopIteration()
         overallstart = time.time()
         completiontime = 0
         for roundvals in valmaker: #for catches the Sub-StopIteration
+            conn, s = self.dbconn, self.dbstate
             queryend = ''
             for tup in roundvals:
                 queryend += str(tup) + ','
@@ -101,6 +101,7 @@ class PostgresAccess(DBTest):
             s.executeUpdate("insert into grindertest values " + queryend)
             endtime = time.time()
             completiontime += (endtime - starttime)
+            self.reset_conn_state()
         return [overallstart, endtime, completiontime]
 
 
