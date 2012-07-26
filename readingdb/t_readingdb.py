@@ -201,8 +201,6 @@ rdb.db_query(list(range(1, 10001)), 0, 1000000000000)
     def query(self, records, streams):
         """Query "records" records from "streams" streams"""
         
-        conn, s = self.dbconn, self.dbstate
-        
         ##getting latest point in db
         ##rdb.db_prev(STREAMID, 100000000000000, conn=a)
         subprocess.call(["readingdb_drv/reading_getlatest.py"])
