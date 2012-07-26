@@ -1,0 +1,28 @@
+2012-07-25 17:32:01,076 INFO  verde-0 : The Grinder version 3.10
+2012-07-25 17:32:01,080 INFO  verde-0 : Java(TM) SE Runtime Environment 1.6.0_26-b03: Java HotSpot(TM) 64-Bit Server VM (20.1-b02, mixed mode) on Linux amd64 2.6.32-5-amd64
+2012-07-25 17:32:01,084 INFO  verde-0 : time zone is PDT (-0700)
+2012-07-25 17:32:01,154 INFO  verde-0 : worker process 0
+2012-07-25 17:32:01,205 INFO  verde-0 : instrumentation agents: byte code transforming instrumenter for Jython 2.5; byte code transforming instrumenter for Java
+2012-07-25 17:32:02,727 INFO  verde-0 : running "../tests/insertlongstream.py" using Jython 2.5.2 (Release_2_5_2:7206, Mar 2 2011, 23:12:06) 
+[Java HotSpot(TM) 64-Bit Server VM (Sun Microsystems Inc.)]
+2012-07-25 17:32:02,915 INFO  verde-0 thread-0: Started Logging: 10000 records each for 100 streams at 1343262722.9 seconds since the epoch.
+2012-07-25 17:32:02,917 INFO  verde-0 thread-0: starting, will run forever
+2012-07-25 17:32:02,917 INFO  verde-0 : start time is 1343262722917 ms since Epoch
+2012-07-25 17:32:04,020 INFO  verde-0 thread-0 [ run-0 ]: Insertion Results as (start time, end time, completion time): (1343262722.92, 1343262724.02, 0.211998701096)
+2012-07-25 17:32:04,154 INFO  verde-0 thread-0 [ run-0 ]: Query     Results as (start time, end time, completion time): (1343262724.02, 1343262724.15, 0.132000207901)
+2012-07-25 17:32:04,160 INFO  verde-0 thread-0 [ run-0 ]: The database size is now 6477584 bytes.
+2012-07-25 17:32:04,414 INFO  verde-0 thread-0 [ run-1 ]: Insertion Results as (start time, end time, completion time): (1343262724.16, 1343262724.41, 0.128997802734)
+2012-07-25 17:32:04,441 INFO  verde-0 thread-0 [ run-1 ]: Query     Results as (start time, end time, completion time): (1343262724.41, 1343262724.44, 0.0260000228882)
+2012-07-25 17:32:04,443 INFO  verde-0 thread-0 [ run-1 ]: The database size is now 7141136 bytes.
+2012-07-25 17:32:04,670 INFO  verde-0 thread-0 [ run-2 ]: Insertion Results as (start time, end time, completion time): (1343262724.45, 1343262724.67, 0.14899969101)
+2012-07-25 17:32:04,717 INFO  verde-0 thread-0 [ run-2 ]: Query     Results as (start time, end time, completion time): (1343262724.67, 1343262724.72, 0.0460000038147)
+2012-07-25 17:32:04,719 INFO  verde-0 thread-0 [ run-2 ]: The database size is now 7804688 bytes.
+2012-07-25 17:32:04,947 INFO  verde-0 thread-0 [ run-3 ]: Insertion Results as (start time, end time, completion time): (1343262724.72, 1343262724.94, 0.154000520706)
+2012-07-25 17:32:05,012 INFO  verde-0 thread-0 [ run-3 ]: Query     Results as (start time, end time, completion time): (1343262724.95, 1343262725.01, 0.0629999637604)
+2012-07-25 17:32:05,013 INFO  verde-0 thread-0 [ run-3 ]: The database size is now 8476432 bytes.
+2012-07-25 17:32:05,161 INFO  verde-0 thread-0 [ run-4 ]: Insertion Results as (start time, end time, completion time): (1343262725.02, 1343262725.16, 0.111000776291)
+2012-07-25 17:32:05,226 INFO  verde-0 thread-0 [ run-4 ]: Query     Results as (start time, end time, completion time): (1343262725.16, 1343262725.23, 0.0640001296997)
+2012-07-25 17:32:05,228 INFO  verde-0 thread-0 [ run-4 ]: The database size is now 9139984 bytes.
+2012-07-25 17:32:05,379 INFO  verde-0 thread-0 [ run-5 ]: Insertion Results as (start time, end time, completion time): (1343262725.23, 1343262725.38, 0.111000061035)
+2012-07-25 17:32:05,456 INFO  verde-0 thread-0 [ run-5 ]: Query     Results as (start time, end time, completion time): (1343262725.38, 1343262725.46, 0.0770001411438)
+2012-07-25 17:32:05,458 INFO  verde-0 thread-0 [ run-5 ]: The database size is now 9803536 bytes.

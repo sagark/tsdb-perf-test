@@ -114,7 +114,7 @@ class PostgresAccess(DBTest):
         return [starttime, endtime, completiontime]
 
     def query(self, records, streams):
-         """Query "records" records from "streams" streams""" 
+        """Query "records" records from "streams" streams""" 
         #ref: the bounds on between in mysql (and postgres) are inclusive
         conn, s = self.dbconn, self.dbstate
 
