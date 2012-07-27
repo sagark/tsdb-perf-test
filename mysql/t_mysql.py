@@ -200,11 +200,12 @@ class MySQLAccess(DBTest):
 
 
 
-    def query_single(self, records, streamid):
+    def query_single(self, records, streamid, debug=False):
         """Query last "records" records from the stream "streamid"."""
         """Works for both postgres and mysql"""
         conn, s = self.dbconn, self.dbstate
-        
+        debugout = []
+ 
         querystr = "select * from grindertest where streamid="
         querystr += str(streamid)
         querystr += " order by time desc limit "
@@ -212,6 +213,9 @@ class MySQLAccess(DBTest):
         starttime = time.time()
         temp = s.executeQuery(querystr)
         endtime = time.time()
+        if debug:
+            self.query_debugger(temp, debugout)
+            return debugout
 
         completiontime = endtime - starttime
         return [starttime, endtime, completiontime]

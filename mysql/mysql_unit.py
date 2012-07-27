@@ -85,8 +85,20 @@ class TestSequenceFunctions(unittest.TestCase):
     
     def test_query_single(self):
         """Test query of a single stream"""
-        pass
-        
+        print('\n')
+        width = True #doesn't really matter, just pick one
+        self.db = MySQLAccess()
+        gen = self.db.init_insert(101, 101, width, True)
+        compareresult = self.gen_to_list(gen)
+        self.sequential_inserter(width)
+
+        records = 100
+        streamid = 4
+        result = self.db.query_single(records, 4, True)
+        self.assertEqual(len(result), records)
+        for x in result:
+            self.assert_(x in compareresult)
+        print("test_query_single passed")
 
 
 if __name__== '__main__':
