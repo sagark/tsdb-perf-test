@@ -1,2 +1,18 @@
 
-rdb.db_query(list(range(1, 101)), 946684809, 946685798)
+from framework import SubGenerator_h
+getd = file('tempfiles/tempdata')
+data = getd.read()
+getd.close()
+props = eval(data)
+roundgen = SubGenerator_h(*props)
+completiontime = 0
+overallstart = time.time()
+for roundvals in roundgen:
+    newvals = list(map(lambda x: (x[1], 0, x[2]), roundvals))
+    streamid = roundvals[0][0]
+    starttime = time.time()
+    rdb.db_add(a, streamid, newvals)
+    endtime = time.time()
+    completiontime += (endtime - starttime)
+overallfinish = time.time()
+timings = [overallstart, overallfinish, completiontime]

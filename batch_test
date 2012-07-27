@@ -6,18 +6,18 @@ do
   cd mysql
   cp t_mysql-myisam t_mysql.py 
   java net.grinder.Grinder
-  cp log/verde-0.log ../results/07_horizontal_scaled/logs/mysql-myisam/verde-0.log$n
+  cp log/verde-0.log ../results/08_insertlongstream_scaled/logs/mysql-myisam/verde-0.log$n
   cp t_mysql-innodb t_mysql.py
   java net.grinder.Grinder
-  cp log/verde-0.log ../results/07_horizontal_scaled/logs/mysql-innodb/verde-0.log$n
+  cp log/verde-0.log ../results/08_insertlongstream_scaled/logs/mysql-innodb/verde-0.log$n
   cd ..
   cd postgres
   java net.grinder.Grinder
-  cp log/verde-0.log ../results/07_horizontal_scaled/logs/postgres/verde-0.log$n
+  cp log/verde-0.log ../results/08_insertlongstream_scaled/logs/postgres/verde-0.log$n
   cd ..
   cd readingdb
   java net.grinder.Grinder
-  cp log/verde-0.log ../results/07_horizontal_scaled/logs/readingdb/verde-0.log$n
+  cp log/verde-0.log ../results/08_insertlongstream_scaled/logs/readingdb/verde-0.log$n
   cd ..
 done
 
