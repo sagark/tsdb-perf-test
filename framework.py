@@ -1,6 +1,7 @@
 from random import choice
 import random
 import time
+import copy
 
 
 class SubGenerator_w(object):
@@ -79,6 +80,18 @@ class TSdata_w(object):
             return out
         else:
             raise StopIteration()
+
+    def make_into_list(self):
+        """ Convert a copy of self into a list. This is intended for use in 
+        unittests"""
+        gen = copy.deepcopy(self)
+        combiner = lambda x, y: x + y
+        unpack = lambda x: x[0]
+        form = lambda x: list(x[:2])
+        #a = reduce(combiner, 
+        compareresult = map(form, reduce(combiner, reduce(combiner, map(list, list(gen)))))
+        return compareresult
+
 
 class TSdata_h(TSdata_w):
     """A 'height-wise' generator for timeseries data.
