@@ -48,16 +48,21 @@ class TestSequenceFunctions(unittest.TestCase):
     def test_query_all_width(self):
         """A simultaneous test of query_all and width-wise sequential 
         insertion."""
+        print('\n')
         self.db = MySQLAccess()
         self.insert_query_all(True)
+        print("test_query_all_width passed")
     
     def test_query_all_height(self):
         """A simultaneous test of query_all and height-wise sequential
         insertion."""
+        print('\n')
         self.db = MySQLAccess()
         self.insert_query_all(False)
+        print("test_query_all_height passed")
 
     def test_query(self):
+        print('\n')
         """Test query over a range of records/streams"""
         # want to check 1) length of result and 2) that all values in result 
         # are in the generator, although it would be pretty hard for them not
@@ -67,8 +72,15 @@ class TestSequenceFunctions(unittest.TestCase):
         gen = self.db.init_insert(101, 101, width, True)
         compareresult = self.gen_to_list(gen)
         self.sequential_inserter(width)
-
-        result = self.db.query(10, 10, True)
+        
+        records = 10
+        streams = 10
+        result = self.db.query(records, streams, True)
+        self.assertEqual(len(result), records*streams)
+        for x in result:
+            self.assert_(x in compareresult)
+        
+        print("test_query passed")
         
     
     def test_query_single(self):
