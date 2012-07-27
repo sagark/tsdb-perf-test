@@ -1,0 +1,30 @@
+Setup:
+Install HBase
+http://opentsdb.net/setup-hbase.html 
+Don't use sudo
+
+You may have to set $JAVA_HOME=/usr
+
+Next build opentsdb - try to avoid sudo unless specifically told of a permission error
+http://opentsdb.net/getting-started.html
+
+
+once everything runs, you'll need to 
+./tsdb mkmetric mysql.bytes_received mysql.bytes_sent
+to make a metric
+
+and then pass in data with 
+
+something like 
+cat >loadavg-collector.sh <<\EOF
+#!/bin/bash
+set -e
+while true; do
+  awk -v now=`date +%s` -v host=`hostname` \
+  '{ print "put proc.loadavg.1m " now " " $1 " host=" host;
+     print "put proc.loadavg.5m " now " " $2 " host=" host }' /proc/loadavg
+  sleep 15
+done | nc -w 30 host.name.of.tsd PORT
+EOF
+chmod +x loadavg-collector.sh
+nohup ./loadavg-collector.sh &

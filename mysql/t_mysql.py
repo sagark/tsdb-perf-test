@@ -120,7 +120,7 @@ class MySQLAccess(DBTest):
         return [overallstart, endtime, completiontime]
 
 
-    def run_query_all(self):
+    def run_query_all(self, debug=False):
         #this needs to be paginated, otherwise the statement can't handle it
         conn, s = self.dbconn, self.dbstate
         pts_query = s.executeQuery("select count(time) as ptsindb from grindertest")
@@ -129,16 +129,21 @@ class MySQLAccess(DBTest):
         ptcounter = 0
         origstarttime = time.time()
         completiontime = 0
+        debugout = []
         while ptcounter < pts_in_db:
             self.reset_conn_state()
             conn, s = self.dbconn, self.dbstate
             starttime = time.time()
             temp = s.executeQuery("select * from grindertest limit " + str(ptcounter) + ", 1000")
             endtime = time.time()
+            if debug:
+                while temp.next():   
+                    debugout.append([temp.getInt("streamid"), temp.getInt("time")])
             completiontime += (endtime - starttime)
-            ptcounter += 1000
-       
-        return [origstarttime, endtime, completiontime]
+            ptcounter += 1000 
+        if not debug:
+            return [origstarttime, endtime, completiontime]
+        return debugout
 
     def query(self, records, streams):
         """Query "records" records from "streams" streams""" 
@@ -183,3 +188,29 @@ class MySQLAccess(DBTest):
 
         completiontime = endtime - starttime
         return [starttime, endtime, completiontime]
+
+
+
+
+    def query_single(self, records, streamid):
+        """Query last "records" records from the stream "streamid"."""
+        """Works for both postgres and mysql"""
+        conn, s = self.dbconn, self.dbstate
+        
+        querystr = "select * from grindertest where streamid="
+        querystr += str(streamid)
+        querystr += " order by time desc limit "
+        querystr += str(records)
+        starttime = time.time()
+        temp = s.executeQuery(querystr)
+        endtime = time.time()
+
+        completiontime = endtime - starttime
+        return [starttime, endtime, completiontime]
+
+
+
+
+
+
+
