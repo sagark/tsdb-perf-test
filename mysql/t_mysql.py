@@ -137,16 +137,21 @@ class MySQLAccess(DBTest):
             temp = s.executeQuery("select * from grindertest limit " + str(ptcounter) + ", 1000")
             endtime = time.time()
             if debug:
-                while temp.next():   
-                    debugout.append([temp.getInt("streamid"), temp.getInt("time")])
+                self.query_debugger(temp, debugout)
             completiontime += (endtime - starttime)
             ptcounter += 1000 
         if not debug:
             return [origstarttime, endtime, completiontime]
         return debugout
 
-    def query(self, records, streams):
+    def query_debugger(self, resultset, appendlist):
+        while resultset.next():
+            appendlist.append([resultset.getInt("streamid"), resultset.getInt("time")])
+        #no return since this just appends to the list
+
+    def query(self, records, streams, debug=False):
         """Query "records" records from "streams" streams""" 
+        #might want to paginate this eventually
         #ref: the bounds on between in mysql (and postgres) are inclusive
         conn, s = self.dbconn, self.dbstate
 
@@ -159,6 +164,7 @@ class MySQLAccess(DBTest):
         last = temp.getInt("time")
         lastpossible = last - records + 1
         default_starttime = 946684800
+        debugout = []
 
         if default_starttime >= lastpossible:
             print("WARNING: timerange starts before earliest, resorting to" + 
@@ -183,8 +189,10 @@ class MySQLAccess(DBTest):
         temp = s.executeQuery(querystring)
         endtime = time.time()
 
-        #while temp.next():
-        #    print(temp.getString('time'))
+        if debug:
+            self.query_debugger(temp, debugout)
+            return debugout
+
 
         completiontime = endtime - starttime
         return [starttime, endtime, completiontime]
