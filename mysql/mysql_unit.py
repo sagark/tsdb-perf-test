@@ -6,20 +6,32 @@ from t_mysql import *
 
 class TestSequenceFunctions(unittest.TestCase): 
     def setUp(self):
-        self.db = MySQLAccess() 
+        self.db = MySQLAccess()
 
-    def insert_query_small(self, width):
-        """Test inserting and querying for 10 records. Because MySQL does not 
-        place a guarantee on query return order, this test is rather slow."""
-        gen = self.db.init_insert(100, 100, width, True)
+
+    def gen_to_list(self, gen):
+        combiner = lambda x, y: x + y
         unpack = lambda x: x[0]
         form = lambda x: list(x[:2])
-        compareresult = map(form, sum(map(unpack, map(list, list(gen))), []))
+        #a = reduce(combiner, 
+        compareresult = map(form, reduce(combiner, reduce(combiner, map(list, list(gen)))))
+        return compareresult
+
+    def insert_query(self, width):
+        """Test inserting and querying for 101 records in 101 streams. Because 
+        MySQL does not place a guarantee on query return order, this test is 
+        rather slow."""
+        gen = self.db.init_insert(101, 101, width, True)
+        compareresult = self.gen_to_list(gen)
+
         #compareresult.pop(0) #test the test
         #compareresult += ['LOL'] #test the test 
         while True:
             try:
-                self.db.run_insert_w()
+                if width:
+                    self.db.run_insert_w()
+                else:
+                    self.db.run_insert_h()
             except StopIteration:
                 print("Insertion Completed")
                 break
@@ -27,6 +39,10 @@ class TestSequenceFunctions(unittest.TestCase):
                 print("An error occurred during the insertion")
                 break
         result = self.db.run_query_all(debug=True)
+        if True:
+            print(result)
+            print(compareresult)
+
         self.assertEqual(len(result), len(compareresult))
         for x in compareresult:
             self.assert_(x in result)
