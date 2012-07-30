@@ -99,20 +99,20 @@ class ReadingDBAccess(DBTest):
         overallstart = time.time()
         completiontime = 0
     
+        #generate and store code to file, ANY CODE HERE WILL BE INCLUDED IN THE
+        #TIME MEASUREMENT!
+        codefile = file('tempfiles/tempcode', 'w')
+        execcode = """
+for val in roundvals:
+    rdb.db_add(a, val[0], [(val[1], 0, val[2])])
+"""
+        codefile.write(execcode)
+        codefile.close()
+
         for roundvals in roundgen:
             tempfile = file('tempfiles/tempdata', 'w')
             tempfile.write(str(roundvals))
             tempfile.close()
-
-            #generate and store code to file, ANY CODE HERE WILL BE INCLUDED IN THE
-            #TIME MEASUREMENT!
-            codefile = file('tempfiles/tempcode', 'w')
-            execcode = """
-for val in roundvals:
-    rdb.db_add(a, val[0], [(val[1], 0, val[2])])
-"""
-            codefile.write(execcode)
-            codefile.close()
 
             #call the "driver"
             a = subprocess.call([self.driver_simple])
