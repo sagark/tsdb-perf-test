@@ -88,13 +88,9 @@ class ReadingDBAccess(DBTest):
 
         a = subprocess.Popen(["readingdb_drv/run_insert_w.py", str(genprops)], 
                                                         stdout=subprocess.PIPE)
-        #a.wait()
         b = a.communicate()
         returnlist = eval(b[0])
-        #print(b)
-
-        #timetaken = file('tempfiles/timetaken')
-        #returnlist = eval(timetaken.read())
+        
         return returnlist
 
     def run_insert_h(self):
@@ -113,24 +109,14 @@ class ReadingDBAccess(DBTest):
                                                         stdout=subprocess.PIPE)
         b = a.communicate() #also eliminates race condition from Popen
         returnlist = eval(b[0])
-        #get the time taken list from file
-        print(returnlist)
+        
         return returnlist
 
 
     def run_query_all(self):
-        codefile = file('tempfiles/tempcode', 'w')
-        execcode = """
-rdb.db_query(list(range(1, 10001)), 0, 1000000000000)
-"""
-        codefile.write(execcode)
-        codefile.close()
-
-        a = subprocess.call([self.driver_simple])
-        
-        timetaken = file('tempfiles/timetaken')
-        returnlist = eval(timetaken.read())
-        timetaken.close()
+        a = subprocess.Popen(["readingdb_drv/run_query_all.py"], stdout=subprocess.PIPE)
+        b = a.communicate()[0]
+        returnlist = eval(b)
 
         return returnlist
        
