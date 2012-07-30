@@ -2,7 +2,6 @@
 
 import readingdb as rdb
 import sys
-from threading import Thread
 import time
 
 rdb.db_setup('localhost', 4242)
@@ -13,8 +12,10 @@ lasttime = b[0][0][0]
 
 rdb.db_close(a)
 
-ltime = file('tempfiles/lasttime', 'w')
-ltime.write(str(lasttime))
-ltime.close()
+print(lasttime)
+
+#ltime = file('tempfiles/lasttime', 'w')
+#ltime.write(str(lasttime))
+#ltime.close()
 
 sys.exit()

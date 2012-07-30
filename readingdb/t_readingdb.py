@@ -125,11 +125,13 @@ class ReadingDBAccess(DBTest):
         """Query "records" records from "streams" streams"""
         
         ##getting latest point in db
-        subprocess.call(["readingdb_drv/reading_getlatest.py"])
+        a = subprocess.Popen(["readingdb_drv/reading_getlatest.py"], stdout=subprocess.PIPE)
+        b = a.communicate()[0]
+        last = int(eval(lastest.read()))
     
-        latest = file('tempfiles/lasttime')
-        last = int(eval(latest.read()))
-        latest.close()
+        #latest = file('tempfiles/lasttime')
+        #last = int(eval(latest.read()))
+        #latest.close()
         print(last)
         lastpossible = last - records + 1
         default_starttime = 946684800
@@ -137,25 +139,15 @@ class ReadingDBAccess(DBTest):
         if default_starttime >= lastpossible:
             print("WARNING: timerange starts before earliest, resorting to" + 
                     " forced lastpossible")
-            starttime = lastpossible
+            qstarttime = lastpossible
         else:  
-            starttime = random.randrange(default_starttime, lastpossible)
+            qstarttime = random.randrange(default_starttime, lastpossible)
 
-        endtime = starttime + records - 1
-      
+        qendtime = qstarttime + records - 1
+        params = [streams, qstarttime, qendtime]
 
-
-        codefile = file('tempfiles/tempcode', 'w')
-        execcode = """
-rdb.db_query(list(range(1, """ + str(1+streams) + """)), """ + str(starttime) + """, """ + str(endtime) + """)
-"""
-        codefile.write(execcode)
-        codefile.close()
-
-        a = subprocess.call([self.driver_simple])
-
-        timetaken = file('tempfiles/timetaken')
-        returnlist = eval(timetaken.read())
-        timetaken.close()
+        a = subprocess.Popen(["readingdb_drv/query.py", str(params)], stdout=subprocess.PIPE)
+        b = a.communicate()[0]
+        returnlist = eval(b)
         
         return returnlist
