@@ -106,28 +106,38 @@ class PostgresAccess(DBTest):
 
 
 
-    def run_query_all(self):
+    def run_query_all(self, debug=False):
+        #this needs to be paginated, otherwise the statement can't handle it
         conn, s = self.dbconn, self.dbstate
-        
         pts_query = s.executeQuery("select count(time) as ptsindb from grindertest")
         pts_query.next()
-        pts_in_db = pts_query.getInt("ptsindb")
+        pts_in_db = pts_query.getInt("ptsindb") 
         ptcounter = 0
         origstarttime = time.time()
         completiontime = 0
+        debugout = []
         while ptcounter < pts_in_db:
             self.reset_conn_state()
             conn, s = self.dbconn, self.dbstate
             starttime = time.time()
             temp = s.executeQuery("select * from grindertest limit 1000 offset " + str(ptcounter))
             endtime = time.time()
+            if debug:
+                self.query_debugger(temp, debugout)
             completiontime += (endtime - starttime)
-            ptcounter += 1000
+            ptcounter += 1000 
+        if not debug:
+            return [origstarttime, endtime, completiontime]
+        return debugout
 
-        return [origstarttime, endtime, completiontime]
+    def query_debugger(self, resultset, appendlist):
+        while resultset.next():
+            appendlist.append([resultset.getInt("streamid"), resultset.getInt("time")])
+        #no return since this just appends to the list
 
-    def query(self, records, streams):
+    def query(self, records, streams, debug=False):
         """Query "records" records from "streams" streams""" 
+        #might want to paginate this eventually
         #ref: the bounds on between in mysql (and postgres) are inclusive
         conn, s = self.dbconn, self.dbstate
 
@@ -140,6 +150,7 @@ class PostgresAccess(DBTest):
         last = temp.getInt("time")
         lastpossible = last - records + 1
         default_starttime = 946684800
+        debugout = []
 
         if default_starttime >= lastpossible:
             print("WARNING: timerange starts before earliest, resorting to" + 
@@ -164,8 +175,32 @@ class PostgresAccess(DBTest):
         temp = s.executeQuery(querystring)
         endtime = time.time()
 
-        #while temp.next():
-        #    print(temp.getString('time'))
+        if debug:
+            self.query_debugger(temp, debugout)
+            return debugout
+
 
         completiontime = endtime - starttime
         return [starttime, endtime, completiontime]
+
+    def query_single(self, records, streamid, debug=False):
+        """Query last "records" records from the stream "streamid"."""
+        """Works for both postgres and mysql"""
+        conn, s = self.dbconn, self.dbstate
+        debugout = []
+ 
+        querystr = "select * from grindertest where streamid="
+        querystr += str(streamid)
+        querystr += " order by time desc limit "
+        querystr += str(records)
+        starttime = time.time()
+        temp = s.executeQuery(querystr)
+        endtime = time.time()
+        if debug:
+            self.query_debugger(temp, debugout)
+            return debugout
+
+        completiontime = endtime - starttime
+        return [starttime, endtime, completiontime]
+
+
