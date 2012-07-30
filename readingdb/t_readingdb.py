@@ -81,15 +81,19 @@ class ReadingDBAccess(DBTest):
     def run_insert_w(self):
         #generate and store values to file
         roundgen = self.insertGenerator.next() #potential StopIteration()
-        genprops = [roundgen.streams, roundgen.pt_time, roundgen.valid_values]
-        proptransfer = file('tempfiles/tempdata', 'w')
-        proptransfer.write(str(genprops))
-        proptransfer.close()
+        rangemin = roundgen.valid_values[0]
+        rangemax = roundgen.valid_values[-1]
+        rangestep = roundgen.valid_values[1] - rangemin
+        genprops = [roundgen.streams, roundgen.pt_time, rangemin, rangemax, rangestep]
 
-        a = subprocess.call(["readingdb_drv/run_insert_w.py"])
+        a = subprocess.Popen(["readingdb_drv/run_insert_w.py", str(genprops)], stdout=subprocess.PIPE)
+        #a.wait()
+        b = a.communicate()
+        returnlist = eval(b[0])
+        #print(b)
 
-        timetaken = file('tempfiles/timetaken')
-        returnlist = eval(timetaken.read())
+        #timetaken = file('tempfiles/timetaken')
+        #returnlist = eval(timetaken.read())
         return returnlist
 
     def run_insert_h(self):

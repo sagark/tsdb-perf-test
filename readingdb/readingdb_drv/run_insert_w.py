@@ -2,21 +2,20 @@
 
 import readingdb as rdb
 import sys
-#from threading import Thread
 import time
 from framework import SubGenerator_w
 
-print(sys.argv[1])
+props = eval(sys.argv[1])
 
 rdb.db_setup('localhost', 4242)
 a = rdb.db_open('localhost')
 
-getd = file('tempfiles/tempdata')
-data = getd.read()
-props = eval(data)
-getd.close()
+rangestep = props.pop()
+rangemax = props.pop()
+rangemin = props.pop()
+rebuildrange = range(rangemin, rangemax+1, rangestep)
 
-roundgen = SubGenerator_w(*props)
+roundgen = SubGenerator_w(*props, valid_values=rebuildrange)
 
 
 completiontime = 0
@@ -31,8 +30,5 @@ for roundvals in roundgen: #for each list in subgen
 
 rdb.db_close(a)
 
-wtime = file('tempfiles/timetaken', 'w')
-wtime.write(str([overallstart, endtime, completiontime]))
-wtime.close()
-
+print([overallstart, endtime, completiontime]) #put list on stdout for t_readingdb
 sys.exit()
