@@ -126,9 +126,6 @@ class ReadingDBAccess(DBTest):
             dout = debugout.readlines()
             debugout.close()
             debugout = []
-            #debugout = file('tempfiles/debugout', 'w')
-            #debugout.write('') #ensure that debugout is blanked
-            #debugout.close()
             for row in dout:
                 debugout += eval(row)
             return debugout

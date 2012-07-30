@@ -39,6 +39,7 @@ class TestSequenceFunctions(unittest.TestCase):
         #compareresult.pop(0) #test the test
         #compareresult += ['LOL'] #test the test 
         result = self.db.run_query_all(debug=True)
+
         if False:
             print(result)
             print(compareresult)
@@ -53,7 +54,7 @@ class TestSequenceFunctions(unittest.TestCase):
         self.insert_query_all(True)
         print("test_query_all_width passed")
     
-    def atest_query_all_height(self):
+    def test_query_all_height(self):
         """A simultaneous test of query_all and height-wise sequential
         insertion."""
         self.insert_query_all(False)
