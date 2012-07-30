@@ -86,7 +86,8 @@ class ReadingDBAccess(DBTest):
         rangestep = roundgen.valid_values[1] - rangemin
         genprops = [roundgen.streams, roundgen.pt_time, rangemin, rangemax, rangestep]
 
-        a = subprocess.Popen(["readingdb_drv/run_insert_w.py", str(genprops)], stdout=subprocess.PIPE)
+        a = subprocess.Popen(["readingdb_drv/run_insert_w.py", str(genprops)], 
+                                                        stdout=subprocess.PIPE)
         #a.wait()
         b = a.communicate()
         returnlist = eval(b[0])
@@ -100,42 +101,20 @@ class ReadingDBAccess(DBTest):
         #should be fairly well-optimized at this point
         #special height-wise insert for readingdb
         roundgen = self.insertGenerator.next() #potential StopIteration()
-        genprops = [roundgen.points, roundgen.stream, roundgen.valid_values,
+        rangemin = roundgen.valid_values[0]
+        rangemax = roundgen.valid_values[-1]
+        rangestep = roundgen.valid_values[1] - rangemin
+        rangebuild = [rangemin, rangemax, rangestep]
+        genprops = [roundgen.points, roundgen.stream, rangebuild,
                                                         roundgen.cur_pointtime]
-        proptransfer = file('tempfiles/tempdata', 'w')
-        proptransfer.write(str(genprops))
-        proptransfer.close()
-
-        codefile = file('tempfiles/tempcode', 'w')
-        execcode = """
-from framework import SubGenerator_h
-getd = file('tempfiles/tempdata')
-data = getd.read()
-getd.close()
-props = eval(data)
-roundgen = SubGenerator_h(*props)
-completiontime = 0
-overallstart = time.time()
-for roundvals in roundgen:
-    newvals = list(map(lambda x: (x[1], 0, x[2]), roundvals))
-    streamid = roundvals[0][0]
-    starttime = time.time()
-    rdb.db_add(a, streamid, newvals)
-    endtime = time.time()
-    completiontime += (endtime - starttime)
-overallfinish = time.time()
-timings = [overallstart, overallfinish, completiontime]
-"""
-        codefile.write(execcode)
-        codefile.close()
 
         #call the "driver"
-        a = subprocess.call([self.driver_complex])
-        
+        a = subprocess.Popen(["readingdb_drv/run_insert_h.py", str(genprops)], 
+                                                        stdout=subprocess.PIPE)
+        b = a.communicate() #also eliminates race condition from Popen
+        returnlist = eval(b[0])
         #get the time taken list from file
-        timetaken = file('tempfiles/timetaken')
-        returnlist = eval(timetaken.read())
-        timetaken.close()
+        print(returnlist)
         return returnlist
 
 
