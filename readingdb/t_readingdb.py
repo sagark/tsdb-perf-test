@@ -5,9 +5,6 @@ from java.lang import *
 import time
 import sys
 import subprocess
-import glob
-import shlex
-import pickle
 import random
 
 #project specific
@@ -18,23 +15,13 @@ class ReadingDBAccess(DBTest):
     def __init__(self):
         """For reading db, these properties are defined in the 'driver'"""
         #general properties
-        #self.db = "grindertest"
-        #self.urlroot = "jdbc:mysql://localhost/"
-        #self.dbabout = "information_schema"
-        #self.user = "root"
-        #self.passw = "toor"
-        #self.dbconn = None
-        #self.dbstate = None
-        #self.dbaboutconn = None
-        #self.dbaboutstate = None
+        #N/A
 
-        #setup driver
+        #setup driver(s)
         self.driver_simple = "readingdb_drv/reading_simple.py"
         self.driver_complex = "readingdb_drv/reading_complex.py"
     
-
         #start connection/statement
-        
         self.reset_conn_state() #THIS IS REQUIRED BEFORE self.prepare()
 
         #prepare the database for an experiment and create conn/state
@@ -43,8 +30,7 @@ class ReadingDBAccess(DBTest):
     def reset_conn_state(self):
         #does nothing for readingdb
         pass
-
-        
+ 
     def close_all(self):
         #does nothing for readingdb
         pass
@@ -93,37 +79,18 @@ class ReadingDBAccess(DBTest):
             time.sleep(5) #give reading-server 5 seconds to startup
 
     def run_insert_w(self):
-        #this code could use some optimization, but not critical
         #generate and store values to file
         roundgen = self.insertGenerator.next() #potential StopIteration()
-        overallstart = time.time()
-        completiontime = 0
-    
-        #generate and store code to file, ANY CODE HERE WILL BE INCLUDED IN THE
-        #TIME MEASUREMENT!
-        codefile = file('tempfiles/tempcode', 'w')
-        execcode = """
-for val in roundvals:
-    rdb.db_add(a, val[0], [(val[1], 0, val[2])])
-"""
-        codefile.write(execcode)
-        codefile.close()
+        genprops = [roundgen.streams, roundgen.pt_time, roundgen.valid_values]
+        proptransfer = file('tempfiles/tempdata', 'w')
+        proptransfer.write(str(genprops))
+        proptransfer.close()
 
-        for roundvals in roundgen:
-            tempfile = file('tempfiles/tempdata', 'w')
-            tempfile.write(str(roundvals))
-            tempfile.close()
+        a = subprocess.call(["readingdb_drv/run_insert_w.py"])
 
-            #call the "driver"
-            a = subprocess.call([self.driver_simple])
-
-            #get the time taken list from file
-            timetaken = file('tempfiles/timetaken')
-            returnlist = eval(timetaken.read())
-            completiontime += returnlist[2]
-            timetaken.close()
-        finishtime = time.time()
-        return [overallstart, finishtime, completiontime]
+        timetaken = file('tempfiles/timetaken')
+        returnlist = eval(timetaken.read())
+        return returnlist
 
     def run_insert_h(self):
         #should be fairly well-optimized at this point
@@ -189,7 +156,6 @@ rdb.db_query(list(range(1, 10001)), 0, 1000000000000)
         """Query "records" records from "streams" streams"""
         
         ##getting latest point in db
-        ##rdb.db_prev(STREAMID, 100000000000000, conn=a)
         subprocess.call(["readingdb_drv/reading_getlatest.py"])
     
         latest = file('tempfiles/lasttime')
