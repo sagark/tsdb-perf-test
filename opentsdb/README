@@ -3,6 +3,10 @@ Install HBase
 http://opentsdb.net/setup-hbase.html 
 Don't use sudo
 
+One Hbase is setup, add its binaries to /usr/bin - you can symlink them using the provided script
+sudo ./linkup
+
+
 You may have to set $JAVA_HOME=/usr
 
 Next build opentsdb - try to avoid sudo unless specifically told of a permission error
@@ -28,3 +32,8 @@ done | nc -w 30 host.name.of.tsd PORT
 EOF
 chmod +x loadavg-collector.sh
 nohup ./loadavg-collector.sh &
+
+
+cd to /usr/bin
+do ln -s ~/opentsdb/src/create_table.sh create_table.sh
+

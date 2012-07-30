@@ -1,0 +1,37 @@
+2012-07-30 16:17:47,306 INFO  test-0 : The Grinder version 3.10
+2012-07-30 16:17:47,317 INFO  test-0 : Java(TM) SE Runtime Environment 1.7.0_05-b05: Java HotSpot(TM) 64-Bit Server VM (23.1-b03, mixed mode) on Linux amd64 3.2.0-23-generic
+2012-07-30 16:17:47,323 INFO  test-0 : time zone is PDT (-0700)
+2012-07-30 16:17:47,454 INFO  test-0 : worker process 0
+2012-07-30 16:17:47,534 INFO  test-0 : instrumentation agents: byte code transforming instrumenter for Jython 2.5; byte code transforming instrumenter for Java
+2012-07-30 16:17:50,148 INFO  test-0 : running "../tests/query_perf.py" using Jython 2.5.2 (Release_2_5_2:7206, Mar 2 2011, 23:12:06) 
+[Java HotSpot(TM) 64-Bit Server VM (Oracle Corporation)]
+2012-07-30 16:17:50,281 INFO  test-0 thread-0: Started Logging: 20000 records each for 10 streams at 1343690270.27 seconds since the epoch.
+2012-07-30 16:17:50,332 ERROR test-0 thread-0: Aborting thread: {}Jython exception: <type 'exceptions.OSError'>: Cannot run program "readingdb_drv/run_insert_h.py" (in directory "/home/test/dev/tsdb-perf-test/opentsdb"): error=2, No such file or directory [creating per-thread TestRunner object]
+net.grinder.scriptengine.jython.JythonScriptExecutionException: <type 'exceptions.OSError'>: Cannot run program "readingdb_drv/run_insert_h.py" (in directory "/home/test/dev/tsdb-perf-test/opentsdb"): error=2, No such file or directory
+	raise OSError(e.getMessage() or e)
+	File "/home/test/jython2.5.2/Lib/subprocess.py", line 1265, in _execute_child
+	self._execute_child(args, executable, preexec_fn, close_fds,
+	File "/home/test/jython2.5.2/Lib/subprocess.py", line 751, in __init__
+	a = subprocess.Popen(["readingdb_drv/run_insert_h.py", str(genprops)],
+	File "./t_opentsdb.py", line 112, in run_insert_h
+	res = self.testdb.run_insert_h()
+	File "./query_perf.py", line 34, in __init__
+	res = self.testdb.run_insert_h()
+	File "./query_perf.py", line 34, in __init__
+2012-07-30 16:17:50,333 INFO  test-0 : start time is 1343690270333 ms since Epoch
+2012-07-30 16:17:50,345 INFO  test-0 : elapsed time is 12 ms
+2012-07-30 16:17:50,346 INFO  test-0 : Final statistics for this process:
+2012-07-30 16:17:50,368 INFO  test-0 : 
+             Tests        Errors       Mean Test    Test Time    TPS          
+                                       Time (ms)    Standard                  
+                                                    Deviation                 
+                                                    (ms)                      
+
+
+Totals       0            0            �            0.00         0.00         
+
+  Tests resulting in error only contribute to the Errors column.          
+  Statistics for individual tests can be found in the data file, including
+  (possibly incomplete) statistics for erroneous tests. Composite tests   
+  are marked with () and not included in the totals.                      
+

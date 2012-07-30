@@ -1,0 +1,5 @@
+disable 'tsdb'
+disable 'tsdb-uid'
+drop 'tsdb'
+drop 'tsdb-uid'
+exit

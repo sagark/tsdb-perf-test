@@ -13,6 +13,11 @@ This assumes you're using Ubuntu 12.04 x64
 
 export CLASSPATH=/home/test/jython2.5.2/jython.jar:/opt/grinder-3.10/lib/grinder.jar:/opt/grinder-3.10/lib:/home/test/jython2.5.2:/home/test/tsdb-perf-test/bin/mysql-connector-java-5.1.21-bin.jar:/usr/share/java/mysql.jar:/usr/share/java/mysql-connector-java.jar:/home/test/dev/tsdb-perf-test/bin/postgresql-9.1-902.jdbc4.jar
 
+#for opentsdb
+export COMPRESSION=none <----eventually make this lzo if it compiles
+export JAVA_HOME=/usr
+export HBASE_HOME=~/hbase-0.92.1
+
 5) All grinder.properties files need to have:
 	grinder.jvm.arguments = -Dpython.home=/home/test/jython2.5.2
 
