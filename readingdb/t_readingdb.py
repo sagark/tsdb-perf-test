@@ -113,10 +113,26 @@ class ReadingDBAccess(DBTest):
         return returnlist
 
 
-    def run_query_all(self):
-        a = subprocess.Popen(["readingdb_drv/run_query_all.py"], stdout=subprocess.PIPE)
+    def run_query_all(self, debug=False):
+        if debug:
+            a = subprocess.Popen(["readingdb_drv/run_query_all.py", "'True'"], stdout=subprocess.PIPE)
+        else:
+            a = subprocess.Popen(["readingdb_drv/run_query_all.py", "'False'"], stdout=subprocess.PIPE)
         b = a.communicate()[0]
         returnlist = eval(b)
+
+        if debug:
+            debugout = file('tempfiles/debugout')
+            dout = debugout.readlines()
+            debugout.close()
+            debugout = []
+            #debugout = file('tempfiles/debugout', 'w')
+            #debugout.write('') #ensure that debugout is blanked
+            #debugout.close()
+            for row in dout:
+                debugout += eval(row)
+            return debugout
+
 
         return returnlist
        
