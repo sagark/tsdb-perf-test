@@ -134,18 +134,18 @@ class ReadingDBAccess(DBTest):
         return returnlist
        
 
-    def query(self, records, streams):
+    def query(self, records, streams, debug=False):
         """Query "records" records from "streams" streams"""
         
         ##getting latest point in db
         a = subprocess.Popen(["readingdb_drv/reading_getlatest.py"], stdout=subprocess.PIPE)
         b = a.communicate()[0]
-        last = int(eval(lastest.read()))
+        last = int(eval(b))
     
         #latest = file('tempfiles/lasttime')
         #last = int(eval(latest.read()))
         #latest.close()
-        print(last)
+        #print(last)
         lastpossible = last - records + 1
         default_starttime = 946684800
 
@@ -156,11 +156,24 @@ class ReadingDBAccess(DBTest):
         else:  
             qstarttime = random.randrange(default_starttime, lastpossible)
 
-        qendtime = qstarttime + records - 1
+        qendtime = qstarttime + records 
         params = [streams, qstarttime, qendtime]
+        
+        if debug:
+            c = subprocess.Popen(["readingdb_drv/query.py", str(params), "'True'"], stdout=subprocess.PIPE)
+        else:
+            c = subprocess.Popen(["readingdb_drv/query.py", str(params), "'False'"], stdout=subprocess.PIPE)          
+        d = c.communicate()[0]
+        returnlist = eval(d)
 
-        a = subprocess.Popen(["readingdb_drv/query.py", str(params)], stdout=subprocess.PIPE)
-        b = a.communicate()[0]
-        returnlist = eval(b)
+        if debug:
+            debugout = file('tempfiles/debugout')
+            dout = debugout.readlines()
+            debugout.close()
+            debugout = []
+            for row in dout:
+                debugout += eval(row)
+            return debugout
+
         
         return returnlist

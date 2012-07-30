@@ -60,7 +60,7 @@ class TestSequenceFunctions(unittest.TestCase):
         self.insert_query_all(False)
         print("test_query_all_height passed")
 
-    def atest_query(self):
+    def test_query(self):
         """Test query over a range of records/streams"""
         # want to check 1) length of result and 2) that all values in result 
         # are in the generator, although it would be pretty hard for them not
@@ -80,7 +80,7 @@ class TestSequenceFunctions(unittest.TestCase):
         print("test_query passed")
         
     
-    def atest_query_single(self):
+    def a_test_query_single(self):
         """Test query of a single stream"""
         width = True #doesn't really matter, just pick one
         gen = self.db.init_insert(101, 101, width, True)
