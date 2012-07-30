@@ -55,9 +55,6 @@ class ReadingDBAccess(DBTest):
         pass
 
     def get_db_size(self):
-        #######################Need to figure out what goes here.
-        f = file('tempfiles/dbsize', 'w')
-        
         # for some reason glob and regex don't work in grinder, though they do
         # in jython, just hardcode it
         #cmd = """du -c /var/lib/readingdb/__* /var/lib/readingdb/read*"""
@@ -73,33 +70,22 @@ class ReadingDBAccess(DBTest):
         '/var/lib/readingdb/readings-0.db', '/var/lib/readingdb/readings-6.db', 
         '/var/lib/readingdb/readings-8.db']
 
-        a = subprocess.call(command, stdout=f)
-        f.close()
-        f = file('tempfiles/dbsize')
-        #f = file('dbsize')
-        a = f.readlines()
-        a = a[-1]
-        f.close()
-
-        a = a.split('\t')[0]
-        a = int(a)*1000
-        return str(a)
+        a = subprocess.Popen(command, stdout=subprocess.PIPE)
+        procout = a.communicate()
+        dbsize = int(procout[0].split()[-2]) #ensure that it's an int without formatting junk
+        return str(dbsize) #go back to str
 
     def prepare(self):
-        #prepare by deleting all data files
-        #subprocess.call(['gksudo', 'rm', '-r', '/var/lib/readingdb'])
-        #subprocess.call(['gksudo', 'mkdir', '/var/lib/readingdb'])
-        #subprocess.call(['gksudo', 'chown', '-R', 'readingdb',
-        #                                                  '/var/lib/readingdb'])
-        #make sure readingdb_drv/prep_server has been chmod +x'd
-        #first we need to find out if we are running as root:
+        # prepare by deleting all data files
+        # make sure readingdb_drv/prep_server has been chmod +x'd
+        # first we need to find out if we are running as root:
         p = subprocess.Popen(['whoami'], stdout = subprocess.PIPE)
         out, err = p.communicate()
         if 'root' in out:
             subprocess.call(['readingdb_drv/prep_server_root'])
             subprocess.Popen(['reading-server'], stdin = None,
                                             stdout = None, stderr = None)
-            #time.sleep(5) #give reading-server 5 seconds to startup
+            # time.sleep(5) #give reading-server 5 seconds to startup
         else:
             subprocess.call(['gksudo', 'readingdb_drv/prep_server'])
             subprocess.Popen(['gksudo', 'reading-server'], stdin = None,
