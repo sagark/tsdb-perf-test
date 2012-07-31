@@ -7,6 +7,10 @@ import sys
 import subprocess
 import random
 
+#this is the recommended way of working with opentsdb
+import socket
+import urllib2 #for graceful shutdown
+
 #project specific
 from framework import DBTest
 
@@ -41,78 +45,57 @@ class OpenTSDBAccess(DBTest):
         pass
 
     def get_db_size(self):
-        # for some reason glob and regex don't work in grinder, though they do
-        # in jython, just hardcode it
-        #cmd = """du -c /var/lib/readingdb/__* /var/lib/readingdb/read*"""
-        #arg = shlex.split(cmd)
-        #command = arg[:-2] + glob.glob(arg[-2]) + glob.glob(arg[-1])
-        command = ['du', '-c', '/var/lib/readingdb/__db.005', 
-        '/var/lib/readingdb/__db.002', '/var/lib/readingdb/__db.003', 
-        '/var/lib/readingdb/__db.006', '/var/lib/readingdb/__db.001', 
-        '/var/lib/readingdb/__db.004', '/var/lib/readingdb/readings-2.db', 
-        '/var/lib/readingdb/readings-7.db', '/var/lib/readingdb/readings-4.db', 
-        '/var/lib/readingdb/readings-5.db', '/var/lib/readingdb/readings-9.db', 
-        '/var/lib/readingdb/readings-3.db', '/var/lib/readingdb/readings-1.db', 
-        '/var/lib/readingdb/readings-0.db', '/var/lib/readingdb/readings-6.db', 
-        '/var/lib/readingdb/readings-8.db']
-
-        a = subprocess.Popen(command, stdout=subprocess.PIPE)
-        procout = a.communicate()
-        dbsize = int(procout[0].split()[-2]) #ensure that it's an int without formatting junk
+        # possibly try hbase shell status 'detailed'
+        dbsize = 3
         return str(dbsize) #go back to str
 
     def prepare(self):
+        devnull = open('/dev/null', 'w')
         # prepare by deleting all data files
         # make sure readingdb_drv/prep_server has been chmod +x'd
         # first we need to find out if we are running as root:
-        a = subprocess.Popen(["opentsdb_drv/start_opentsdb"], stdin=None, stdout=None, stderr=None)
+        try:
+            urllib2.urlopen('http://localhost:4242/diediedie')
+            time.sleep(10) #give it 10 seconds to shut down
+        except urllib2.URLError:
+            pass #this is fine, there's no opentsdb running already
+        a = subprocess.Popen(["opentsdb_drv/start_opentsdb"], stdout=devnull, stderr=devnull)
+        time.sleep(20)
         print("opentsdb server running")
         
-        """
-        if "Stop it first" in b:
-            b = b.split("process ")[1]
-            b = b.split(". Stop")[0]
-            c = subprocess.call(["pkill", b])
-            self.prepare() #call again to actually start
-        print(b)
-        """
-        #now, cleanup any old tables
-        #a = subprocess.call(["opentsdb_drv/startopentsdb"], shell=True, stdout = subprocess.PIPE)
-        #print(a.communicate()[0])
-        #print("started")
-
 
     def run_insert_w(self):
         #generate and store values to file
+        devnull = open('/dev/null', 'w')
         roundgen = self.insertGenerator.next() #potential StopIteration()
-        rangemin = roundgen.valid_values[0]
-        rangemax = roundgen.valid_values[-1]
-        rangestep = roundgen.valid_values[1] - rangemin
-        genprops = [roundgen.streams, roundgen.pt_time, rangemin, rangemax, rangestep]
-
-        a = subprocess.Popen(["readingdb_drv/run_insert_w.py", str(genprops)], 
-                                                        stdout=subprocess.PIPE)
-        b = a.communicate()
-        returnlist = eval(b[0])
-        
-        return returnlist
+        streamcount = roundgen.streams
+        if roundgen.pt_time == 946684800:
+            #if pt_time is equal to the start, we need to make the streams
+            for x in range(1, streamcount+1):
+                subprocess.call(['tsdb', 'mkmetric', 'stream'+str(x)], stdout = devnull, stderr = devnull)
+        completiontime = 0
+        overallstart = time.time()
+        for vallist in roundgen:
+            for valpair in vallist:
+                sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+                sock.connect(('localhost', 4242))
+                starttime = time.time()
+                sock.send('put stream'+str(valpair[0]) + ' ' + str(valpair[1]) 
+                                + ' ' + str(valpair[2]) + ' host=localhost\n')
+                endtime = time.time()
+                sock.close()
+                completiontime += (endtime-starttime)
+       
+ 
+        return [overallstart, endtime, completiontime]
 
     def run_insert_h(self):
+        #mkmetric as we go
         #should be fairly well-optimized at this point
         #special height-wise insert for readingdb
         roundgen = self.insertGenerator.next() #potential StopIteration()
-        rangemin = roundgen.valid_values[0]
-        rangemax = roundgen.valid_values[-1]
-        rangestep = roundgen.valid_values[1] - rangemin
-        rangebuild = [rangemin, rangemax, rangestep]
-        genprops = [roundgen.points, roundgen.stream, rangebuild,
-                                                        roundgen.cur_pointtime]
+        
 
-        #call the "driver"
-        a = subprocess.Popen(["readingdb_drv/run_insert_h.py", str(genprops)], 
-                                                        stdout=subprocess.PIPE)
-        b = a.communicate() #also eliminates race condition from Popen
-        returnlist = eval(b[0])
         
         return returnlist
 
