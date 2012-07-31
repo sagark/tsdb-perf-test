@@ -12,4 +12,4 @@ create_table.sh
 mkdir /data/staticroot
 tsdtmp=/tmp/tsd    # For best performance, make sure
 mkdir -p /tmp/tsd            # your temporary directory uses tmpfs
-tsdb tsd --port=4242 --staticroot=/home/test/opentsdb/build/staticroot --cachedir=/tmp/tsd
+tsdb tsd --port=4242 --staticroot=/home/test/opentsdb/build/staticroot --cachedir=/tmp/tsd &

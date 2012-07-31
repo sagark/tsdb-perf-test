@@ -68,7 +68,7 @@ class OpenTSDBAccess(DBTest):
             time.sleep(10) #give it 10 seconds to shut down
         except urllib2.URLError:
             pass #this is fine, there's no opentsdb running already
-        a = subprocess.Popen(["opentsdb_drv/start_opentsdb"], stdout=devnull, stderr=devnull)
+        a = subprocess.Popen(["opentsdb_drv/start_opentsdb"])
         time.sleep(20)
         print("opentsdb server running")
         
