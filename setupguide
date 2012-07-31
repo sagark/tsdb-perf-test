@@ -11,7 +11,7 @@ This assumes you're using Ubuntu 12.04 x64
 3.3) Make sure the lib folder is in your classpath (should be from the above export)
 4) Modify .bashrc to 
 
-export CLASSPATH=/home/test/jython2.5.2/jython.jar:/opt/grinder-3.10/lib/grinder.jar:/opt/grinder-3.10/lib:/home/test/jython2.5.2:/home/test/tsdb-perf-test/bin/mysql-connector-java-5.1.21-bin.jar:/usr/share/java/mysql.jar:/usr/share/java/mysql-connector-java.jar:/home/test/dev/tsdb-perf-test/bin/postgresql-9.1-902.jdbc4.jar
+export CLASSPATH=/home/test/jython2.5.2/jython.jar:/opt/grinder-3.10/lib/grinder.jar:/opt/grinder-3.10/lib:/home/test/jython2.5.2:/home/test/tsdb-perf-test/bin/mysql-connector-java-5.1.21-bin.jar:/usr/share/java/mysql.jar:/usr/share/java/mysql-connector-java.jar:/home/test/dev/tsdb-perf-test/bin/postgresql-9.1-902.jdbc4.jar:/home/test/hbase-0.92.1/hbase-0.92.1.jar
 
 #for opentsdb
 export COMPRESSION=none <----eventually make this lzo if it compiles

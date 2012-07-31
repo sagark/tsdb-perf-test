@@ -3,6 +3,10 @@ Install HBase
 http://opentsdb.net/setup-hbase.html 
 Don't use sudo
 
+Enable metrics in hbase:
+http://hbase.apache.org/metrics.html
+
+
 One Hbase is setup, add its binaries to /usr/bin - you can symlink them using the provided script
 sudo ./linkup
 

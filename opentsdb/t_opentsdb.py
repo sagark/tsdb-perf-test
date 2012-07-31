@@ -42,34 +42,22 @@ class OpenTSDBAccess(DBTest):
         pass
 
     def get_db_size(self):
+        # hbase shell is way too slow - enable metrics in hbase/hadoop and tail the logfile instead
+        a = subprocess.Popen(["tail", "-2", "/tmp/metrics_hbase.log"], stdout = subprocess.PIPE)
+        b = a.communicate()[0].split()
+        points = []
+        for x in b:
+            if 'memstoreSizeMB' in x or 'rootIndexSizeKB' in x or 'storefileIndexSizeMB' in x or 'totalStaticIndexSizeKB' in x:
+                points.append(x.replace(',', '').split('='))
         totalsize = 0
-        props = {'tsdb': [], 'tsdb-uid': []}
-        a = subprocess.Popen(["hbase", "shell", "opentsdb_drv/db_size"], stdout = subprocess.PIPE)
-        b = a.communicate()
-        cleanup = b[0].split()
-        while 'tsdb' not in cleanup[0]:
-            cleanup.pop(0)
-        cleanup.pop(0)
-        while 'tsdb' not in cleanup[0]:
-            tmp = cleanup.pop(0)
-            if 'Size' in tmp:
-                props['tsdb'].append(tmp)
-        cleanup.pop(0)
-        for tmp in cleanup:
-            if 'Size' in tmp:
-                props['tsdb-uid'].append(tmp)
-        #print(props['tsdb'])
-        allprops = props['tsdb'] + props['tsdb-uid']
-        for x in allprops:
-            x = x.replace(',', '')
-            x = x.split('=')
+        for x in points:
             if 'MB' in x[0]:
-                totalsize += int(x[1])*1000000 #convert to bytes
+                totalsize += int(x[1])*1000000
             elif 'KB' in x[0]:
-                totalsize += int(x[1])*1000 #convert to bytes    
+                totalsize += int(x[1])*1000
         dbsize = totalsize
         return str(dbsize)
-
+        
     def prepare(self):
         devnull = open('/dev/null', 'w')
         # prepare by deleting all data files
