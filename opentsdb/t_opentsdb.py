@@ -77,7 +77,8 @@ class OpenTSDBAccess(DBTest):
         #generate and store values to file
         devnull = open('/dev/null', 'w')
         roundgen = self.insertGenerator.next() #potential StopIteration()
-        streamcount = roundgen.streams
+        self.streamcount = roundgen.streams
+        streamcount = self.streamcount
         if roundgen.pt_time == 946684800:
             #if pt_time is equal to the start, we need to make the streams
             for x in range(1, streamcount+1):
@@ -102,13 +103,19 @@ class OpenTSDBAccess(DBTest):
 
 
     def run_query_all(self, debug=False):
-        returnlist = [1, 1, 1]
-        #stuff here
-        if debug:
-            debugout = []
-            return debugout
-
-        return returnlist
+        #no 'real' query, use HTTP and urllib2
+        queryurlform = 'http://localhost:4242/q?start=1343740417s-ago&m=sum:stream%s&ascii'
+        overallstart = time.time()
+        completiontime = 0
+        for x in range(1, self.streamcount+1):
+            qurl = queryurlform % x 
+            starttime = time.time()
+            a = urllib2.urlopen(qurl)
+            endtime = time.time()
+            completiontime += (endtime - starttime)
+            if debug:
+                c = a.readlines() 
+        return [overallstart, endtime, completiontime]
        
 
     def query(self, records, streams, debug=False):
