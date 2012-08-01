@@ -28,7 +28,7 @@ sudo ln -s ~/jython2.5.2/bin/jython jython
 
 Now you can start the jython interpreter with $ jython for testing purposes
 
-MySQL:
+MySQL (this is engine-independent):
 	sudo apt-get install mysql-client mysql-server
 	download mysql connector from mysql.com
 		probably http://www.mysql.com/downloads/mirror.php?id=408557
@@ -37,7 +37,7 @@ MySQL:
 	Finally do:
     sudo apt-get install libmysql-java
 
-    see instructions in mysql/sample_dbconfig.py
+    see instructions in mysql/sample_dbconfig.py for each engine
 
 SciDB: YOU MUST INSTALL THIS BEFORE POSTGRES, see README
 

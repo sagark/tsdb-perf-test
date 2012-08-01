@@ -1,4 +1,8 @@
 #!/usr/bin/jython
+
+#IMPORTANT: This is shared between mysql-myisam and mysql-innodb. The "real"
+#file resides in the mysql-myisam directory
+
 """Unit tests for the mysql interface"""
 
 import unittest
@@ -6,7 +10,7 @@ from t_mysql import *
 
 class TestSequenceFunctions(unittest.TestCase): 
     def setUp(self):
-        self.db = MySQLAccess()
+        self.db = MySQLAccess(engine)
         print('\n')
 
     def gen_to_list(self, gen):
@@ -95,4 +99,7 @@ class TestSequenceFunctions(unittest.TestCase):
 
 
 if __name__== '__main__':
+    print("testing: " + sys.argv[1])
+    engine = sys.argv[1]
+    del sys.argv[1]
     unittest.main()

@@ -3,16 +3,16 @@
 
 for ((n=0; n<$1; n++))
 do
-  cd mysql
-  cp t_mysql-myisam t_mysql.py 
+  cd mysql-myisam
   java net.grinder.Grinder
   cp log/verde-0.log ../results/05_verde_batch/logs/mysql-myisam/verde-0.log$n
-  cp t_mysql-innodb t_mysql.py
+  cd ..
+  cd mysql-innodb
   java net.grinder.Grinder
   cp log/verde-0.log ../results/05_verde_batch/logs/mysql-innodb/verde-0.log$n
   cd ..
 
 done
 
-echo "TEST COMPLETED, USER SHOULD NOW SWITCH mysql-engine after copying results"
+echo "TEST COMPLETED"
 

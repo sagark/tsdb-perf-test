@@ -19,7 +19,7 @@ exec(inp)
 
 class TestRunner:
     def __init__(self):
-        self.testdb = DBAccess()
+        self.testdb = DBAccess(*dbargs)
         self.t1size = 0 #size of query for first non-control test
         self.streams = 10 #number of streams
         self.pps = 20000 #points per stream

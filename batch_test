@@ -3,11 +3,11 @@
 
 for ((n=0; n<$1; n++))
 do
-  cd mysql
-  cp t_mysql-myisam t_mysql.py 
+  cd mysql-myisam
   java net.grinder.Grinder
   cp log/verde-0.log ../results/08_insertlongstream_scaled/logs/mysql-myisam/verde-0.log$n
-  cp t_mysql-innodb t_mysql.py
+  cd ..
+  cd mysql-innodb
   java net.grinder.Grinder
   cp log/verde-0.log ../results/08_insertlongstream_scaled/logs/mysql-innodb/verde-0.log$n
   cd ..

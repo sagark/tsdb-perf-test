@@ -1,26 +1,19 @@
-2012-07-30 12:15:58,873 INFO  test-0 : The Grinder version 3.10
-2012-07-30 12:15:58,883 INFO  test-0 : Java(TM) SE Runtime Environment 1.7.0_05-b05: Java HotSpot(TM) 64-Bit Server VM (23.1-b03, mixed mode) on Linux amd64 3.2.0-23-generic
-2012-07-30 12:15:58,889 INFO  test-0 : time zone is PDT (-0700)
-2012-07-30 12:15:59,020 INFO  test-0 : worker process 0
-2012-07-30 12:15:59,104 INFO  test-0 : instrumentation agents: byte code transforming instrumenter for Jython 2.5; byte code transforming instrumenter for Java
-2012-07-30 12:16:01,488 INFO  test-0 : running "../tests/insertlongstream.py" using Jython 2.5.2 (Release_2_5_2:7206, Mar 2 2011, 23:12:06) 
+2012-08-01 08:45:50,379 INFO  test-0 : The Grinder version 3.10
+2012-08-01 08:45:50,389 INFO  test-0 : Java(TM) SE Runtime Environment 1.7.0_05-b05: Java HotSpot(TM) 64-Bit Server VM (23.1-b03, mixed mode) on Linux amd64 3.2.0-23-generic
+2012-08-01 08:45:50,394 INFO  test-0 : time zone is PDT (-0700)
+2012-08-01 08:45:50,517 INFO  test-0 : worker process 0
+2012-08-01 08:45:50,592 INFO  test-0 : instrumentation agents: byte code transforming instrumenter for Jython 2.5; byte code transforming instrumenter for Java
+2012-08-01 08:45:52,959 INFO  test-0 : running "../tests/insertlongstream.py" using Jython 2.5.2 (Release_2_5_2:7206, Mar 2 2011, 23:12:06) 
 [Java HotSpot(TM) 64-Bit Server VM (Oracle Corporation)]
-2012-07-30 12:16:09,303 INFO  test-0 thread-0: Started Logging: 100000 records each for 100 streams at 1343675769.29 seconds since the epoch.
-2012-07-30 12:16:09,304 INFO  test-0 thread-0: starting, will run forever
-2012-07-30 12:16:09,304 INFO  test-0 : start time is 1343675769303 ms since Epoch
-2012-07-30 12:16:09,746 INFO  test-0 thread-0 [ run-0 ]: Insertion Results as (start time, end time, completion time): (1343675769.39, 1343675769.7, 0.17141866684)
-2012-07-30 12:16:10,275 INFO  test-0 thread-0 [ run-0 ]: Query     Results as (start time, end time, completion time): (1343675769.88, 1343675770.21, 0.32808303833)
-2012-07-30 12:16:10,331 INFO  test-0 thread-0 [ run-0 ]: The database size is now 3776 bytes.
-2012-07-30 12:16:10,808 INFO  test-0 thread-0 [ run-1 ]: Insertion Results as (start time, end time, completion time): (1343675770.46, 1343675770.79, 0.175782442093)
-2012-07-30 12:16:11,379 INFO  test-0 thread-0 [ run-1 ]: Query     Results as (start time, end time, completion time): (1343675770.93, 1343675771.3, 0.369253158569)
-2012-07-30 12:16:11,390 INFO  test-0 thread-0 [ run-1 ]: The database size is now 4080 bytes.
-2012-07-30 12:16:11,905 INFO  test-0 thread-0 [ run-2 ]: Insertion Results as (start time, end time, completion time): (1343675771.51, 1343675771.89, 0.201274633408)
-2012-07-30 12:16:12,555 INFO  test-0 thread-0 [ run-2 ]: Query     Results as (start time, end time, completion time): (1343675772.02, 1343675772.42, 0.398993968964)
-2012-07-30 12:16:12,566 INFO  test-0 thread-0 [ run-2 ]: The database size is now 4372 bytes.
-2012-07-30 12:16:13,023 INFO  test-0 thread-0 [ run-3 ]: Insertion Results as (start time, end time, completion time): (1343675772.69, 1343675773.01, 0.160212278366)
-2012-07-30 12:16:13,768 INFO  test-0 thread-0 [ run-3 ]: Query     Results as (start time, end time, completion time): (1343675773.18, 1343675773.62, 0.44672703743)
-2012-07-30 12:16:13,777 INFO  test-0 thread-0 [ run-3 ]: The database size is now 4672 bytes.
-2012-07-30 12:16:14,271 INFO  test-0 thread-0 [ run-4 ]: Insertion Results as (start time, end time, completion time): (1343675773.9, 1343675774.25, 0.18398809433)
-2012-07-30 12:16:15,046 INFO  test-0 thread-0 [ run-4 ]: Query     Results as (start time, end time, completion time): (1343675774.41, 1343675774.88, 0.471708059311)
-2012-07-30 12:16:15,058 INFO  test-0 thread-0 [ run-4 ]: The database size is now 4968 bytes.
-2012-07-30 12:16:15,599 INFO  test-0 thread-0 [ run-5 ]: Insertion Results as (start time, end time, completion time): (1343675775.2, 1343675775.58, 0.180539131165)
+2012-08-01 08:46:00,845 INFO  test-0 thread-0: Started Logging: 100000 records each for 100 streams at 1343835960.82 seconds since the epoch.
+2012-08-01 08:46:00,847 INFO  test-0 thread-0: starting, will run forever
+2012-08-01 08:46:00,847 INFO  test-0 : start time is 1343835960847 ms since Epoch
+2012-08-01 08:46:01,667 INFO  test-0 thread-0 [ run-0 ]: Insertion Results as (start time, end time, completion time): (1343835961.33, 1343835961.64, 0.146863937378)
+2012-08-01 08:46:02,058 INFO  test-0 thread-0 [ run-0 ]: Query     Results as (start time, end time, completion time): (1343835961.77, 1343835962.01, 0.237531900406)
+2012-08-01 08:46:02,072 INFO  test-0 thread-0 [ run-0 ]: The database size is now 3776 bytes.
+2012-08-01 08:46:02,476 INFO  test-0 thread-0 [ run-1 ]: Insertion Results as (start time, end time, completion time): (1343835962.16, 1343835962.47, 0.163361787796)
+2012-08-01 08:46:02,866 INFO  test-0 thread-0 [ run-1 ]: Query     Results as (start time, end time, completion time): (1343835962.57, 1343835962.8, 0.228885173798)
+2012-08-01 08:46:02,877 INFO  test-0 thread-0 [ run-1 ]: The database size is now 4080 bytes.
+2012-08-01 08:46:03,285 INFO  test-0 thread-0 [ run-2 ]: Insertion Results as (start time, end time, completion time): (1343835962.97, 1343835963.27, 0.147460460663)
+2012-08-01 08:46:03,782 INFO  test-0 thread-0 [ run-2 ]: Query     Results as (start time, end time, completion time): (1343835963.39, 1343835963.68, 0.299107074738)
+2012-08-01 08:46:03,800 INFO  test-0 thread-0 [ run-2 ]: The database size is now 4372 bytes.

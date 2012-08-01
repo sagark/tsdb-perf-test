@@ -66,7 +66,7 @@ class OpenTSDBAccess(DBTest):
         try:
             urllib2.urlopen('http://localhost:4242/diediedie')
             time.sleep(10) #give it 10 seconds to shut down
-        except urllib2.URLError:
+        except: #pretty much any reasonable error here means the tsd is not running
             pass #this is fine, there's no opentsdb running already
         a = subprocess.Popen(["opentsdb_drv/start_opentsdb"])
         time.sleep(20)

@@ -1,3 +1,6 @@
+#IMPORTANT: This is shared between mysql-myisam and mysql-innodb. The "real"
+#file resides in the mysql-myisam directory
+
 #Java/SQL Stuff
 from java.lang import *
 from java.sql import *
@@ -13,7 +16,7 @@ from framework import DBTest
 from dbconfig import DBconfig
 
 class MySQLAccess(DBTest):
-    def __init__(self):
+    def __init__(self, engine):
         #general properties
         self.db = DBconfig.db
         self.urlroot = "jdbc:mysql://localhost/"
@@ -24,6 +27,7 @@ class MySQLAccess(DBTest):
         self.dbstate = None
         self.dbaboutconn = None
         self.dbaboutstate = None
+        self.engine = engine
 
         #setup driver
         self.driver = "com.mysql.jdbc.Driver"
@@ -90,9 +94,13 @@ class MySQLAccess(DBTest):
         #the end of this query creates the primary key and automatically creates 
         #an index in mysql
 
-        ########UNCOMMENT THIS LINE TO USE InnoDB Instead of MyISAM!!!!!!!!!!!!!
-        #self.dbstate.executeUpdate("ALTER TABLE grindertest ENGINE = innodb")
-        self.dbstate.executeUpdate("ALTER TABLE grindertest ENGINE = myisam")
+        ###Select engine based on self.engine obtained from grinder.properties
+        if 'innodb' in self.engine:
+            print("using innodb engine")
+            self.dbstate.executeUpdate("ALTER TABLE grindertest ENGINE = innodb")
+        elif 'myisam' in self.engine:
+            print("using myisam engine")
+            self.dbstate.executeUpdate("ALTER TABLE grindertest ENGINE = myisam")
 
 
         #################Other things go here like clearing cache
@@ -120,7 +128,7 @@ class MySQLAccess(DBTest):
         return [overallstart, endtime, completiontime]
 
 
-    def run_query_all(self):
+    def run_query_all(self, debug=False):
         #this needs to be paginated, otherwise the statement can't handle it
         conn, s = self.dbconn, self.dbstate
         pts_query = s.executeQuery("select count(time) as ptsindb from grindertest")
@@ -129,19 +137,29 @@ class MySQLAccess(DBTest):
         ptcounter = 0
         origstarttime = time.time()
         completiontime = 0
+        debugout = []
         while ptcounter < pts_in_db:
             self.reset_conn_state()
             conn, s = self.dbconn, self.dbstate
             starttime = time.time()
             temp = s.executeQuery("select * from grindertest limit " + str(ptcounter) + ", 1000")
             endtime = time.time()
+            if debug:
+                self.query_debugger(temp, debugout)
             completiontime += (endtime - starttime)
-            ptcounter += 1000
-       
-        return [origstarttime, endtime, completiontime]
+            ptcounter += 1000 
+        if not debug:
+            return [origstarttime, endtime, completiontime]
+        return debugout
 
-    def query(self, records, streams):
+    def query_debugger(self, resultset, appendlist):
+        while resultset.next():
+            appendlist.append([resultset.getInt("streamid"), resultset.getInt("time")])
+        #no return since this just appends to the list
+
+    def query(self, records, streams, debug=False):
         """Query "records" records from "streams" streams""" 
+        #might want to paginate this eventually
         #ref: the bounds on between in mysql (and postgres) are inclusive
         conn, s = self.dbconn, self.dbstate
 
@@ -154,6 +172,7 @@ class MySQLAccess(DBTest):
         last = temp.getInt("time")
         lastpossible = last - records + 1
         default_starttime = 946684800
+        debugout = []
 
         if default_starttime >= lastpossible:
             print("WARNING: timerange starts before earliest, resorting to" + 
@@ -178,8 +197,40 @@ class MySQLAccess(DBTest):
         temp = s.executeQuery(querystring)
         endtime = time.time()
 
-        #while temp.next():
-        #    print(temp.getString('time'))
+        if debug:
+            self.query_debugger(temp, debugout)
+            return debugout
+
 
         completiontime = endtime - starttime
         return [starttime, endtime, completiontime]
+
+
+
+
+    def query_single(self, records, streamid, debug=False):
+        """Query last "records" records from the stream "streamid"."""
+        """Works for both postgres and mysql"""
+        conn, s = self.dbconn, self.dbstate
+        debugout = []
+ 
+        querystr = "select * from grindertest where streamid="
+        querystr += str(streamid)
+        querystr += " order by time desc limit "
+        querystr += str(records)
+        starttime = time.time()
+        temp = s.executeQuery(querystr)
+        endtime = time.time()
+        if debug:
+            self.query_debugger(temp, debugout)
+            return debugout
+
+        completiontime = endtime - starttime
+        return [starttime, endtime, completiontime]
+
+
+
+
+
+
+

@@ -22,7 +22,7 @@ exec(inp)
 class TestRunner:
     def __init__(self):
         self.callcounter = 0
-        self.testdb = DBAccess()
+        self.testdb = DBAccess(*dbargs)
 
         self.streams = 100 #number of streams
         self.numpts = 1000 #number of points per stream

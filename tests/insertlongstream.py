@@ -19,7 +19,7 @@ exec(inp)
 
 class TestRunner:
     def __init__(self):
-        self.testdb = DBAccess()
+        self.testdb = DBAccess(*dbargs)
         self.numstreams = 100
         logstr = self.testdb.init_insert(100000, self.numstreams, False)
         grinder.logger.info(logstr)
