@@ -81,9 +81,12 @@ class OpenTSDBAccess(DBTest):
         streamcount = self.streamcount
         if roundgen.pt_time == 946684800:
             #if pt_time is equal to the start, we need to make the streams
-            for x in range(1, streamcount+1):
-                subprocess.call(['tsdb', 'mkmetric', 'stream'+str(x)], 
-                                           stdout = devnull, stderr = devnull)
+            origend = streamcount+1
+            for x in range(1, streamcount+1, 100):
+                end = x + 100
+                buildup = ["stream" + str(z) for z in range(x, min(origend, end))]
+                cmd = ['tsdb', 'mkmetric'] + buildup
+                subprocess.call(cmd, stdout = devnull, stderr = devnull)
         completiontime = 0
         overallstart = time.time()
         for vallist in roundgen:
