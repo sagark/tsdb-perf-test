@@ -142,10 +142,6 @@ class ReadingDBAccess(DBTest):
         b = a.communicate()[0]
         last = int(eval(b))
     
-        #latest = file('tempfiles/lasttime')
-        #last = int(eval(latest.read()))
-        #latest.close()
-        #print(last)
         lastpossible = last - records + 1
         default_starttime = 946684800
 
@@ -176,4 +172,24 @@ class ReadingDBAccess(DBTest):
             return debugout
 
         
+        return returnlist
+
+    def query_single(self, records, streamid, debug=False):
+        params = [streamid, records]
+        if debug:
+            c = subprocess.Popen(["readingdb_drv/query_single.py", str(params), "'True'"], stdout=subprocess.PIPE)
+        else:
+            c = subprocess.Popen(["readingdb_drv/query_single.py", str(params), "'False'"], stdout=subprocess.PIPE)
+        d = c.communicate()[0]
+        returnlist = eval(d)
+
+        if debug:
+            debugout = file('tempfiles/debugout')
+            dout = debugout.readlines()
+            debugout.close()
+            debugout = []
+            for row in dout:
+                debugout += eval(row)
+            return debugout
+
         return returnlist

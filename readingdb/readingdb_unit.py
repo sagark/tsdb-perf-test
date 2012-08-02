@@ -1,5 +1,5 @@
 #!/usr/bin/jython
-"""Unit tests for the mysql interface"""
+"""Unit tests for the readingdb interface"""
 
 import unittest
 from t_readingdb import *
@@ -80,7 +80,7 @@ class TestSequenceFunctions(unittest.TestCase):
         print("test_query passed")
         
     
-    def a_test_query_single(self):
+    def test_query_single(self):
         """Test query of a single stream"""
         width = True #doesn't really matter, just pick one
         gen = self.db.init_insert(101, 101, width, True)
@@ -89,7 +89,7 @@ class TestSequenceFunctions(unittest.TestCase):
 
         records = 100
         streamid = 4
-        result = self.db.query_single(records, 4, True)
+        result = self.db.query_single(records, streamid, True)
         self.assertEqual(len(result), records)
         for x in result:
             self.assert_(x in compareresult)
