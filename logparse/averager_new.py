@@ -78,6 +78,7 @@ def parsedata(lines):
             line = lines.pop(0)
             size = line.split("now ")[1].replace(" bytes.", "")
         except:
+            print(line)
             print("exception parsing file")
             sys.exit(0)
         points.append([counter, eval(insert), eval(query), eval(size)])
