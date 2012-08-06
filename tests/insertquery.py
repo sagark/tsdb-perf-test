@@ -20,7 +20,7 @@ exec(inp)
 class TestRunner:
     def __init__(self):
         self.testdb = DBAccess(*dbargs)
-        logstr = self.testdb.init_insert(10000, 100, True)
+        logstr = self.testdb.init_insert(1000, 10000, True)
         grinder.logger.info(logstr)
 
     def __call__(self):
@@ -37,13 +37,20 @@ class TestRunner:
             self.testdb.close_all()
             grinder.stopThisWorkerThread()
         
-
-        res = self.testdb.run_query_all()
-        grinder.logger.info("Query     Results as (start time, end time, "
+        res = self.testdb.query(records=100, streams=1000)
+	grinder.logger.info("Query 100 records from 1000 streams Results as (start time, end time, "
                             "completion" + 
                             " time): (" + str(res[0]) + ", " + str(res[1]) + 
                             ", " + str(res[2]) + ")")
 
+
+
+        """res = self.testdb.run_query_all()
+        grinder.logger.info("Query     Results as (start time, end time, "
+                            "completion" + 
+                            " time): (" + str(res[0]) + ", " + str(res[1]) + 
+                            ", " + str(res[2]) + ")")
+	"""
 	    #log db size
         size = self.testdb.get_db_size()
         grinder.logger.info("The database size is now " + size + " bytes.")

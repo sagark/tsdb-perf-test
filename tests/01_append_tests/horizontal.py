@@ -24,7 +24,7 @@ class TestRunner:
         self.callcounter = 0
         self.testdb = DBAccess(*dbargs)
 
-        self.streams = 100 #number of streams
+        self.streams = 1000 #number of streams
         self.numpts = 1000 #number of points per stream
         self.callcountermax = self.numpts #set counter for loop
 
