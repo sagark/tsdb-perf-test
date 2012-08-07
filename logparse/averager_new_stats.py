@@ -3,6 +3,7 @@ import os
 import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
+from matplotlib import ticker
 import numpy as np
 from math import sqrt
 
@@ -72,15 +73,15 @@ def average_from_files(filedatalst):
     for i in range(1, len(stats)):
         statset = stats[i]
         for x in range(len(statset)):
-            print(statset[x])
-            print(type(statset[x]))
+            #print(statset[x])
+            #print(type(statset[x]))
             mean = np.mean(statset[x])
-            print(mean)
+            #print(mean)
             se = np.std(statset[x])/sqrt(len(statset[x]))
             statset[x] = np.append(statset[x], mean)
             statset[x] = np.append(statset[x], se)
-            print(statset[x])
-
+            #print(statset[x])
+    stats = map(lambda x: np.array(x), stats)
     return stats
 
 
@@ -140,8 +141,7 @@ for db in dbfolders:
     db_arrays.append((db, averagedfile))
 
 
-print(db_arrays)
-
+#print(db_arrays)
 fig = plt.figure(figsize=(20, 30), dpi=300)
 fig.suptitle('Adding 1 Record to 10000 Streams, 1000 Times - Averaged over 5 Runs', fontsize=18)
 ax1 = fig.add_subplot(311)
@@ -151,16 +151,19 @@ ax3 = fig.add_subplot(313)
 ax1.set_title('Insert (10,000 record batches, 100 records/insert)')
 ax1.set_xlabel('# of Records in DB')
 ax1.set_ylabel('Time for operation completion (s)')
+ax1.xaxis.major.formatter.set_powerlimits((-100, 100))
 #ax1.set_ylim(bottom = 0, top = 0.3)
 
-ax2.set_title('Query (All records)')
+ax2.set_title('Query 100 Records from 1000 Streams')
 ax2.set_xlabel('# of Records in DB')
 ax2.set_ylabel('Time for operation completion (s)')
-#ax2.set_ylim(bottom = 0, top = 1.5)
+ax2.set_ylim(bottom = 0, top = 1.5)
+ax2.xaxis.major.formatter.set_powerlimits((-100, 100)) #stop writing as exp
 
 ax3.set_title('DB Size')
 ax3.set_xlabel('# of Records in DB')
 ax3.set_ylabel('DB size (MB)')
+ax3.xaxis.major.formatter.set_powerlimits((-100, 100)) #stop writing as exp
 
 legend1 = ()
 legend2 = ()
@@ -168,14 +171,21 @@ legend3 = ()
 
 for a in db_arrays:
     name = a[0]
+    print("graphing: " + name)
     a = a[1]
-    x = a[:,0]
-    y1 = a[:,1]
-    y2 = a[:,2]
-    y3 = a[:,3]
-    ax1.plot(x, y1, graph_1_iter.next())
-    ax2.plot(x, y2, graph_2_iter.next())
-    ax3.plot(x, y3, graph_3_iter.next())
+    x = a[0][:,0]
+    y1_mean = a[1][:,-2]
+    y1_serr = a[1][:,-1]
+    y2_mean = a[2][:,-2]
+    y2_serr = a[2][:,-1]
+    y3_mean = a[3][:,-2]
+    y3_serr = a[3][:,-1]
+    #ax1.plot(x, y1, graph_1_iter.next())
+    ax1.errorbar(x, y1_mean, yerr=y1_serr, fmt=graph_1_iter.next())
+    #ax2.plot(x, y2_mean, graph_2_iter.next())
+    ax2.errorbar(x, y2_mean, yerr=y2_serr, fmt=graph_2_iter.next())
+    #ax3.plot(x, y3_mean, graph_3_iter.next())
+    ax3.errorbar(x, y3_mean, yerr=y3_serr, fmt=graph_3_iter.next())
     legend1 += (name,)
     legend2 += (name,)
     legend3 += (name,)
