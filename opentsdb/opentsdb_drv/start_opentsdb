@@ -6,10 +6,10 @@ echo "HBASE STARTED"
 hbase shell opentsdb_drv/prep_server
 
 export COMPRESSION=none
-export HBASE_HOME=/home/test/hbase-0.92.1
+export HBASE_HOME=/data/hbase-0.92.1
 create_table.sh
 
 mkdir /data/staticroot
-tsdtmp=/tmp/tsd    # For best performance, make sure
-mkdir -p /tmp/tsd            # your temporary directory uses tmpfs
-tsdb tsd --port=4242 --staticroot=/home/test/opentsdb/build/staticroot --cachedir=/tmp/tsd &
+tsdtmp=/data/tsd    # For best performance, make sure
+mkdir -p /data/tsd            # your temporary directory uses tmpfs
+tsdb tsd --port=4242 --staticroot=/data/opentsdb/build/staticroot --cachedir=/data/tsd &

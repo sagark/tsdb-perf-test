@@ -69,7 +69,7 @@ class ReadingDBAccess(DBTest):
         out, err = p.communicate()
         if 'root' in out:
             subprocess.call(['readingdb_drv/prep_server_root'])
-            subprocess.Popen(['reading-server'], stdin = None,
+            subprocess.Popen(['reading-server', '-d', '/data/readingdb'], stdin = None,
                                             stdout = None, stderr = None)
             # time.sleep(5) #give reading-server 5 seconds to startup
         else:
@@ -117,8 +117,12 @@ class ReadingDBAccess(DBTest):
         if debug:
             a = subprocess.Popen(["readingdb_drv/run_query_all.py", "'True'"], stdout=subprocess.PIPE)
         else:
-            a = subprocess.Popen(["readingdb_drv/run_query_all.py", "'False'"], stdout=subprocess.PIPE)
-        b = a.communicate()[0]
+            a = subprocess.Popen(["readingdb_drv/run_query_all.py", "'False'"], stdout=subprocess.PIPE )
+        b = a.communicate()
+	b = b[0]
+	if c is not None:
+		print(c)
+		sys.exit(0)
         returnlist = eval(b)
 
         if debug:
@@ -158,8 +162,17 @@ class ReadingDBAccess(DBTest):
         if debug:
             c = subprocess.Popen(["readingdb_drv/query.py", str(params), "'True'"], stdout=subprocess.PIPE)
         else:
-            c = subprocess.Popen(["readingdb_drv/query.py", str(params), "'False'"], stdout=subprocess.PIPE)          
-        d = c.communicate()[0]
+            c = subprocess.Popen(["readingdb_drv/query.py", str(params), "'False'"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)         
+        d = c.communicate()
+        q = d[1]
+        d = d[0]
+
+        if q not in (None, ''):
+            print(q)
+            raise Exception(str(q))
+
+
+
         returnlist = eval(d)
 
         if debug:
