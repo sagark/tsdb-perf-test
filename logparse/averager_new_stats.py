@@ -4,6 +4,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 import numpy as np
+from math import sqrt
 
 #here we go through all the dbs
 
@@ -44,14 +45,44 @@ def average_from_files(filedatalst):
     for lineset in filedata:
         parsed.append(parsedata(lineset))
         numdiv += 1
-        print(numdiv)
-   
-    totalarr = parsed[0]
-    for x in range(1, len(parsed)):
-        totalarr += parsed[x]
+        #print(numdiv)
+    #now instead of having [run1, run2, run3, etc..], arrange as 
+    #[stat1, stat2, stat3] with runs inside 
+    #print(parsed)
+    stats = []
+    
+    x = parsed[0]
+    #stats.append(x[:,0]) #get the first column (number of records in db), which is always aligned
+    for colnum in range(0, np.shape(x)[1]):
+        #print(colnum)
+        stats.append(x[:,colnum]) #start the array for each stat
+    for run_stats in range(1, len(parsed)):
+        #print(parsed[run_stats])
+        for colnum in range(1, np.shape(parsed[run_stats])[1]):
+            #print(colnum)
+            stats[colnum] = np.vstack((stats[colnum], parsed[run_stats][:,colnum]))
+    for ar_num in range(len(stats)):
+        #here, go arr > matrix then transpose
+        stats[ar_num] = np.transpose(np.matrix(stats[ar_num]))
+            
+    #print(stats)
+    stats = map(lambda x: np.array(x), stats)
+    #print(stats)
+    #now need to compute standard errors means, tack them on as the last column
+    for x in range(len(stats[1])):
+        print(stats[1][x])
+        mean = np.mean(stats[1][x])
+        print(mean)
+        se = np.std(stats[1][x])/sqrt(len(stats[1][x]))
+        stats[1][x] = np.append(stats[1][x], mean)
+        stats[1][x] = np.append(stats[1][x], se)
 
-    averagearr = totalarr/numdiv
-    return averagearr
+    print(stats)
+
+
+    sys.exit(0)
+    #averagearr = totalarr/numdiv
+    return stats
 
 
 def parsedata(lines):
@@ -113,7 +144,7 @@ for db in dbfolders:
 print(db_arrays)
 
 fig = plt.figure(figsize=(20, 30), dpi=300)
-fig.suptitle('Adding 10000 Records to 1 Stream, 100 Times - Averaged over 5 Runs', fontsize=18)
+fig.suptitle('Adding 1 Record to 10000 Streams, 1000 Times - Averaged over 5 Runs', fontsize=18)
 ax1 = fig.add_subplot(311)
 ax2 = fig.add_subplot(312)
 ax3 = fig.add_subplot(313)
@@ -126,7 +157,7 @@ ax1.set_ylabel('Time for operation completion (s)')
 ax2.set_title('Query (All records)')
 ax2.set_xlabel('# of Records in DB')
 ax2.set_ylabel('Time for operation completion (s)')
-ax2.set_ylim(bottom = 0, top = 1.5)
+#ax2.set_ylim(bottom = 0, top = 1.5)
 
 ax3.set_title('DB Size')
 ax3.set_xlabel('# of Records in DB')
