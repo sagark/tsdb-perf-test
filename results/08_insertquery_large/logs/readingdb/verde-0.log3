@@ -510,14 +510,8 @@
 2012-08-07 12:04:03,856 INFO  verde-0 thread-0 [ run-166 ]: Query 100 records from 1000 streams Results as (start time, end time, completion time): (1344366243.46, 1344366243.54, 0.0818819999695)
 2012-08-07 12:04:03,859 INFO  verde-0 thread-0 [ run-166 ]: The database size is now 13164 bytes.
 2012-08-07 12:04:04,390 INFO  verde-0 thread-0 [ run-167 ]: Insertion Results as (start time, end time, completion time): (1344366243.92, 1344366244.38, 0.439004182816)
-2012-08-07 12:04:04,598 ERROR verde-0 thread-0 [ run-167 ]: Aborted run: Jython exception: <type 'exceptions.SyntaxError'>: no viable alternative at input '<EOF>' (<string>, line 1) [calling TestRunner]
-net.grinder.scriptengine.jython.JythonScriptExecutionException: <type 'exceptions.SyntaxError'>: no viable alternative at input '<EOF>' (<string>, line 1)
-	returnlist = eval(d)
-	File "./t_readingdb.py", line 176, in query
-	res = self.testdb.query(records=100, streams=1000)
-	File "./insertquery.py", line 41, in __call__
-	res = self.testdb.query(records=100, streams=1000)
-	File "./insertquery.py", line 41, in __call__
+2012-08-07 12:04:05,637 INFO  verde-0 thread-0 [ run-167 ]: Query 100 records from 1000 streams Results as (start time, end time, completion time): (1344366245.25, 1344366245.33, 0.0791518688202)
+2012-08-07 12:04:05,639 INFO  verde-0 thread-0 [ run-167 ]: The database size is now 13164 bytes.
 2012-08-07 12:04:05,129 INFO  verde-0 thread-0 [ run-168 ]: Insertion Results as (start time, end time, completion time): (1344366244.66, 1344366245.12, 0.429252147675)
 2012-08-07 12:04:05,637 INFO  verde-0 thread-0 [ run-168 ]: Query 100 records from 1000 streams Results as (start time, end time, completion time): (1344366245.25, 1344366245.33, 0.0791518688202)
 2012-08-07 12:04:05,639 INFO  verde-0 thread-0 [ run-168 ]: The database size is now 13164 bytes.
@@ -1584,14 +1578,8 @@ net.grinder.scriptengine.jython.JythonScriptExecutionException: <type 'exception
 2012-08-07 12:12:26,415 INFO  verde-0 thread-0 [ run-522 ]: Query 100 records from 1000 streams Results as (start time, end time, completion time): (1344366746.02, 1344366746.11, 0.089173078537)
 2012-08-07 12:12:26,418 INFO  verde-0 thread-0 [ run-522 ]: The database size is now 13164 bytes.
 2012-08-07 12:12:27,344 INFO  verde-0 thread-0 [ run-523 ]: Insertion Results as (start time, end time, completion time): (1344366746.48, 1344366747.33, 0.835333347321)
-2012-08-07 12:12:27,623 ERROR verde-0 thread-0 [ run-523 ]: Aborted run: Jython exception: <type 'exceptions.SyntaxError'>: no viable alternative at input '<EOF>' (<string>, line 1) [calling TestRunner]
-net.grinder.scriptengine.jython.JythonScriptExecutionException: <type 'exceptions.SyntaxError'>: no viable alternative at input '<EOF>' (<string>, line 1)
-	returnlist = eval(d)
-	File "./t_readingdb.py", line 176, in query
-	res = self.testdb.query(records=100, streams=1000)
-	File "./insertquery.py", line 41, in __call__
-	res = self.testdb.query(records=100, streams=1000)
-	File "./insertquery.py", line 41, in __call__
+2012-08-07 12:12:29,211 INFO  verde-0 thread-0 [ run-523 ]: Query 100 records from 1000 streams Results as (start time, end time, completion time): (1344366748.69, 1344366748.89, 0.198457956314)
+2012-08-07 12:12:29,214 INFO  verde-0 thread-0 [ run-523 ]: The database size is now 13164 bytes.
 2012-08-07 12:12:28,553 INFO  verde-0 thread-0 [ run-524 ]: Insertion Results as (start time, end time, completion time): (1344366747.69, 1344366748.54, 0.839056491852)
 2012-08-07 12:12:29,211 INFO  verde-0 thread-0 [ run-524 ]: Query 100 records from 1000 streams Results as (start time, end time, completion time): (1344366748.69, 1344366748.89, 0.198457956314)
 2012-08-07 12:12:29,214 INFO  verde-0 thread-0 [ run-524 ]: The database size is now 13164 bytes.
@@ -2712,14 +2700,8 @@ net.grinder.scriptengine.jython.JythonScriptExecutionException: <type 'exception
 2012-08-07 12:22:23,522 INFO  verde-0 thread-0 [ run-896 ]: Query 100 records from 1000 streams Results as (start time, end time, completion time): (1344367343.03, 1344367343.21, 0.183583021164)
 2012-08-07 12:22:23,525 INFO  verde-0 thread-0 [ run-896 ]: The database size is now 13164 bytes.
 2012-08-07 12:22:24,457 INFO  verde-0 thread-0 [ run-897 ]: Insertion Results as (start time, end time, completion time): (1344367343.59, 1344367344.45, 0.843052625656)
-2012-08-07 12:22:24,631 ERROR verde-0 thread-0 [ run-897 ]: Aborted run: Jython exception: <type 'exceptions.SyntaxError'>: no viable alternative at input '<EOF>' (<string>, line 1) [calling TestRunner]
-net.grinder.scriptengine.jython.JythonScriptExecutionException: <type 'exceptions.SyntaxError'>: no viable alternative at input '<EOF>' (<string>, line 1)
-	returnlist = eval(d)
-	File "./t_readingdb.py", line 176, in query
-	res = self.testdb.query(records=100, streams=1000)
-	File "./insertquery.py", line 41, in __call__
-	res = self.testdb.query(records=100, streams=1000)
-	File "./insertquery.py", line 41, in __call__
+2012-08-07 12:22:26,113 INFO  verde-0 thread-0 [ run-897 ]: Query 100 records from 1000 streams Results as (start time, end time, completion time): (1344367345.64, 1344367345.84, 0.205533027649)
+2012-08-07 12:22:26,115 INFO  verde-0 thread-0 [ run-897 ]: The database size is now 13164 bytes.
 2012-08-07 12:22:25,525 INFO  verde-0 thread-0 [ run-898 ]: Insertion Results as (start time, end time, completion time): (1344367344.68, 1344367345.52, 0.815029859543)
 2012-08-07 12:22:26,113 INFO  verde-0 thread-0 [ run-898 ]: Query 100 records from 1000 streams Results as (start time, end time, completion time): (1344367345.64, 1344367345.84, 0.205533027649)
 2012-08-07 12:22:26,115 INFO  verde-0 thread-0 [ run-898 ]: The database size is now 13164 bytes.
