@@ -1,5 +1,5 @@
 sudo pkill reading-server
-sudo rm -r /var/lib/readingdb
-sudo mkdir /var/lib/readingdb
-sudo chown -R readingdb /var/lib/readingdb
+sudo rm -r /data/readingdb
+sudo mkdir /data/readingdb
+sudo chown -R readingdb /data/readingdb
 
