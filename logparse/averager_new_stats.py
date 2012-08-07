@@ -65,23 +65,22 @@ def average_from_files(filedatalst):
         #here, go arr > matrix then transpose
         stats[ar_num] = np.transpose(np.matrix(stats[ar_num]))
             
-    #print(stats)
-    stats = map(lambda x: np.array(x), stats)
-    #print(stats)
+    stats = map(lambda x: list(np.array(x)), stats)
+    #print(stats[0])
+    #sys.exit(0)
     #now need to compute standard errors means, tack them on as the last column
-    for x in range(len(stats[1])):
-        print(stats[1][x])
-        mean = np.mean(stats[1][x])
-        print(mean)
-        se = np.std(stats[1][x])/sqrt(len(stats[1][x]))
-        stats[1][x] = np.append(stats[1][x], mean)
-        stats[1][x] = np.append(stats[1][x], se)
+    for i in range(1, len(stats)):
+        statset = stats[i]
+        for x in range(len(statset)):
+            print(statset[x])
+            print(type(statset[x]))
+            mean = np.mean(statset[x])
+            print(mean)
+            se = np.std(statset[x])/sqrt(len(statset[x]))
+            statset[x] = np.append(statset[x], mean)
+            statset[x] = np.append(statset[x], se)
+            print(statset[x])
 
-    print(stats)
-
-
-    sys.exit(0)
-    #averagearr = totalarr/numdiv
     return stats
 
 
