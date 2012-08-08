@@ -46,7 +46,7 @@ class ReadingDBAccess(DBTest):
         checks = []
         q = q.split('\n')
         for x in q:
-            if 'log' not in x and x != '':
+            if 'log' not in x and x != '' and '__db' not in x:
                 checks.append('/data/readingdb/' + x)
 
         command = ['du', '-cb'] + checks
