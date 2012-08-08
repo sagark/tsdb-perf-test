@@ -1,5 +1,0 @@
-2012-08-06 14:06:58,385 INFO  verde-0 : The Grinder version 3.10
-2012-08-06 14:06:58,390 INFO  verde-0 : Java(TM) SE Runtime Environment 1.6.0_26-b03: Java HotSpot(TM) 64-Bit Server VM (20.1-b02, mixed mode) on Linux amd64 2.6.32-5-amd64
-2012-08-06 14:06:58,394 INFO  verde-0 : time zone is PDT (-0700)
-2012-08-06 14:06:58,463 INFO  verde-0 : worker process 0
-2012-08-06 14:06:58,514 INFO  verde-0 : instrumentation agents: byte code transforming instrumenter for Jython 2.5; byte code transforming instrumenter for Java

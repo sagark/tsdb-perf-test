@@ -41,22 +41,17 @@ class ReadingDBAccess(DBTest):
         pass
 
     def get_db_size(self):
-        # for some reason glob and regex don't work in grinder, though they do
-        # in jython, just hardcode it
-        #cmd = """du -c /data/readingdb/__* /data/readingdb/read*"""
-        #arg = shlex.split(cmd)
-        #command = arg[:-2] + glob.glob(arg[-2]) + glob.glob(arg[-1])
-        command = ['du', '-c', '/data/readingdb/__db.005', 
-        '/data/readingdb/__db.002', '/data/readingdb/__db.003', 
-        '/data/readingdb/__db.006', '/data/readingdb/__db.001', 
-        '/data/readingdb/__db.004', '/data/readingdb/readings-2.db', 
-        '/data/readingdb/readings-7.db', '/data/readingdb/readings-4.db', 
-        '/data/readingdb/readings-5.db', '/data/readingdb/readings-9.db', 
-        '/data/readingdb/readings-3.db', '/data/readingdb/readings-1.db', 
-        '/data/readingdb/readings-0.db', '/data/readingdb/readings-6.db', 
-        '/data/readingdb/readings-8.db']
+        d = subprocess.Popen(['ls', '/data/readingdb/'], stdout = subprocess.PIPE)
+        q = d.communicate()[0]
+        checks = []
+        q = q.split('\n')
+        for x in q:
+            if 'log' not in x and x != '':
+                checks.append('/data/readingdb/' + x)
 
-        a = subprocess.Popen(command, stdout=subprocess.PIPE)
+        command = ['du', '-cb'] + checks
+
+        a = subprocess.Popen(command, stdout = subprocess.PIPE)
         procout = a.communicate()
         dbsize = int(procout[0].split()[-2]) #ensure that it's an int without formatting junk
         return str(dbsize) #go back to str
