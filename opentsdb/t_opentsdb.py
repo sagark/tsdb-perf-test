@@ -98,9 +98,7 @@ class OpenTSDBAccess(DBTest):
                                 + ' ' + str(valpair[2]) + ' host=localhost\n')
                 endtime = time.time()
                 sock.close()
-                completiontime += (endtime-starttime)
-       
- 
+                completiontime += (endtime-starttime) 
         return [overallstart, endtime, completiontime]
 
 
