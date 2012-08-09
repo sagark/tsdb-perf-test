@@ -88,18 +88,22 @@ class MySQLAccess(DBTest):
             self.dbstate.executeUpdate("drop table grindertest")
         except:
             pass
-        self.dbstate.executeUpdate("create table grindertest (streamid INT,"
-                                   " time INT, value DOUBLE, CONSTRAINT pk_ts"
-                                   " PRIMARY KEY (streamid, time) )")
         #the end of this query creates the primary key and automatically creates 
         #an index in mysql
 
         ###Select engine based on self.engine obtained from grinder.properties
         if 'innodb' in self.engine:
             print("using innodb engine")
-            self.dbstate.executeUpdate("ALTER TABLE grindertest ENGINE = innodb")
+            self.dbstate.executeUpdate("create table grindertest (streamid INT,"
+                                   " time INT, value DOUBLE, CONSTRAINT pk_ts"
+                                   " PRIMARY KEY (streamid, time) ) ENGINE=InnoDB "
+                                   " ROW_FORMAT=COMPRESSED")
         elif 'myisam' in self.engine:
             print("using myisam engine")
+            self.dbstate.executeUpdate("create table grindertest (streamid INT,"
+                                   " time INT, value DOUBLE, CONSTRAINT pk_ts"
+                                   " PRIMARY KEY (streamid, time) )")
+ 
             self.dbstate.executeUpdate("ALTER TABLE grindertest ENGINE = myisam")
 
 
