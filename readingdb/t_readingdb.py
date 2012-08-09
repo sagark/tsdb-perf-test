@@ -64,7 +64,7 @@ class ReadingDBAccess(DBTest):
         out, err = p.communicate()
         if 'root' in out:
             subprocess.call(['readingdb_drv/prep_server_root'])
-            subprocess.Popen(['reading-server', '-d', '/data/readingdb'], stdin = None,
+            subprocess.Popen(['reading-server', '-d', '/data/readingdb', '-s', '8MB'], stdin = None,
                                             stdout = None, stderr = None)
             # time.sleep(5) #give reading-server 5 seconds to startup
         else:

@@ -1,0 +1,8 @@
+setting all caches to 8MB
+Postgres:
+	set shared_buffers = 8MB
+	in postgresql.conf
+MySQL:
+	set global query_cache_size = 8000000;
+ReadingDB:
+	reading-server -s 8MB

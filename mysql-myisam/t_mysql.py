@@ -106,7 +106,7 @@ class MySQLAccess(DBTest):
         #################Other things go here like clearing cache
         #clear MySQL Query Cache
         self.dbstate.executeUpdate("RESET QUERY CACHE")
-
+        self.dbstate.executeUpdate("set global query_cache_size = 8000000")
         #finally, reset the connection/statement
         self.reset_conn_state()
 
