@@ -143,7 +143,7 @@ for db in dbfolders:
 
 #print(db_arrays)
 fig = plt.figure(figsize=(20, 30), dpi=300)
-fig.suptitle('Adding 1 Record to 10000 Streams, 1000 Times - Averaged over 5 Runs', fontsize=18)
+fig.suptitle('Adding 1 Record to 10000 Streams, 1000 Times - Averaged over 5 Runs - 8MB Cache', fontsize=18)
 ax1 = fig.add_subplot(311)
 ax2 = fig.add_subplot(312)
 ax3 = fig.add_subplot(313)
@@ -152,12 +152,12 @@ ax1.set_title('Insert (10,000 record batches, 100 records/insert)')
 ax1.set_xlabel('# of Records in DB')
 ax1.set_ylabel('Time for operation completion (s)')
 ax1.xaxis.major.formatter.set_powerlimits((-100, 100))
-#ax1.set_ylim(bottom = 0, top = 0.3)
+ax1.set_ylim(bottom = 0, top = 7)
 
 ax2.set_title('Query 100 Records from 1000 Streams')
 ax2.set_xlabel('# of Records in DB')
 ax2.set_ylabel('Time for operation completion (s)')
-ax2.set_ylim(bottom = 0, top = 1.5)
+ax2.set_ylim(bottom = 0, top = 1.0)
 ax2.xaxis.major.formatter.set_powerlimits((-100, 100)) #stop writing as exp
 
 ax3.set_title('DB Size')
