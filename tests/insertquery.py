@@ -20,8 +20,11 @@ exec(inp)
 class TestRunner:
     def __init__(self):
         self.testdb = DBAccess(*dbargs)
-        logstr = self.testdb.init_insert(1000, 10000, True)
+        self.streams = 1000
+        self.records = 10000
+        logstr = self.testdb.init_insert(self.records, self.streams, True)
         grinder.logger.info(logstr)
+        self.counter = 0
 
     def __call__(self):
         #start this round
@@ -44,15 +47,17 @@ class TestRunner:
                             ", " + str(res[2]) + ")")
 
 
-
-        """res = self.testdb.run_query_all()
-        grinder.logger.info("Query     Results as (start time, end time, "
+        if self.counter % 1000000 == 0:
+            #run the full query test every one million records
+            res = self.testdb.run_query_all()
+            grinder.logger.info("Query all records Results as (start time, end time, "
                             "completion" + 
                             " time): (" + str(res[0]) + ", " + str(res[1]) + 
                             ", " + str(res[2]) + ")")
-	"""
+	
 	    #log db size
         size = self.testdb.get_db_size()
         grinder.logger.info("The database size is now " + size + " bytes.")
-
+        self.counter += self.streams # add number of streams each time, since we're adding
+	# a point to each stream every round
         self.testdb.reset_conn_state()
