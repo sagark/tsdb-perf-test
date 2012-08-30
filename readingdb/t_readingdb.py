@@ -114,6 +114,7 @@ class ReadingDBAccess(DBTest):
         else:
             a = subprocess.Popen(["readingdb_drv/run_query_all.py", "'False'"], stdout=subprocess.PIPE )
         b = a.communicate()
+        c = b[1]
 	b = b[0]
 	if c is not None:
 		print(c)

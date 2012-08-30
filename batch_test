@@ -7,7 +7,17 @@ mkdir -p results/$2/logs/readingdb
 mkdir -p results/$2/logs/postgres
 mkdir -p results/$2/logs/opentsdb
 
+echo "Running unit tests to make sure everything works properly"
+cd mysql-myisam
+./mysql_unit.py myisam
+cd ../mysql-innodb
+./mysql_unit.py innodb
+cd ../postgres
+./postgres_unit.py
+cd ../readingdb
+./readingdb_unit.py
 
+echo "starting real tests"
 for ((n=0; n<$1; n++))
 do
   echo $n

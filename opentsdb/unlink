@@ -1,2 +1,2 @@
-cd /data/hbase-0.94.0/bin
+cd /data/hbase/hbase-0.94.1/bin
 for f in $(ls -d *); do rm /usr/bin/$f; done #&& ls -al /usr/bin
