@@ -3,7 +3,6 @@
 echo "please ensure that hbase is not currently running"
 echo "WARNING: IN 5s this will kill all java processes on the machine. Ctrl-C to quit"
 sleep 5s
-#stop-hbase.sh
 #pkill java
 #hbase shell opentsdb_drv/prep_server
 #destroy old tables
@@ -17,7 +16,7 @@ sudo rm -r /tmp/hbase
 
 sleep 3s
 
-start-hbase.sh
+#start-hbase.sh
 echo "HBASE STARTED"
 
 echo "Giving Hbase 1 minute to start up"
@@ -27,8 +26,8 @@ echo "now creating tables"
 export COMPRESSION=none
 export HBASE_HOME=/data/hbase/hbase-0.94.1
 #create_table.sh
-hbase shell opentsdb_drv/create_tsdb &
-hbase shell opentsdb_drv/create_tsdb-uid &
+hbase shell create_tsdb &
+hbase shell create_tsdb-uid &
 
 sleep 30s
 

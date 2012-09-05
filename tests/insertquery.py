@@ -1,5 +1,6 @@
 #Java/SQL stuff
 from java.lang import *
+import java.lang.Thread.sleep as sleep
 
 #Grinder stuff
 from net.grinder.script.Grinder import grinder

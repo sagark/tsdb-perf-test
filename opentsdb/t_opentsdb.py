@@ -1,11 +1,13 @@
 #Java/SQL Stuff
 from java.lang import *
+import java.lang.Thread.sleep as sleep
 
 #misc
 import time
 import sys
 import subprocess
 import random
+
 
 #this is the recommended way of working with opentsdb
 import socket
@@ -64,12 +66,14 @@ class OpenTSDBAccess(DBTest):
         # make sure opentsdb_drv/prep_server has been chmod +x'd
         # first we need to find out if we are running as root:
         try:
-            urllib2.urlopen('http://localhost:4242/diediedie')
-            time.sleep(10) #give it 10 seconds to shut down
+            urllib2.urlopen('http://localhost:4243/diediedie')
+            sleep(10) #give it 10 seconds to shut down
         except: #pretty much any reasonable error here means the tsd is not running
             pass #this is fine, there's no opentsdb running already
         a = subprocess.Popen(["opentsdb_drv/start_opentsdb"])
-        time.sleep(20)
+	sleep(5)
+	print("sleep works!")
+        sleep(120) #wait for hbase shell to create tables
         print("opentsdb server running")
         
 
@@ -92,7 +96,7 @@ class OpenTSDBAccess(DBTest):
         for vallist in roundgen:
             for valpair in vallist:
                 sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-                sock.connect(('localhost', 4242))
+                sock.connect(('localhost', 4243))
                 starttime = time.time()
                 sock.send('put stream'+str(valpair[0]) + ' ' + str(valpair[1]) 
                                 + ' ' + str(valpair[2]) + ' host=localhost\n')
@@ -105,7 +109,7 @@ class OpenTSDBAccess(DBTest):
 
     def run_query_all(self, debug=False):
         #no 'real' query, use HTTP and urllib2
-        queryurlform = 'http://localhost:4242/q?start=1343740417s-ago&m=sum:stream%s&ascii'
+        queryurlform = 'http://localhost:4243/q?start=1343740417s-ago&m=sum:stream%s&ascii'
         overallstart = time.time()
         completiontime = 0
         for x in range(1, self.streamcount+1):
