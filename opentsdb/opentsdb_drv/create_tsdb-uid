@@ -1,0 +1,3 @@
+create 'tsdb-uid',
+  {NAME => 'id', COMPRESSION => 'NONE'},
+  {NAME => 'name', COMPRESSION => 'NONE'}

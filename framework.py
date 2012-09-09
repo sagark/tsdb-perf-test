@@ -261,11 +261,12 @@ class DBTest(object):
         pass
 
 def importstrs(dbname):
-    d2imp = {'mysql': 'from t_mysql import MySQLAccess', 'postgres': 
-                'from t_postgres import PostgresAccess', 'readingdb': 
-                'from t_readingdb import ReadingDBAccess', 'opentsdb':
-                'from t_opentsdb import OpenTSDBAccess'}
+    d2imp = {'mysql-innodb': 'from t_mysql import MySQLAccess as DBAccess \ndbargs=["innodb"]', 
+             'mysql-myisam': 'from t_mysql import MySQLAccess as DBAccess \ndbargs=["myisam"]', 
+             'postgres': 'from t_postgres import PostgresAccess as DBAccess \ndbargs=[]', 
+             'readingdb': 'from t_readingdb import ReadingDBAccess as DBAccess \ndbargs=[]', 
+             'opentsdb': 'from t_opentsdb import OpenTSDBAccess as DBAccess \ndbargs=[]'}
 
     out = d2imp[dbname]
-    out += ' as DBAccess'
+    #out += ' as DBAccess'
     return out

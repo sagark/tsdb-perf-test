@@ -1,0 +1,38 @@
+#!/bin/bash
+#export JAVA_HOME=/usr
+echo "please ensure that hbase is not currently running"
+echo "WARNING: IN 5s this will kill all java processes on the machine. Ctrl-C to quit"
+sleep 5s
+#pkill java
+#hbase shell opentsdb_drv/prep_server
+#destroy old tables
+sudo rm -r /tmp/hbase-root
+sudo rm /tmp/hbase-root-master.pid
+sudo rm -r /tmp/hsperfdata_root
+sudo rm -r /tmp/Jetty_0_0_0_0_60010_master____q3nwom
+sudo rm -r /tmp/Jetty_0_0_0_0_60030_regionserver____.h599vl
+sudo rm -r /tmp/tsd
+sudo rm -r /tmp/hbase
+
+sleep 3s
+
+#start-hbase.sh
+echo "HBASE STARTED"
+
+echo "Giving Hbase 1 minute to start up"
+sleep 1m
+
+echo "now creating tables"
+export COMPRESSION=none
+export HBASE_HOME=/data/hbase/hbase-0.94.1
+#create_table.sh
+hbase shell create_tsdb &
+hbase shell create_tsdb-uid &
+
+sleep 30s
+
+echo "now starting openTSDB"
+mkdir -p /data/staticroot
+tsdtmp=/data/tsd    # For best performance, make sure
+mkdir -p /data/tsd            # your temporary directory uses tmpfs
+tsdb tsd --port=4243 --staticroot=/data/hbase/opentsdb/build/staticroot --cachedir=/data/tsd &

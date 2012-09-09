@@ -41,22 +41,17 @@ class ReadingDBAccess(DBTest):
         pass
 
     def get_db_size(self):
-        # for some reason glob and regex don't work in grinder, though they do
-        # in jython, just hardcode it
-        #cmd = """du -c /var/lib/readingdb/__* /var/lib/readingdb/read*"""
-        #arg = shlex.split(cmd)
-        #command = arg[:-2] + glob.glob(arg[-2]) + glob.glob(arg[-1])
-        command = ['du', '-c', '/var/lib/readingdb/__db.005', 
-        '/var/lib/readingdb/__db.002', '/var/lib/readingdb/__db.003', 
-        '/var/lib/readingdb/__db.006', '/var/lib/readingdb/__db.001', 
-        '/var/lib/readingdb/__db.004', '/var/lib/readingdb/readings-2.db', 
-        '/var/lib/readingdb/readings-7.db', '/var/lib/readingdb/readings-4.db', 
-        '/var/lib/readingdb/readings-5.db', '/var/lib/readingdb/readings-9.db', 
-        '/var/lib/readingdb/readings-3.db', '/var/lib/readingdb/readings-1.db', 
-        '/var/lib/readingdb/readings-0.db', '/var/lib/readingdb/readings-6.db', 
-        '/var/lib/readingdb/readings-8.db']
+        d = subprocess.Popen(['ls', '/data/readingdb/'], stdout = subprocess.PIPE)
+        q = d.communicate()[0]
+        checks = []
+        q = q.split('\n')
+        for x in q:
+            if 'log' not in x and x != '' and '__db' not in x:
+                checks.append('/data/readingdb/' + x)
 
-        a = subprocess.Popen(command, stdout=subprocess.PIPE)
+        command = ['du', '-cb'] + checks
+
+        a = subprocess.Popen(command, stdout = subprocess.PIPE)
         procout = a.communicate()
         dbsize = int(procout[0].split()[-2]) #ensure that it's an int without formatting junk
         return str(dbsize) #go back to str
@@ -69,7 +64,7 @@ class ReadingDBAccess(DBTest):
         out, err = p.communicate()
         if 'root' in out:
             subprocess.call(['readingdb_drv/prep_server_root'])
-            subprocess.Popen(['reading-server'], stdin = None,
+            subprocess.Popen(['reading-server', '-d', '/data/readingdb', '-s', '8MB'], stdin = None,
                                             stdout = None, stderr = None)
             # time.sleep(5) #give reading-server 5 seconds to startup
         else:
@@ -117,8 +112,13 @@ class ReadingDBAccess(DBTest):
         if debug:
             a = subprocess.Popen(["readingdb_drv/run_query_all.py", "'True'"], stdout=subprocess.PIPE)
         else:
-            a = subprocess.Popen(["readingdb_drv/run_query_all.py", "'False'"], stdout=subprocess.PIPE)
-        b = a.communicate()[0]
+            a = subprocess.Popen(["readingdb_drv/run_query_all.py", "'False'"], stdout=subprocess.PIPE )
+        b = a.communicate()
+        c = b[1]
+	b = b[0]
+	if c is not None:
+		print(c)
+		sys.exit(0)
         returnlist = eval(b)
 
         if debug:
@@ -142,10 +142,6 @@ class ReadingDBAccess(DBTest):
         b = a.communicate()[0]
         last = int(eval(b))
     
-        #latest = file('tempfiles/lasttime')
-        #last = int(eval(latest.read()))
-        #latest.close()
-        #print(last)
         lastpossible = last - records + 1
         default_starttime = 946684800
 
@@ -162,8 +158,17 @@ class ReadingDBAccess(DBTest):
         if debug:
             c = subprocess.Popen(["readingdb_drv/query.py", str(params), "'True'"], stdout=subprocess.PIPE)
         else:
-            c = subprocess.Popen(["readingdb_drv/query.py", str(params), "'False'"], stdout=subprocess.PIPE)          
-        d = c.communicate()[0]
+            c = subprocess.Popen(["readingdb_drv/query.py", str(params), "'False'"], stdout=subprocess.PIPE, stderr=subprocess.PIPE)         
+        d = c.communicate()
+        q = d[1]
+        d = d[0]
+
+        if q not in (None, ''):
+            print(q)
+            raise Exception(str(q))
+
+
+
         returnlist = eval(d)
 
         if debug:
@@ -176,4 +181,24 @@ class ReadingDBAccess(DBTest):
             return debugout
 
         
+        return returnlist
+
+    def query_single(self, records, streamid, debug=False):
+        params = [streamid, records]
+        if debug:
+            c = subprocess.Popen(["readingdb_drv/query_single.py", str(params), "'True'"], stdout=subprocess.PIPE)
+        else:
+            c = subprocess.Popen(["readingdb_drv/query_single.py", str(params), "'False'"], stdout=subprocess.PIPE)
+        d = c.communicate()[0]
+        returnlist = eval(d)
+
+        if debug:
+            debugout = file('tempfiles/debugout')
+            dout = debugout.readlines()
+            debugout.close()
+            debugout = []
+            for row in dout:
+                debugout += eval(row)
+            return debugout
+
         return returnlist

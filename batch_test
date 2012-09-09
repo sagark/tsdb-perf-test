@@ -1,23 +1,41 @@
-#runs a batch test, $1 (the first arg) is the number of runs
+#runs a batch test, $1 (the first arg) is the number of runs, $2 is the test num_name combo
 #requires that grinder be set to store # of logs > $1
 
+mkdir -p results/$2/logs/mysql-myisam
+mkdir -p results/$2/logs/mysql-innodb
+mkdir -p results/$2/logs/readingdb
+mkdir -p results/$2/logs/postgres
+mkdir -p results/$2/logs/opentsdb
+
+echo "Running unit tests to make sure everything works properly"
+cd mysql-myisam
+./mysql_unit.py myisam
+cd ../mysql-innodb
+./mysql_unit.py innodb
+cd ../postgres
+./postgres_unit.py
+cd ../readingdb
+./readingdb_unit.py
+
+echo "starting real tests"
 for ((n=0; n<$1; n++))
 do
-  cd mysql
-  cp t_mysql-myisam t_mysql.py 
+  echo $n
+  cd mysql-myisam
   java net.grinder.Grinder
-  cp log/verde-0.log ../results/08_insertlongstream_scaled/logs/mysql-myisam/verde-0.log$n
-  cp t_mysql-innodb t_mysql.py
+  cp log/verde-0.log ../results/$2/logs/mysql-myisam/verde-0.log$n
+  cd ..
+  cd mysql-innodb
   java net.grinder.Grinder
-  cp log/verde-0.log ../results/08_insertlongstream_scaled/logs/mysql-innodb/verde-0.log$n
+  cp log/verde-0.log ../results/$2/logs/mysql-innodb/verde-0.log$n
   cd ..
   cd postgres
   java net.grinder.Grinder
-  cp log/verde-0.log ../results/08_insertlongstream_scaled/logs/postgres/verde-0.log$n
+  cp log/verde-0.log ../results/$2/logs/postgres/verde-0.log$n
   cd ..
   cd readingdb
   java net.grinder.Grinder
-  cp log/verde-0.log ../results/08_insertlongstream_scaled/logs/readingdb/verde-0.log$n
+  cp log/verde-0.log ../results/$2/logs/readingdb/verde-0.log$n
   cd ..
 done
 

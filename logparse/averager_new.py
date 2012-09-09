@@ -78,10 +78,11 @@ def parsedata(lines):
             line = lines.pop(0)
             size = line.split("now ")[1].replace(" bytes.", "")
         except:
+            print(line)
             print("exception parsing file")
             sys.exit(0)
         points.append([counter, eval(insert), eval(query), eval(size)])
-        counter += 100 #number of records before each round
+        counter += 10000 #number of records before each round
 
     graphthis = []
     for x in points:
@@ -125,7 +126,7 @@ ax1.set_ylabel('Time for operation completion (s)')
 ax2.set_title('Query (All records)')
 ax2.set_xlabel('# of Records in DB')
 ax2.set_ylabel('Time for operation completion (s)')
-#ax2.set_ylim(bottom = 0, top = 1.5)
+ax2.set_ylim(bottom = 0, top = 1.5)
 
 ax3.set_title('DB Size')
 ax3.set_xlabel('# of Records in DB')

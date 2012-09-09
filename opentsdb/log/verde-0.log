@@ -1,0 +1,7 @@
+2012-08-01 13:41:30,877 INFO  verde-0 : The Grinder version 3.10
+2012-08-01 13:41:30,882 INFO  verde-0 : Java(TM) SE Runtime Environment 1.6.0_26-b03: Java HotSpot(TM) 64-Bit Server VM (20.1-b02, mixed mode) on Linux amd64 2.6.32-5-amd64
+2012-08-01 13:41:30,885 INFO  verde-0 : time zone is PDT (-0700)
+2012-08-01 13:41:30,973 INFO  verde-0 : worker process 0
+2012-08-01 13:41:31,029 INFO  verde-0 : instrumentation agents: byte code transforming instrumenter for Jython 2.5; byte code transforming instrumenter for Java
+2012-08-01 13:41:33,216 INFO  verde-0 : running "../tests/insertquery.py" using Jython 2.5.2 (Release_2_5_2:7206, Mar 2 2011, 23:12:06) 
+[Java HotSpot(TM) 64-Bit Server VM (Sun Microsystems Inc.)]

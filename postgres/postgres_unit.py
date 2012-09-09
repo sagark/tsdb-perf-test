@@ -87,7 +87,7 @@ class TestSequenceFunctions(unittest.TestCase):
 
         records = 100
         streamid = 4
-        result = self.db.query_single(records, 4, True)
+        result = self.db.query_single(records, streamid, True)
         self.assertEqual(len(result), records)
         for x in result:
             self.assert_(x in compareresult)

@@ -160,7 +160,7 @@ grinder.numberOfOldLogs = 2
 ; grinder.jvm.classpath = /usr/share/java/
 
 # Additional arguments to worker process JVMs.
-grinder.jvm.arguments = -Dpython.home=/root/jython2.5.2 -Dpython.path=/root/jython2.5.2/Lib
+grinder.jvm.arguments = -Dpython.home=/data/sagar/jython2.5.2 -Dpython.path=/data/sagar/jython2.5.2/Lib
 
 grinder.inp = opentsdb
 
