@@ -1,11 +1,14 @@
 import sys
 import os
 import numpy as np
+import matplotlib
+matplotlib.use('PDF')
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib import ticker
 import numpy as np
 from math import sqrt
+
 
 #here we go through all the dbs
 
@@ -194,4 +197,4 @@ leg1 = ax1.legend(legend1, 'upper left', shadow=True)
 leg2 = ax2.legend(legend2, 'upper left', shadow=True)
 leg3 = ax3.legend(legend3, 'upper left', shadow=True)
 
-plt.savefig('test.png')
+plt.savefig('test.pdf')
