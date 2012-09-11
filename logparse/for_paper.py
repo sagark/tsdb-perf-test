@@ -6,6 +6,7 @@ matplotlib.use('PDF')
 import matplotlib.pyplot as plt
 from matplotlib.figure import Figure
 from matplotlib import ticker
+from matplotlib.ticker import FuncFormatter
 import numpy as np
 from math import sqrt
 
@@ -16,9 +17,14 @@ DB_NAMES = ["mysql-myisam", "mysql-innodb", "opentsdb", "postgres",
                                                         "readingdb", "scidb"]
 
 itervals = ['k_', 'k-.', 'k--', 'k:']# ,'r:', 'g:', 'b:', 'k:']
+dash_style = [[20, 20], [10, 10], [30, 30], (None, None)]
 graph_1_iter = iter(itervals)
 graph_2_iter = iter(itervals)
 graph_3_iter = iter(itervals)
+graph_1_d = iter(dash_style)
+graph_2_d = iter(dash_style)
+graph_3_d = iter(dash_style)
+
 
 
 
@@ -121,7 +127,7 @@ def parsedata(lines):
     graphthis = []
     skip_count = 0
     for x in points:
-        if skip_count % 20 == 0:
+        if skip_count % 30 == 0:
             addtog = []
             addtog.append(x[0]) #number of points in db already
             addtog.append(x[1][2]) #time to insert
@@ -164,7 +170,15 @@ ax1 = fig.add_subplot(111)
 ax1.set_xlabel('# of Records in DB')
 ax1.set_ylabel('Time for operation completion (s)')
 ax1.xaxis.major.formatter.set_powerlimits((-100, 100))
-ax1.set_ylim(bottom = 0, top = 7)
+"""
+ax1.canvas.draw()
+
+labels = [item.get_text() for item in ax1.get_xticklabels()]
+labels[1] = "LOLZ"
+ax1.set_xticklabels(labels)
+"""
+#ax1.set_ylim(bottom = 0)
+#ax1.set_xlim(left = 0)
 """
 #ax2.set_title('Query 100 Records from 1000 Streams')
 ax2.set_xlabel('# of Records in DB')
@@ -181,6 +195,19 @@ legend1 = ()
 legend2 = ()
 legend3 = ()
 
+
+def my_formatter(x, pos):
+    """Format 1 as 1, 0 as 0, and all values whose absolute values is between
+    0 and 1 without the leading "0." (e.g., 0.7 is formatted as .7 and -0.4 is
+    formatted as -.4)."""
+    if x == 0:
+        return ""
+    else:
+        return "{:,.0f}".format(x)
+
+major_formatter = FuncFormatter(my_formatter)
+ax1.xaxis.set_major_formatter(major_formatter)
+
 for a in db_arrays:
     name = a[0]
     print("graphing: " + name)
@@ -193,7 +220,7 @@ for a in db_arrays:
     y3_mean = a[3][:,-2]
     y3_serr = a[3][:,-1]
     #ax1.plot(x, y1, graph_1_iter.next())
-    ax1.errorbar(x, y1_mean, yerr=y1_serr, fmt=graph_1_iter.next())
+    ax1.errorbar(x, y1_mean, yerr=y1_serr, fmt=graph_1_iter.next(), dashes=graph_1_d.next())
     #ax2.plot(x, y2_mean, graph_2_iter.next())
 #    ax2.errorbar(x, y2_mean, yerr=y2_serr, fmt=graph_2_iter.next())
     #ax3.plot(x, y3_mean, graph_3_iter.next())
@@ -205,5 +232,5 @@ for a in db_arrays:
 leg1 = ax1.legend(legend1, 'upper left', shadow=True)
 #leg2 = ax2.legend(legend2, 'upper left', shadow=True)
 #leg3 = ax3.legend(legend3, 'upper left', shadow=True)
-
+#align_yaxis(x, 0, y1_mean, 0)
 plt.savefig('test.pdf')
