@@ -154,27 +154,27 @@ matplotlib.rc('legend', fontsize=fontsize)
 #print(db_arrays)
 fig = plt.figure(figsize=(20, 10), dpi=300)
 #fig.suptitle('Adding 1 Record to 10000 Streams, 1000 Times - Averaged over 5 Runs - 8MB Cache', fontsize=18)
-ax1 = fig.add_subplot(111)
-#ax2 = fig.add_subplot(312)
-#ax3 = fig.add_subplot(313)
-
+#ax1 = fig.add_subplot(111)
+#ax2 = fig.add_subplot(111)
+ax3 = fig.add_subplot(111)
+"""
 #ax1.set_title('Insert (10,000 record batches, 100 records/insert)')
 ax1.set_xlabel('# of Records in DB')
 ax1.set_ylabel('Time for operation completion (s)')
 ax1.xaxis.major.formatter.set_powerlimits((-100, 100))
 ax1.set_ylim(bottom = 0, top = 7)
-"""
+
 #ax2.set_title('Query 100 Records from 1000 Streams')
 ax2.set_xlabel('# of Records in DB')
 ax2.set_ylabel('Time for operation completion (s)')
 ax2.set_ylim(bottom = 0, top = 1.0)
 ax2.xaxis.major.formatter.set_powerlimits((-100, 100)) #stop writing as exp
-
+"""
 #ax3.set_title('DB Size')
 ax3.set_xlabel('# of Records in DB')
 ax3.set_ylabel('DB size (MB)')
 ax3.xaxis.major.formatter.set_powerlimits((-100, 100)) #stop writing as exp
-"""
+
 legend1 = ()
 legend2 = ()
 legend3 = ()
@@ -191,17 +191,17 @@ for a in db_arrays:
     y3_mean = a[3][:,-2]
     y3_serr = a[3][:,-1]
     #ax1.plot(x, y1, graph_1_iter.next())
-    ax1.errorbar(x, y1_mean, yerr=y1_serr, fmt=graph_1_iter.next())
+#    ax1.errorbar(x, y1_mean, yerr=y1_serr, fmt=graph_1_iter.next())
     #ax2.plot(x, y2_mean, graph_2_iter.next())
 #    ax2.errorbar(x, y2_mean, yerr=y2_serr, fmt=graph_2_iter.next())
     #ax3.plot(x, y3_mean, graph_3_iter.next())
-#    ax3.errorbar(x, y3_mean, yerr=y3_serr, fmt=graph_3_iter.next())
+    ax3.errorbar(x, y3_mean, yerr=y3_serr, fmt=graph_3_iter.next())
     legend1 += (name,)
     legend2 += (name,)
     legend3 += (name,)
 
-leg1 = ax1.legend(legend1, 'upper left', shadow=True)
+#leg1 = ax1.legend(legend1, 'upper left', shadow=True)
 #leg2 = ax2.legend(legend2, 'upper left', shadow=True)
-#leg3 = ax3.legend(legend3, 'upper left', shadow=True)
+leg3 = ax3.legend(legend3, 'upper left', shadow=True)
 
 plt.savefig('test.pdf')
