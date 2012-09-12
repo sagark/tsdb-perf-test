@@ -162,10 +162,10 @@ matplotlib.rc('text', usetex=False)
 #print(db_arrays)
 fig = plt.figure(figsize=(20, 10), dpi=300)
 #fig.suptitle('Adding 1 Record to 10000 Streams, 1000 Times - Averaged over 5 Runs - 8MB Cache', fontsize=18)
-#ax1 = fig.add_subplot(111)
-ax2 = fig.add_subplot(111)
+ax1 = fig.add_subplot(111)
+#ax2 = fig.add_subplot(111)
 #ax3 = fig.add_subplot(111)
-"""
+
 #ax1.set_title('Insert (10,000 record batches, 100 records/insert)')
 ax1.set_xlabel('# of Records in DB')
 ax1.set_ylabel('Inserts/s')
@@ -176,10 +176,11 @@ ax2.set_xlabel('# of Records in DB')
 ax2.set_ylabel('Queries/s')
 ax2.set_ylim(bottom=0, top=200000)
 ax2.xaxis.major.formatter.set_powerlimits((-100, 100)) #stop writing as exp
-"""
+
 #ax3.set_title('DB Size')
 ax3.set_xlabel('# of Records in DB')
 ax3.set_ylabel('DB size (MB)')
+ax3.set_ylim(bottom=0, top=1000)
 ax3.xaxis.major.formatter.set_powerlimits((-100, 100)) #stop writing as exp
 """
 legend1 = ()
@@ -196,8 +197,20 @@ def my_formatter(x, pos):
     else:
         return "{:,.0f}".format(x)
 
+
+def my_formatter_w_zero(x, pos):
+    """Format 1 as 1, 0 as 0, and all values whose absolute values is between
+    0 and 1 without the leading "0." (e.g., 0.7 is formatted as .7 and -0.4 is
+    formatted as -.4)."""
+    return "{:,.0f}".format(x)
+
+
+
 major_formatter = FuncFormatter(my_formatter)
-ax2.xaxis.set_major_formatter(major_formatter)
+major_formatter_w_zero = FuncFormatter(my_formatter_w_zero)
+ax1.xaxis.set_major_formatter(major_formatter)
+ax1.yaxis.set_major_formatter(major_formatter_w_zero)
+
 
 for a in db_arrays:
     name = a[0]
@@ -210,18 +223,18 @@ for a in db_arrays:
     y2_serr = a[2][:,-1]
     y3_mean = a[3][:,-2]
     y3_serr = a[3][:,-1]
-    #ax1.plot(x, y1, graph_1_iter.next())
-#    ax1.errorbar(x, y1_mean, yerr=y1_serr, fmt=graph_1_iter.next(), dashes=graph_1_d.next())
+#    ax1.plot(x, y1, graph_1_iter.next())
+    ax1.errorbar(x, y1_mean, yerr=y1_serr, fmt=graph_1_iter.next(), dashes=graph_1_d.next())
     #ax2.plot(x, y2_mean, graph_2_iter.next())
-    ax2.errorbar(x, y2_mean, yerr=y2_serr, fmt=graph_2_iter.next(), dashes=graph_2_d.next())
+#    ax2.errorbar(x, y2_mean, yerr=y2_serr, fmt=graph_2_iter.next(), dashes=graph_2_d.next())
     #ax3.plot(x, y3_mean, graph_3_iter.next())
-#    ax3.errorbar(x, y3_mean, yerr=y3_serr, fmt=graph_3_iter.next())
+#    ax3.errorbar(x, y3_mean, yerr=y3_serr, fmt=graph_3_iter.next(), dashes=graph_3_d.next())
     legend1 += (name,)
     legend2 += (name,)
     legend3 += (name,)
 
-#leg1 = ax1.legend(legend1, 'upper right', shadow=True)
-leg2 = ax2.legend(legend2, 'upper right', shadow=True)
+leg1 = ax1.legend(legend1, 'upper right', shadow=True)
+#leg2 = ax2.legend(legend2, 'upper right', shadow=True)
 #leg3 = ax3.legend(legend3, 'upper left', shadow=True)
 #align_yaxis(x, 0, y1_mean, 0)
 plt.savefig('test.pdf')
