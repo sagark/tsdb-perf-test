@@ -17,7 +17,7 @@ DB_NAMES = ["mysql-myisam", "mysql-innodb", "opentsdb", "postgres",
                                                         "readingdb", "scidb"]
 
 itervals = ['k_', 'k-.', 'k--', 'k:']# ,'r:', 'g:', 'b:', 'k:']
-dash_style = [[20, 20], [10, 10], [30, 30], (None, None)]
+dash_style = [[5, 5], [10, 10], [30, 30], (None, None)]
 graph_1_iter = iter(itervals)
 graph_2_iter = iter(itervals)
 graph_3_iter = iter(itervals)
@@ -168,12 +168,12 @@ ax2 = fig.add_subplot(111)
 """
 #ax1.set_title('Insert (10,000 record batches, 100 records/insert)')
 ax1.set_xlabel('# of Records in DB')
-ax1.set_ylabel('Operations/s')
+ax1.set_ylabel('Inserts/s')
 ax1.xaxis.major.formatter.set_powerlimits((-100, 100))
 """
 #ax2.set_title('Query 100 Records from 1000 Streams')
 ax2.set_xlabel('# of Records in DB')
-ax2.set_ylabel('Operations/s')
+ax2.set_ylabel('Queries/s')
 ax2.set_ylim(bottom=0, top=200000)
 ax2.xaxis.major.formatter.set_powerlimits((-100, 100)) #stop writing as exp
 """
@@ -213,7 +213,7 @@ for a in db_arrays:
     #ax1.plot(x, y1, graph_1_iter.next())
 #    ax1.errorbar(x, y1_mean, yerr=y1_serr, fmt=graph_1_iter.next(), dashes=graph_1_d.next())
     #ax2.plot(x, y2_mean, graph_2_iter.next())
-    ax2.errorbar(x, y2_mean, yerr=y2_serr, fmt=graph_2_iter.next())
+    ax2.errorbar(x, y2_mean, yerr=y2_serr, fmt=graph_2_iter.next(), dashes=graph_2_d.next())
     #ax3.plot(x, y3_mean, graph_3_iter.next())
 #    ax3.errorbar(x, y3_mean, yerr=y3_serr, fmt=graph_3_iter.next())
     legend1 += (name,)
